@@ -36,7 +36,7 @@
     </div>
 @endif
 
-{{-- 4 KPI CARDS (Compact) --}}
+
 <div class="row g-3 mb-24">
     <div class="col-lg-3 col-sm-6">
         <div class="card radius-12 border-0 shadow-sm h-100 overflow-hidden position-relative crm-kpi-card crm-kpi-primary">
@@ -85,7 +85,7 @@
     </div>
 </div>
 
-{{-- FILTER CARD --}}
+
 <div class="card radius-12 border-0 shadow-sm mb-20">
     <div class="card-body p-16">
         <form method="GET" action="{{ route('dashboard-admin.pmo.milestones.index') }}" class="row g-2 align-items-center">
@@ -126,7 +126,7 @@
     </div>
 </div>
 
-{{-- MILESTONE TABLE CARD --}}
+
 <div class="card radius-12 border-0 shadow-sm mb-24">
     <div class="card-body p-0">
         <div class="table-responsive">
@@ -189,7 +189,7 @@
                             <td><span class="text-secondary-light">{{ $m->deliverable ?: '—' }}</span></td>
                             <td class="text-center pe-16">
                                 <div class="d-inline-flex align-items-center gap-1">
-                                    {{-- Edit Button (Green) --}}
+                                    
                                     <button type="button"
                                             class="w-32-px h-32-px bg-success-focus text-success-main rounded-circle d-inline-flex align-items-center justify-content-center border-0 text-sm shadow-xs btn-edit-milestone"
                                             data-bs-toggle="modal"
@@ -208,7 +208,7 @@
                                         <iconify-icon icon="solar:pen-bold-duotone"></iconify-icon>
                                     </button>
 
-                                    {{-- Delete Button (Red) --}}
+                                    
                                     <form action="{{ route('dashboard-admin.pmo.milestones.destroy', $m->id) }}" method="POST" class="d-inline" onsubmit="return confirm('Hapus milestone ini?')">
                                         @csrf
                                         @method('DELETE')
@@ -236,7 +236,7 @@
     </div>
 </div>
 
-{{-- MODAL TAMBAH MILESTONE (id="btnSubmit") --}}
+
 <div class="modal fade" id="createMilestoneModal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content radius-16 border-0 shadow">
@@ -294,7 +294,7 @@
                 </div>
                 <div class="modal-footer border-top p-16">
                     <button type="button" class="btn btn-outline-secondary btn-sm radius-8" data-bs-dismiss="modal">Batal</button>
-                    {{-- User rule: id="btnSubmit" for create button --}}
+                    
                     <button type="submit" id="btnSubmit" class="btn btn-primary btn-sm radius-8 px-16 fw-semibold">
                         Simpan Milestone
                     </button>
@@ -304,7 +304,7 @@
     </div>
 </div>
 
-{{-- MODAL EDIT MILESTONE (id="btnUpdate") --}}
+
 <div class="modal fade" id="editMilestoneModal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content radius-16 border-0 shadow">
@@ -362,7 +362,7 @@
                 </div>
                 <div class="modal-footer border-top p-16">
                     <button type="button" class="btn btn-outline-secondary btn-sm radius-8" data-bs-dismiss="modal">Batal</button>
-                    {{-- User rule: id="btnUpdate" for update button --}}
+                    
                     <button type="submit" id="btnUpdate" class="btn btn-primary btn-sm radius-8 px-16 fw-semibold">
                         Simpan Perubahan
                     </button>

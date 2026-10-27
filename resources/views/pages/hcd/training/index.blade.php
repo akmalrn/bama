@@ -34,7 +34,7 @@
     </div>
 @endif
 
-{{-- 4 KPI CARDS --}}
+
 <div class="row g-3 mb-24">
     <div class="col-xl-3 col-sm-6">
         <div class="card radius-12 border-0 shadow-sm h-100 overflow-hidden position-relative">
@@ -114,7 +114,7 @@
     </div>
 </div>
 
-{{-- NAVIGATION TABS (CERTIFICATES VS CATALOG) --}}
+
 <div class="card radius-12 border-0 shadow-sm mb-24 overflow-hidden">
     <div class="card-body p-16">
         <div class="d-flex flex-wrap justify-content-between align-items-center gap-3">
@@ -157,7 +157,7 @@
 </div>
 
 @if ($activeTab === 'certificates')
-    {{-- TAB 1: DAFTAR SERTIFIKASI PERSONEL --}}
+    
     <div class="card radius-12 border-0 shadow-sm mb-24 overflow-hidden">
         <div class="card-body p-0">
             <div class="table-responsive">
@@ -239,7 +239,7 @@
         </div>
     </div>
 @else
-    {{-- TAB 2: KATALOG PROGRAM PELATIHAN & SERTIFIKASI --}}
+    
     <div class="row g-3 mb-24">
         @forelse ($trainings as $tr)
             <div class="col-xl-4 col-md-6">
@@ -264,7 +264,7 @@
     </div>
 @endif
 
-{{-- MODAL CATAT SERTIFIKAT KARYAWAN --}}
+
 <div class="modal fade" id="newCertificateModal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered">
         <div class="modal-content radius-12 border-0 shadow">
@@ -339,7 +339,7 @@
     </div>
 </div>
 
-{{-- MODAL TAMBAH KATALOG BARU --}}
+
 <div class="modal fade" id="newCatalogModal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content radius-12 border-0 shadow">

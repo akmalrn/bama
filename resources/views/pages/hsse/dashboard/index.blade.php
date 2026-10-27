@@ -30,9 +30,9 @@
     </div>
 </div>
 
-{{-- 4 TOP EXECUTIVE SAFETY KPI CARDS --}}
+
 <div class="row g-3 mb-24">
-    {{-- Card 1: Zero Accident Counter --}}
+    
     <div class="col-xl-3 col-sm-6">
         <div class="card radius-12 border-0 shadow-sm h-100 overflow-hidden position-relative">
             <div class="card-body p-20 d-flex flex-column justify-content-between">
@@ -53,7 +53,7 @@
         </div>
     </div>
 
-    {{-- Card 2: Safe Man-Hours --}}
+    
     <div class="col-xl-3 col-sm-6">
         <div class="card radius-12 border-0 shadow-sm h-100 overflow-hidden position-relative">
             <div class="card-body p-20 d-flex flex-column justify-content-between">
@@ -74,7 +74,7 @@
         </div>
     </div>
 
-    {{-- Card 3: Active Permits to Work --}}
+    
     <div class="col-xl-3 col-sm-6">
         <div class="card radius-12 border-0 shadow-sm h-100 overflow-hidden position-relative">
             <div class="card-body p-20 d-flex flex-column justify-content-between">
@@ -95,7 +95,7 @@
         </div>
     </div>
 
-    {{-- Card 4: Inspection Pass Rate --}}
+    
     <div class="col-xl-3 col-sm-6">
         <div class="card radius-12 border-0 shadow-sm h-100 overflow-hidden position-relative">
             <div class="card-body p-20 d-flex flex-column justify-content-between">
@@ -119,9 +119,9 @@
     </div>
 </div>
 
-{{-- ROW 2: ACTIVE PTW STATUS & INCIDENT / NEAR MISS RADAR --}}
+
 <div class="row g-3 mb-24">
-    {{-- Col 1: Recent Active Permits to Work --}}
+    
     <div class="col-xl-7">
         <div class="card radius-12 border-0 shadow-sm h-100">
             <div class="card-header bg-transparent border-bottom py-16 px-20 d-flex align-items-center justify-content-between">
@@ -198,7 +198,7 @@
         </div>
     </div>
 
-    {{-- Col 2: HSE Incident & Near Miss Monitor --}}
+    
     <div class="col-xl-5">
         <div class="card radius-12 border-0 shadow-sm h-100">
             <div class="card-header bg-transparent border-bottom py-16 px-20 d-flex align-items-center justify-content-between">
@@ -216,7 +216,7 @@
                 </span>
             </div>
             <div class="card-body p-20">
-                {{-- Incident Severity Bar --}}
+                
                 <div class="row g-2 mb-20">
                     <div class="col-4">
                         <div class="p-12 radius-8 bg-info-50 border border-info-200 text-center">
@@ -238,7 +238,7 @@
                     </div>
                 </div>
 
-                {{-- Recent Incidents Feed --}}
+                
                 <div class="d-flex flex-column gap-3">
                     @forelse($recentIncidents as $incident)
                         <div class="p-12 radius-8 border d-flex flex-column gap-1">
@@ -272,9 +272,9 @@
     </div>
 </div>
 
-{{-- ROW 3: EQUIPMENT INSPECTION & QUARANTINE LOG --}}
+
 <div class="row g-3">
-    {{-- Col 1: Quarantined & Rejected Tools (Tag Merah) --}}
+    
     <div class="col-xl-6">
         <div class="card radius-12 border-0 shadow-sm h-100">
             <div class="card-header bg-transparent border-bottom py-16 px-20 d-flex align-items-center justify-content-between">
@@ -318,7 +318,7 @@
         </div>
     </div>
 
-    {{-- Col 2: Upcoming Re-Inspections --}}
+    
     <div class="col-xl-6">
         <div class="card radius-12 border-0 shadow-sm h-100">
             <div class="card-header bg-transparent border-bottom py-16 px-20 d-flex align-items-center justify-content-between">

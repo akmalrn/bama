@@ -43,7 +43,7 @@
     </div>
 @endif
 
-{{-- FILTER TABS RESULT --}}
+
 <div class="card radius-12 border-0 shadow-sm mb-20">
     <div class="card-body p-12">
         <div class="d-flex flex-wrap gap-2">
@@ -67,7 +67,7 @@
     </div>
 </div>
 
-{{-- SEARCH & FILTER BAR --}}
+
 <div class="card radius-12 border-0 shadow-sm mb-24">
     <div class="card-body p-16">
         <form method="GET" action="{{ route('dashboard-admin.hsse.inspections.index') }}" class="row g-2 align-items-center">
@@ -108,7 +108,7 @@
     </div>
 </div>
 
-{{-- INSPECTIONS TABLE --}}
+
 <div class="card radius-12 border-0 shadow-sm">
     <div class="card-body p-0">
         <div class="table-responsive">
@@ -200,7 +200,7 @@
     </div>
 </div>
 
-{{-- MODAL CREATE INSPECTION --}}
+
 <div class="modal fade" id="createInspectionModal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg">
         <div class="modal-content radius-12 border-0">

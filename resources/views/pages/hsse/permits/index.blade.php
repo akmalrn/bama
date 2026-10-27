@@ -41,7 +41,7 @@
     </div>
 @endif
 
-{{-- FILTER TABS STATUS --}}
+
 <div class="card radius-12 border-0 shadow-sm mb-20">
     <div class="card-body p-12">
         <div class="d-flex flex-wrap gap-2">
@@ -69,7 +69,7 @@
     </div>
 </div>
 
-{{-- SEARCH & FILTER BAR --}}
+
 <div class="card radius-12 border-0 shadow-sm mb-24">
     <div class="card-body p-16">
         <form method="GET" action="{{ route('dashboard-admin.hsse.permits.index') }}" class="row g-2 align-items-center">
@@ -111,7 +111,7 @@
     </div>
 </div>
 
-{{-- PERMITS REGISTER TABLE --}}
+
 <div class="card radius-12 border-0 shadow-sm">
     <div class="card-body p-0">
         <div class="table-responsive">
@@ -196,7 +196,7 @@
                                     </ul>
                                 </div>
 
-                                {{-- Modal Update Status --}}
+                                
                                 <div class="modal fade" id="updateStatusModal{{ $permit->id }}" tabindex="-1" aria-hidden="true">
                                     <div class="modal-dialog modal-dialog-centered">
                                         <div class="modal-content radius-12 border-0 text-start">
@@ -250,7 +250,7 @@
     </div>
 </div>
 
-{{-- MODAL CREATE PERMIT TO WORK --}}
+
 <div class="modal fade" id="createPermitModal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg">
         <div class="modal-content radius-12 border-0">

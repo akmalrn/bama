@@ -48,7 +48,7 @@
     </div>
 @endif
 
-{{-- 4 KPI CARDS (Compact layout) --}}
+
 <div class="row g-3 mb-24">
     <div class="col-lg-3 col-sm-6">
         <div class="card radius-12 border-0 shadow-sm h-100 overflow-hidden position-relative crm-kpi-card crm-kpi-primary">
@@ -99,7 +99,7 @@
     </div>
 </div>
 
-{{-- FILTERS CARD --}}
+
 <div class="card radius-12 border-0 shadow-sm mb-20">
     <div class="card-body p-16">
         <form method="GET" action="{{ route('dashboard-admin.pmo.projects.index') }}" class="row g-2 align-items-center">
@@ -135,7 +135,7 @@
     </div>
 </div>
 
-{{-- PROJECT TABLE CARD --}}
+
 <div class="card radius-12 border-0 shadow-sm mb-24">
     <div class="card-body p-0">
         <div class="table-responsive">
@@ -213,7 +213,7 @@
                             </td>
                             <td class="text-center pe-16">
                                 <div class="d-inline-flex align-items-center gap-1">
-                                    {{-- Detail Button (Blue) --}}
+                                    
                                     <a href="{{ route('dashboard-admin.pmo.projects.show', $p->id) }}"
                                        class="w-32-px h-32-px bg-primary-light text-primary-600 rounded-circle d-inline-flex align-items-center justify-content-center border-0 text-sm shadow-xs"
                                        title="Lihat Detail 360">
@@ -221,7 +221,7 @@
                                     </a>
 
                                     @can('pmo.project.edit')
-                                        {{-- Edit Button (Green) --}}
+                                        
                                         <button type="button"
                                                 class="w-32-px h-32-px bg-success-focus text-success-main rounded-circle d-inline-flex align-items-center justify-content-center border-0 text-sm shadow-xs btn-edit-project"
                                                 data-bs-toggle="modal"
@@ -250,7 +250,7 @@
                                     @endcan
 
                                     @can('pmo.project.delete')
-                                        {{-- Delete Button (Red) --}}
+                                        
                                         <form action="{{ route('dashboard-admin.pmo.projects.destroy', $p->id) }}" method="POST" class="d-inline" onsubmit="return confirm('Hapus project {{ $p->project_code }} secara permanen?')">
                                             @csrf
                                             @method('DELETE')
@@ -280,7 +280,7 @@
     </div>
 </div>
 
-{{-- MODAL TAMBAH PROJECT BARU (id="btnSubmit") --}}
+
 <div class="modal fade" id="createProjectModal" tabindex="-1" aria-labelledby="createProjectModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered">
         <div class="modal-content radius-16 border-0 shadow">
@@ -382,7 +382,7 @@
                 </div>
                 <div class="modal-footer border-top p-16">
                     <button type="button" class="btn btn-outline-secondary btn-sm radius-8" data-bs-dismiss="modal">Batal</button>
-                    {{-- User guideline requirement: id="btnSubmit" for create button --}}
+                    
                     <button type="submit" id="btnSubmit" class="btn btn-primary btn-sm radius-8 px-16 fw-semibold">
                         Simpan Project
                     </button>
@@ -392,7 +392,7 @@
     </div>
 </div>
 
-{{-- MODAL EDIT PROJECT (id="btnUpdate") --}}
+
 <div class="modal fade" id="editProjectModal" tabindex="-1" aria-labelledby="editProjectModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered">
         <div class="modal-content radius-16 border-0 shadow">
@@ -492,7 +492,7 @@
                 </div>
                 <div class="modal-footer border-top p-16">
                     <button type="button" class="btn btn-outline-secondary btn-sm radius-8" data-bs-dismiss="modal">Batal</button>
-                    {{-- User guideline requirement: id="btnUpdate" for update button --}}
+                    
                     <button type="submit" id="btnUpdate" class="btn btn-primary btn-sm radius-8 px-16 fw-semibold">
                         Simpan Perubahan
                     </button>

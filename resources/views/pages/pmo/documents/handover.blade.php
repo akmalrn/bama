@@ -38,7 +38,7 @@
     </div>
 @endif
 
-{{-- 4 KPI CARDS (Matching Benchmark) --}}
+
 <div class="row g-3 mb-24">
     <div class="col-xl-3 col-sm-6">
         <div class="card radius-12 border-0 shadow-sm h-100 p-16 transition-all">
@@ -118,7 +118,7 @@
     </div>
 </div>
 
-{{-- SECTION 1: TURNOVER DOSSIER & HANDOVER REGISTER --}}
+
 <div class="card radius-12 border-0 shadow-sm mb-24 overflow-hidden">
     <div class="card-header bg-transparent py-16 px-24 border-bottom d-flex flex-wrap justify-content-between align-items-center gap-2">
         <div>
@@ -206,7 +206,7 @@
                                     Update Status
                                 </button>
 
-                                {{-- MODAL UPDATE STATUS HANDOVER PER PROJECT --}}
+                                
                                 <div class="modal fade" id="editHandoverStatusModal{{ $project->id }}" tabindex="-1" aria-hidden="true">
                                     <div class="modal-dialog modal-dialog-centered">
                                         <div class="modal-content radius-16 border-0 shadow text-start">
@@ -264,7 +264,7 @@
     </div>
 </div>
 
-{{-- SECTION 2: ALL DOCUMENTS REGISTER TABLE --}}
+
 <div class="card radius-12 border-0 shadow-sm mb-24 overflow-hidden">
     <div class="card-header bg-transparent py-16 px-24 border-bottom d-flex justify-content-between align-items-center">
         <div>
@@ -340,7 +340,7 @@
     </div>
 </div>
 
-{{-- MODAL UPLOAD DOKUMEN PROYEK --}}
+
 <div class="modal fade" id="uploadDocModal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content radius-16 border-0 shadow">

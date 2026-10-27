@@ -48,7 +48,7 @@
     </div>
 @endif
 
-{{-- 4 TOP CARDS --}}
+
 <div class="row g-3 mb-24">
     <div class="col-xl-3 col-sm-6">
         <div class="card radius-12 border-0 shadow-sm h-100 overflow-hidden position-relative">
@@ -128,7 +128,7 @@
     </div>
 </div>
 
-{{-- FILTER BAR --}}
+
 <div class="card radius-12 border-0 shadow-sm mb-24">
     <div class="card-body p-16">
         <form method="GET" action="{{ route('dashboard-admin.hcd.employees.index') }}" class="row g-2 align-items-center">
@@ -177,7 +177,7 @@
     </div>
 </div>
 
-{{-- EMPLOYEE REGISTER TABLE --}}
+
 <div class="card radius-12 border-0 shadow-sm mb-24 overflow-hidden">
     <div class="card-body p-0">
         <div class="table-responsive">
@@ -290,7 +290,7 @@
     </div>
 </div>
 
-{{-- MODAL TAMBAH KARYAWAN BARU --}}
+
 <div class="modal fade" id="newEmployeeModal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered">
         <div class="modal-content radius-12 border-0 shadow">
@@ -384,7 +384,7 @@
     </div>
 </div>
 
-{{-- MODAL EDIT KARYAWAN --}}
+
 <div class="modal fade" id="editEmployeeModal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered">
         <div class="modal-content radius-12 border-0 shadow">

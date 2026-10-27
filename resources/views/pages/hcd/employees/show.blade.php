@@ -30,7 +30,7 @@
     </div>
 @endif
 
-{{-- PROFILE HEADER CARD --}}
+
 <div class="card radius-12 border-0 shadow-sm mb-24 overflow-hidden">
     <div class="card-body p-24">
         <div class="d-flex flex-wrap align-items-center justify-content-between gap-4">
@@ -76,7 +76,7 @@
 </div>
 
 <div class="row g-3 mb-24">
-    {{-- KIRI: BIODATA, KEPEGAWAIAN & KUALIFIKASI --}}
+    
     <div class="col-lg-5">
         <div class="card radius-12 border-0 shadow-sm mb-24">
             <div class="card-header bg-transparent border-bottom py-16 px-20">
@@ -142,9 +142,9 @@
         </div>
     </div>
 
-    {{-- KANAN: TABEL SERTIFIKAT K3 & RIWAYAT TUGAS --}}
+    
     <div class="col-lg-7">
-        {{-- SERTIFIKASI & KOMPETENSI PERSONEL --}}
+        
         <div class="card radius-12 border-0 shadow-sm mb-24 overflow-hidden">
             <div class="card-header bg-transparent border-bottom py-16 px-20 d-flex justify-content-between align-items-center">
                 <div>
@@ -197,7 +197,7 @@
             </div>
         </div>
 
-        {{-- RIWAYAT TUGAS & PENUGASAN --}}
+        
         <div class="card radius-12 border-0 shadow-sm overflow-hidden">
             <div class="card-header bg-transparent border-bottom py-16 px-20 d-flex justify-content-between align-items-center">
                 <div>

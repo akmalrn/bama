@@ -26,9 +26,9 @@
     </div>
 </div>
 
-{{-- 4 TOP EXECUTIVE KPI CARDS --}}
+
 <div class="row g-3 mb-24">
-    {{-- Card 1: Total Karyawan --}}
+    
     <div class="col-xl-3 col-sm-6">
         <div class="card radius-12 border-0 shadow-sm h-100 overflow-hidden position-relative">
             <div class="card-body p-20 d-flex flex-column justify-content-between">
@@ -49,7 +49,7 @@
         </div>
     </div>
 
-    {{-- Card 2: Crew Lapangan On-Site --}}
+    
     <div class="col-xl-3 col-sm-6">
         <div class="card radius-12 border-0 shadow-sm h-100 overflow-hidden position-relative">
             <div class="card-body p-20 d-flex flex-column justify-content-between">
@@ -70,7 +70,7 @@
         </div>
     </div>
 
-    {{-- Card 3: Sertifikasi K3 & Kompetensi --}}
+    
     <div class="col-xl-3 col-sm-6">
         <div class="card radius-12 border-0 shadow-sm h-100 overflow-hidden position-relative">
             <div class="card-body p-20 d-flex flex-column justify-content-between">
@@ -95,7 +95,7 @@
         </div>
     </div>
 
-    {{-- Card 4: Task Completion Rate --}}
+    
     <div class="col-xl-3 col-sm-6">
         <div class="card radius-12 border-0 shadow-sm h-100 overflow-hidden position-relative">
             <div class="card-body p-20 d-flex flex-column justify-content-between">
@@ -120,7 +120,7 @@
 </div>
 
 <div class="row g-3 mb-24">
-    {{-- KIRI: DISTRIBUSI KARYAWAN PER DEPARTEMEN & PROYEK MOBILISASI --}}
+    
     <div class="col-lg-7">
         <div class="card radius-12 border-0 shadow-sm mb-24">
             <div class="card-header bg-transparent border-bottom py-16 px-20 d-flex justify-content-between align-items-center">
@@ -162,7 +162,7 @@
             </div>
         </div>
 
-        {{-- PROYEK DENGAN KRU LAPANGAN AKTIF --}}
+        
         <div class="card radius-12 border-0 shadow-sm">
             <div class="card-header bg-transparent border-bottom py-16 px-20 d-flex justify-content-between align-items-center">
                 <div>
@@ -218,9 +218,9 @@
         </div>
     </div>
 
-    {{-- KANAN: RADAR SERTIFIKASI MASA BERLAKU & TUGAS TERBARU --}}
+    
     <div class="col-lg-5">
-        {{-- RADAR SERTIFIKASI & KOMPETENSI (CRITICAL ALERT) --}}
+        
         <div class="card radius-12 border-0 shadow-sm mb-24">
             <div class="card-header bg-transparent border-bottom py-16 px-20 d-flex justify-content-between align-items-center">
                 <div class="d-flex align-items-center gap-2">
@@ -262,7 +262,7 @@
             </div>
         </div>
 
-        {{-- RECENT TASKS MONITORING --}}
+        
         <div class="card radius-12 border-0 shadow-sm">
             <div class="card-header bg-transparent border-bottom py-16 px-20 d-flex justify-content-between align-items-center">
                 <div>

@@ -30,7 +30,7 @@
     </div>
 </div>
 
-{{-- FILTER PERIODE ANALISIS --}}
+
 <div class="card radius-12 border-0 shadow-sm mb-24">
     <div class="card-body p-16">
         <form method="GET" action="{{ route('dashboard-admin.pmo.cost.index') }}" class="d-flex flex-wrap align-items-end justify-content-between gap-3">
@@ -57,7 +57,7 @@
     </div>
 </div>
 
-{{-- NAVIGATION TABS (Wowdash Native Bordered Tab) --}}
+
 <div class="card radius-12 border-0 shadow-sm mb-24 overflow-hidden">
     <div class="card-body p-0 px-20">
         <ul class="nav bordered-tab border-bottom-0 d-flex flex-wrap nav-pills mb-0" id="costTabs" role="tablist">
@@ -85,9 +85,9 @@
 </div>
 
 @if ($activeTab === 'management')
-    {{-- 6 KPI CARDS COST PERFORMANCE --}}
+    
     <div class="row g-3 mb-24">
-        {{-- Card 1: Approved Budget --}}
+        
         <div class="col-xxl-2 col-xl-4 col-md-4 col-sm-6">
             <div class="card radius-12 border-0 shadow-sm h-100 p-16 transition-all">
                 <div class="d-flex align-items-center justify-content-between mb-8">
@@ -108,7 +108,7 @@
             </div>
         </div>
 
-        {{-- Card 2: Actual Cost --}}
+        
         <div class="col-xxl-2 col-xl-4 col-md-4 col-sm-6">
             <div class="card radius-12 border-0 shadow-sm h-100 p-16 transition-all">
                 <div class="d-flex align-items-center justify-content-between mb-8">
@@ -129,7 +129,7 @@
             </div>
         </div>
 
-        {{-- Card 3: Committed Cost --}}
+        
         <div class="col-xxl-2 col-xl-4 col-md-4 col-sm-6">
             <div class="card radius-12 border-0 shadow-sm h-100 p-16 transition-all">
                 <div class="d-flex align-items-center justify-content-between mb-8">
@@ -150,7 +150,7 @@
             </div>
         </div>
 
-        {{-- Card 4: Total Forecast --}}
+        
         <div class="col-xxl-2 col-xl-4 col-md-4 col-sm-6">
             <div class="card radius-12 border-0 shadow-sm h-100 p-16 transition-all">
                 <div class="d-flex align-items-center justify-content-between mb-8">
@@ -171,7 +171,7 @@
             </div>
         </div>
 
-        {{-- Card 5: Cost Variance --}}
+        
         <div class="col-xxl-2 col-xl-4 col-md-4 col-sm-6">
             <div class="card radius-12 border-0 shadow-sm h-100 p-16 transition-all">
                 <div class="d-flex align-items-center justify-content-between mb-8">
@@ -194,7 +194,7 @@
             </div>
         </div>
 
-        {{-- Card 6: Portfolio CPI --}}
+        
         <div class="col-xxl-2 col-xl-4 col-md-4 col-sm-6">
             <div class="card radius-12 border-0 shadow-sm h-100 p-16 transition-all">
                 <div class="d-flex align-items-center justify-content-between mb-8">
@@ -218,7 +218,7 @@
         </div>
     </div>
 
-    {{-- INVOICE & CASH COLLECTION ROW --}}
+    
     <div class="row g-3 mb-24">
         <div class="col-lg-12">
             <div class="card radius-12 border-0 shadow-sm p-20">
@@ -284,7 +284,7 @@
                     </div>
                 </div>
 
-                {{-- PROGRESS BAR WITH LABELS --}}
+                
                 <div class="bg-neutral-50 p-12 radius-8 border border-neutral-200">
                     <div class="d-flex justify-content-between align-items-center text-xs mb-6">
                         <span class="fw-semibold text-secondary-light">Collection Progress</span>
@@ -303,7 +303,7 @@
         </div>
     </div>
 
-    {{-- 10 COST CATEGORIES PERFORMANCE TABLE (Wowdash Bordered Table) --}}
+    
     <div class="card radius-12 border-0 shadow-sm mb-24 overflow-hidden">
         <div class="card-header bg-transparent py-16 px-24 border-bottom d-flex justify-content-between align-items-center">
             <div>
@@ -353,7 +353,7 @@
         </div>
     </div>
 @elseif ($activeTab === 'projects')
-    {{-- TABLE BIAYA PER PROJECT (Wowdash Bordered Table) --}}
+    
     <div class="card radius-12 border-0 shadow-sm mb-24 overflow-hidden">
         <div class="card-header bg-transparent py-16 px-24 border-bottom d-flex flex-wrap justify-content-between align-items-center gap-2">
             <div>
@@ -438,7 +438,7 @@
         </div>
     </div>
 @else
-    {{-- TAB 3: TRANSACTION REGISTER / LEDGER (Wowdash Bordered Table) --}}
+    
     <div class="card radius-12 border-0 shadow-sm mb-24 overflow-hidden">
         <div class="card-header bg-transparent py-16 px-24 border-bottom d-flex flex-wrap justify-content-between align-items-center gap-2">
             <div>
@@ -527,7 +527,7 @@
     </div>
 @endif
 
-{{-- MODAL TAMBAH TRANSAKSI BIAYA BARU --}}
+
 <div class="modal fade" id="newCostTransactionModal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg">
         <div class="modal-content radius-16 border-0 shadow">

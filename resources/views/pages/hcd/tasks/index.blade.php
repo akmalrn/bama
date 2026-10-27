@@ -38,7 +38,7 @@
     </div>
 @endif
 
-{{-- 4 METRIC STATUS CARDS --}}
+
 <div class="row g-3 mb-24">
     <div class="col-xl-3 col-sm-6">
         <div class="card radius-12 border-0 shadow-sm h-100 overflow-hidden position-relative">
@@ -118,11 +118,11 @@
     </div>
 </div>
 
-{{-- STATUS TABS & FILTER BAR --}}
+
 <div class="card radius-12 border-0 shadow-sm mb-24 overflow-hidden">
     <div class="card-body p-16">
         <div class="d-flex flex-wrap justify-content-between align-items-center gap-3">
-            {{-- Tabs --}}
+            
             <ul class="nav nav-pills gap-2">
                 <li class="nav-item">
                     <a class="nav-link py-8 px-16 text-xs radius-8 {{ $statusFilter === 'all' ? 'active' : '' }}" href="{{ route('dashboard-admin.hcd.tasks.index', ['status' => 'all', 'priority' => $priorityFilter, 'project_id' => $projectFilter, 'search' => $search]) }}">
@@ -151,7 +151,7 @@
                 </li>
             </ul>
 
-            {{-- Filter Form --}}
+            
             <form method="GET" action="{{ route('dashboard-admin.hcd.tasks.index') }}" class="d-flex flex-wrap align-items-center gap-2">
                 <input type="hidden" name="status" value="{{ $statusFilter }}">
                 <select name="priority" class="form-select form-select-sm radius-8" onchange="this.form.submit()" style="min-width: 130px;">
@@ -187,7 +187,7 @@
     </div>
 </div>
 
-{{-- TASKS REGISTER TABLE --}}
+
 <div class="card radius-12 border-0 shadow-sm mb-24 overflow-hidden">
     <div class="card-body p-0">
         <div class="table-responsive">
@@ -298,7 +298,7 @@
     </div>
 </div>
 
-{{-- MODAL TAMBAH TUGAS BARU --}}
+
 <div class="modal fade" id="newTaskModal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered">
         <div class="modal-content radius-12 border-0 shadow">
@@ -377,7 +377,7 @@
     </div>
 </div>
 
-{{-- MODAL UBAH STATUS TUGAS --}}
+
 <div class="modal fade" id="statusModal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-sm">
         <div class="modal-content radius-12 border-0 shadow">

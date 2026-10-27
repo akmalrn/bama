@@ -23,7 +23,7 @@
                 'hsse.dashboard.view', 'procurement.dashboard.view', 'asset.dashboard.view'])
             @endcanany
 
-            {{-- 1. DEPARTEMEN SALES (CRM) --}}
+            
             @canany(['sales.dashboard.view', 'sales.opportunity.view_all', 'sales.opportunity.view_own',
                 'sales.customer.view', 'sales.proposal.view', 'sales.activity.view'])
                 @php
@@ -114,7 +114,7 @@
                 </li>
             @endcanany
 
-            {{-- 2. DEPARTEMEN PMO (PROJECT MANAGEMENT) --}}
+            
             @canany(['pmo.dashboard.view', 'pmo.project.view_all', 'pmo.project.view_own', 'pmo.milestone.manage',
                 'pmo.wbs.manage', 'pmo.team.assign'])
                 @php
@@ -181,7 +181,7 @@
                 </li>
             @endcanany
 
-            {{-- 3. DEPARTEMEN FINANCE & TAX --}}
+            
             @canany(['finance.dashboard.view', 'finance.budget_rab.view', 'finance.invoice.view',
                 'finance.vendor_bill.view', 'finance.tax.view'])
                 @php
@@ -232,7 +232,7 @@
                 </li>
             @endcanany
 
-            {{-- 4. DEPARTEMEN HCD (HUMAN CAPITAL) --}}
+            
             @canany(['hcd.dashboard.view', 'hcd.employee.view', 'hcd.task.view', 'hcd.certification.manage', 'hcd.professional.view'])
                 @php
                     $isHcdActive = request()->routeIs('dashboard-admin.hcd.*');
@@ -287,7 +287,7 @@
                 </li>
             @endcanany
 
-            {{-- 5. DEPARTEMEN HSSE --}}
+            
             @canany(['hsse.dashboard.view', 'hsse.permit.view', 'hsse.inspection.manage', 'hsse.incident.report'])
                 @php
                     $isHsseActive = request()->routeIs('dashboard-admin.hsse.*');
@@ -334,7 +334,7 @@
                 </li>
             @endcanany
 
-            {{-- 6. DEPARTEMEN PROCUREMENT & LOGISTICS --}}
+            
             @canany(['procurement.dashboard.view', 'procurement.vendor.manage', 'procurement.pr.create',
                 'procurement.po.view', 'procurement.logistic.track'])
                 <li class="dropdown">

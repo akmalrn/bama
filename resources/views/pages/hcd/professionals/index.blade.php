@@ -48,7 +48,7 @@
     </div>
 @endif
 
-{{-- 4 KPI METRIC CARDS --}}
+
 <div class="row g-3 mb-24">
     <div class="col-xl-3 col-sm-6">
         <div class="card radius-12 border-0 shadow-sm h-100 overflow-hidden position-relative">
@@ -128,7 +128,7 @@
     </div>
 </div>
 
-{{-- FILTER BAR --}}
+
 <div class="card radius-12 border-0 shadow-sm mb-24">
     <div class="card-body p-16">
         <form method="GET" action="{{ route('dashboard-admin.hcd.professionals.index') }}" class="row g-2 align-items-center">
@@ -167,7 +167,7 @@
     </div>
 </div>
 
-{{-- PROFESSIONALS DIRECTORY CARDS / TABLE --}}
+
 <div class="card radius-12 border-0 shadow-sm mb-24 overflow-hidden">
     <div class="card-body p-0">
         <div class="table-responsive">
@@ -273,7 +273,7 @@
     </div>
 </div>
 
-{{-- MODAL TAMBAH TENAGA AHLI --}}
+
 <div class="modal fade" id="newProfessionalModal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered">
         <div class="modal-content radius-12 border-0 shadow">
@@ -348,7 +348,7 @@
     </div>
 </div>
 
-{{-- MODAL EDIT TENAGA AHLI --}}
+
 <div class="modal fade" id="editProfessionalModal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered">
         <div class="modal-content radius-12 border-0 shadow">

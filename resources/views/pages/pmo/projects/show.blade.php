@@ -62,7 +62,7 @@
     </div>
 @endif
 
-{{-- SECTION 1: 6 FINANCIAL & PERFORMANCE KPIS --}}
+
 <div class="row g-3 mb-24">
     <div class="col-lg-2 col-md-4 col-sm-6">
         <div class="card radius-12 border-0 shadow-sm h-100 p-12">
@@ -110,9 +110,9 @@
     </div>
 </div>
 
-{{-- SECTION 2: EVM DETAIL & PROJECT CONTROLS (2 Columns) --}}
+
 <div class="row g-3 mb-24">
-    {{-- EVM Earned Value Analysis --}}
+    
     <div class="col-lg-8">
         <div class="card radius-12 border-0 shadow-sm h-100">
             <div class="card-header bg-transparent border-bottom p-16 d-flex justify-content-between align-items-center">
@@ -188,7 +188,7 @@
                     </div>
                 </div>
 
-                {{-- Comparative Tracks --}}
+                
                 <div class="d-flex flex-column gap-2 border-top pt-12">
                     <div class="d-flex align-items-center gap-2 text-xs">
                         <span class="fw-bold text-secondary-light" style="width: 25px;">PV</span>
@@ -216,7 +216,7 @@
         </div>
     </div>
 
-    {{-- Project Controls & Health --}}
+    
     <div class="col-lg-4">
         <div class="card radius-12 border-0 shadow-sm h-100">
             <div class="card-header bg-transparent border-bottom p-16 d-flex justify-content-between align-items-center">
@@ -287,7 +287,7 @@
     </div>
 </div>
 
-{{-- SECTION 3: MILESTONE & WBS TRACKER --}}
+
 <div class="card radius-12 border-0 shadow-sm mb-24">
     <div class="card-header bg-transparent border-bottom p-16 d-flex justify-content-between align-items-center flex-wrap gap-2">
         <div>
@@ -365,7 +365,7 @@
     </div>
 </div>
 
-{{-- SECTION 4: ASSIGNED PERSONNEL & EVALUATIONS --}}
+
 <div class="card radius-12 border-0 shadow-sm mb-24">
     <div class="card-header bg-transparent border-bottom p-16 d-flex justify-content-between align-items-center flex-wrap gap-2">
         <div>
@@ -438,7 +438,7 @@
     </div>
 </div>
 
-{{-- SECTION 5: RELATED DOCUMENTS --}}
+
 <div class="card radius-12 border-0 shadow-sm mb-24">
     <div class="card-header bg-transparent border-bottom p-16 d-flex justify-content-between align-items-center flex-wrap gap-2">
         <div>
@@ -497,7 +497,7 @@
     </div>
 </div>
 
-{{-- MODAL TAMBAH MILESTONE (id="btnSubmit") --}}
+
 <div class="modal fade" id="addMilestoneModal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content radius-16 border-0 shadow">
@@ -547,7 +547,7 @@
                 </div>
                 <div class="modal-footer border-top p-16">
                     <button type="button" class="btn btn-outline-secondary btn-sm radius-8" data-bs-dismiss="modal">Batal</button>
-                    {{-- User rule: id="btnSubmit" for create button --}}
+                    
                     <button type="submit" id="btnSubmit" class="btn btn-primary btn-sm radius-8 px-16 fw-semibold">
                         Simpan Milestone
                     </button>
@@ -557,7 +557,7 @@
     </div>
 </div>
 
-{{-- MODAL TUGASKAN PERSONEL (id="btnSubmit") --}}
+
 <div class="modal fade" id="assignMemberModal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content radius-16 border-0 shadow">
@@ -607,7 +607,7 @@
                 </div>
                 <div class="modal-footer border-top p-16">
                     <button type="button" class="btn btn-outline-secondary btn-sm radius-8" data-bs-dismiss="modal">Batal</button>
-                    {{-- User rule: id="btnSubmit" for create button --}}
+                    
                     <button type="submit" id="btnSubmit" class="btn btn-primary btn-sm radius-8 px-16 fw-semibold">
                         Tugaskan Personel
                     </button>
@@ -617,7 +617,7 @@
     </div>
 </div>
 
-{{-- MODAL UPLOAD DOKUMEN (id="btnSubmit") --}}
+
 <div class="modal fade" id="uploadDocModal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content radius-16 border-0 shadow">
@@ -656,7 +656,7 @@
                 </div>
                 <div class="modal-footer border-top p-16">
                     <button type="button" class="btn btn-outline-secondary btn-sm radius-8" data-bs-dismiss="modal">Batal</button>
-                    {{-- User rule: id="btnSubmit" for create button --}}
+                    
                     <button type="submit" id="btnSubmit" class="btn btn-primary btn-sm radius-8 px-16 fw-semibold">
                         Unggah Dokumen
                     </button>
@@ -666,7 +666,7 @@
     </div>
 </div>
 
-{{-- MODAL EDIT PROJECT (id="btnUpdate") --}}
+
 <div class="modal fade" id="editProjectModal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered">
         <div class="modal-content radius-16 border-0 shadow">
@@ -763,7 +763,7 @@
                 </div>
                 <div class="modal-footer border-top p-16">
                     <button type="button" class="btn btn-outline-secondary btn-sm radius-8" data-bs-dismiss="modal">Batal</button>
-                    {{-- User rule: id="btnUpdate" for update button --}}
+                    
                     <button type="submit" id="btnUpdate" class="btn btn-primary btn-sm radius-8 px-16 fw-semibold">
                         Simpan Perubahan
                     </button>
