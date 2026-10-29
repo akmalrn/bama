@@ -30,9 +30,9 @@
     </div>
 </div>
 
-{{-- SECTION 1: 4 KPI CARDS (Single row, compact layout) --}}
+
 <div class="row g-3 mb-24">
-    {{-- Card 1: Total Portfolio --}}
+    
     <div class="col-lg-3 col-sm-6">
         <div class="card radius-12 border-0 shadow-sm h-100 overflow-hidden position-relative crm-kpi-card crm-kpi-primary">
             <div class="card-body p-16">
@@ -54,7 +54,7 @@
         </div>
     </div>
 
-    {{-- Card 2: Ongoing Projects --}}
+    
     <div class="col-lg-3 col-sm-6">
         <div class="card radius-12 border-0 shadow-sm h-100 overflow-hidden position-relative crm-kpi-card crm-kpi-warning">
             <div class="card-body p-16">
@@ -77,7 +77,7 @@
         </div>
     </div>
 
-    {{-- Card 3: Completed Projects --}}
+    
     <div class="col-lg-3 col-sm-6">
         <div class="card radius-12 border-0 shadow-sm h-100 overflow-hidden position-relative crm-kpi-card crm-kpi-success">
             <div class="card-body p-16">
@@ -100,7 +100,7 @@
         </div>
     </div>
 
-    {{-- Card 4: Total Budget & Actual Cost --}}
+    
     <div class="col-lg-3 col-sm-6">
         <div class="card radius-12 border-0 shadow-sm h-100 overflow-hidden position-relative crm-kpi-card crm-kpi-info">
             <div class="card-body p-16">
@@ -123,9 +123,9 @@
     </div>
 </div>
 
-{{-- SECTION 2: S-CURVE TREND & EVM METRICS BUCKETS --}}
+
 <div class="row g-3 mb-24">
-    {{-- S-Curve Monthly Trend --}}
+    
     <div class="col-lg-8">
         <div class="card radius-12 border-0 shadow-sm h-100">
             <div class="card-header bg-transparent border-bottom p-16 d-flex align-items-center justify-content-between flex-wrap gap-2">
@@ -148,14 +148,14 @@
                                 <stop offset="100%" stop-color="#487fff" stop-opacity="0.0"/>
                             </linearGradient>
                         </defs>
-                        {{-- Grid lines --}}
+                        
                         @for ($i = 0; $i <= 4; $i++)
                             @php $y = 180 - ($i * 40); @endphp
                             <line x1="40" y1="{{ $y }}" x2="720" y2="{{ $y }}" stroke="#f1f3f5" stroke-width="1" />
                             <text x="30" y="{{ $y + 4 }}" fill="#8c97a4" font-size="9" text-anchor="end">{{ $i * 2 }}</text>
                         @endfor
 
-                        {{-- Month Bars & Trend Line --}}
+                        
                         @php
                             $step = (720 - 60) / max(1, count($trendMonths) - 1);
                             $polylinePoints = [];
@@ -170,20 +170,20 @@
                                 $polylinePoints[] = "{$x},{$yTotal}";
                             @endphp
 
-                            {{-- Ongoing bar --}}
+                            
                             <rect x="{{ $x - 12 }}" y="{{ 180 - $ongoingH }}" width="11" height="{{ $ongoingH }}" rx="3" fill="#ff9f43" opacity="0.85">
                                 <title>{{ $m['name'] }}: {{ $m['ongoing'] }} Ongoing</title>
                             </rect>
-                            {{-- Completed bar --}}
+                            
                             <rect x="{{ $x + 1 }}" y="{{ 180 - $completedH }}" width="11" height="{{ $completedH }}" rx="3" fill="#28c76f" opacity="0.85">
                                 <title>{{ $m['name'] }}: {{ $m['completed'] }} Completed</title>
                             </rect>
 
-                            {{-- Month label --}}
+                            
                             <text x="{{ $x }}" y="198" fill="#6c757d" font-size="9" text-anchor="middle" font-weight="600">{{ $m['name'] }}</text>
                         @endforeach
 
-                        {{-- Cumulative Line --}}
+                        
                         <polyline fill="none" stroke="#487fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" points="{{ implode(' ', $polylinePoints) }}" />
                         @foreach ($polylinePoints as $pt)
                             @php [$px, $py] = explode(',', $pt); @endphp
@@ -199,7 +199,7 @@
         </div>
     </div>
 
-    {{-- EVM Performance Buckets (CPI & SPI) --}}
+    
     <div class="col-lg-4">
         <div class="card radius-12 border-0 shadow-sm h-100">
             <div class="card-header bg-transparent border-bottom p-16">
@@ -207,7 +207,7 @@
                 <p class="text-secondary-light text-xs mb-0">Efisiensi biaya (CPI) & deviasi jadwal (SPI) portfolio.</p>
             </div>
             <div class="card-body p-16 d-flex flex-column gap-3">
-                {{-- CPI Block --}}
+                
                 <div class="border radius-10 p-12 bg-neutral-50">
                     <div class="d-flex justify-content-between align-items-center mb-8">
                         <span class="text-xs fw-bold text-uppercase text-secondary-light">Cost Performance Index (CPI)</span>
@@ -226,7 +226,7 @@
                     </div>
                 </div>
 
-                {{-- SPI Block --}}
+                
                 <div class="border radius-10 p-12 bg-neutral-50">
                     <div class="d-flex justify-content-between align-items-center mb-8">
                         <span class="text-xs fw-bold text-uppercase text-secondary-light">Schedule Performance Index (SPI)</span>
@@ -245,7 +245,7 @@
                     </div>
                 </div>
 
-                {{-- Man-Hours Box --}}
+                
                 <div class="mt-auto p-12 radius-10 bg-primary-50 border border-primary-200 d-flex justify-content-between align-items-center">
                     <div>
                         <span class="d-block text-xs fw-semibold text-secondary-light">Total Portfolio Man-Hours</span>
@@ -260,9 +260,9 @@
     </div>
 </div>
 
-{{-- SECTION 3: PORTFOLIO BREAKDOWN CARDS (2x2 Grid) --}}
+
 <div class="row g-3 mb-24">
-    {{-- Sector Breakdown --}}
+    
     <div class="col-lg-6">
         <div class="card radius-12 border-0 shadow-sm h-100">
             <div class="card-header bg-transparent border-bottom p-16 d-flex align-items-center justify-content-between">
@@ -290,7 +290,7 @@
         </div>
     </div>
 
-    {{-- Service Line Breakdown --}}
+    
     <div class="col-lg-6">
         <div class="card radius-12 border-0 shadow-sm h-100">
             <div class="card-header bg-transparent border-bottom p-16 d-flex align-items-center justify-content-between">
@@ -318,7 +318,7 @@
         </div>
     </div>
 
-    {{-- Location Breakdown --}}
+    
     <div class="col-lg-6">
         <div class="card radius-12 border-0 shadow-sm h-100">
             <div class="card-header bg-transparent border-bottom p-16 d-flex align-items-center justify-content-between">
@@ -346,7 +346,7 @@
         </div>
     </div>
 
-    {{-- Financial Invoicing & Cash Collection --}}
+    
     <div class="col-lg-6">
         <div class="card radius-12 border-0 shadow-sm h-100">
             <div class="card-header bg-transparent border-bottom p-16 d-flex align-items-center justify-content-between">
@@ -391,7 +391,7 @@
     </div>
 </div>
 
-{{-- SECTION 4: ACTIVE PROJECTS REGISTER TABLE --}}
+
 <div class="card radius-12 border-0 shadow-sm mb-24">
     <div class="card-header bg-transparent border-bottom p-16 d-flex justify-content-between align-items-center flex-wrap gap-2">
         <div>

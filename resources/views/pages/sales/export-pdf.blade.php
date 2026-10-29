@@ -385,7 +385,7 @@
 </head>
 <body>
 
-    {{-- Toolbar for Screen View --}}
+    
     <div class="action-bar no-print">
         <div style="display: flex; align-items: center; gap: 12px;">
             <a href="{{ route('dashboard-admin.sales.dashboard', ['period' => $period]) }}" class="btn btn-outline">
@@ -418,9 +418,9 @@
         </div>
     </div>
 
-    {{-- Main Printable Document --}}
+    
     <div class="report-wrapper">
-        {{-- Report Header --}}
+        
         <div class="report-header">
             <div class="company-info">
                 <h2>PT ELBEMA INTEGRA INDONESIA</h2>
@@ -441,7 +441,7 @@
             </div>
         </div>
 
-        {{-- Executive KPI Metrics --}}
+        
         <div class="kpi-grid">
             <div class="kpi-card kpi-blue">
                 <div class="kpi-label">Pipeline Aktif</div>
@@ -465,7 +465,7 @@
             </div>
         </div>
 
-        {{-- Section 1: Opportunities / Deals --}}
+        
         <div class="section-header">
             <h3>1. Daftar Opportunity &amp; Pipeline Penjualan</h3>
             <span class="section-count">Total: {{ $opportunities->count() }} Data</span>
@@ -513,7 +513,7 @@
             </table>
         </div>
 
-        {{-- Section 2: Proposals --}}
+        
         <div class="section-header">
             <h3>2. Daftar Proposal Penjualan</h3>
             <span class="section-count">Total: {{ $proposals->count() }} Data</span>
@@ -559,7 +559,7 @@
             </table>
         </div>
 
-        {{-- Signatures / Approval --}}
+        
         <div class="signatures">
             <div class="sign-box">
                 <div class="sign-role">Disiapkan Oleh:</div>
@@ -571,7 +571,7 @@
             </div>
         </div>
 
-        {{-- Footer Note --}}
+        
         <div class="footer-note">
             <span>Dokumen ini digenerate secara otomatis oleh Sistem BAMA+ ERP. Kerahasiaan data dilindungi.</span>
             <span>Halaman 1 dari 1</span>

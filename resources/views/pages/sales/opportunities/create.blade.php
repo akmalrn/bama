@@ -38,7 +38,7 @@
                     @csrf
 
                     <div class="row g-3 mb-24">
-                        {{-- Judul Opportunity --}}
+                        
                         <div class="col-12">
                             <label class="form-label text-sm fw-semibold text-primary-light">
                                 Judul Proyek / Paket Pekerjaan <span class="text-danger">*</span>
@@ -51,7 +51,7 @@
                             @enderror
                         </div>
 
-                        {{-- Customer --}}
+                        
                         <div class="col-md-6">
                             <label class="form-label text-sm fw-semibold text-primary-light">
                                 Perusahaan Klien (Customer) <span class="text-danger">*</span>
@@ -69,7 +69,7 @@
                             @enderror
                         </div>
 
-                        {{-- Sales PIC / Owner --}}
+                        
                         <div class="col-md-6">
                             <label class="form-label text-sm fw-semibold text-primary-light">
                                 PIC Sales Representative (Owner) <span class="text-danger">*</span>
@@ -86,7 +86,7 @@
                             @enderror
                         </div>
 
-                        {{-- Estimasi Nilai Deal --}}
+                        
                         <div class="col-md-6">
                             <label class="form-label text-sm fw-semibold text-primary-light">
                                 Estimasi Nilai Kontrak (Rp) <span class="text-danger">*</span>
@@ -101,7 +101,7 @@
                             @enderror
                         </div>
 
-                        {{-- Initial Stage --}}
+                        
                         <div class="col-md-6">
                             <label class="form-label text-sm fw-semibold text-primary-light">
                                 Tahap Pipeline Awal <span class="text-danger">*</span>
@@ -120,7 +120,7 @@
                             @enderror
                         </div>
 
-                        {{-- Target Close Date --}}
+                        
                         <div class="col-md-6">
                             <label class="form-label text-sm fw-semibold text-primary-light">
                                 Target Tanggal Closing
@@ -132,7 +132,7 @@
                             @enderror
                         </div>
 
-                        {{-- Next Action Plan --}}
+                        
                         <div class="col-md-6">
                             <label class="form-label text-sm fw-semibold text-primary-light">
                                 Langkah Tindak Lanjut Selanjutnya (Next Action)
@@ -146,7 +146,7 @@
                         </div>
                     </div>
 
-                    {{-- Action Buttons --}}
+                    
                     <div class="d-flex justify-content-end align-items-center gap-2 pt-16 border-top">
                         <a href="{{ route('dashboard-admin.sales.opportunities.index') }}" class="btn btn-outline-secondary radius-8 px-20 py-10">
                             Batal

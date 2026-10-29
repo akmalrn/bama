@@ -28,23 +28,7 @@
     </div>
 </div>
 
-@if (session('success'))
-    <div class="alert alert-success alert-dismissible fade show text-sm radius-8 mb-20 d-flex align-items-center gap-2" role="alert">
-        <iconify-icon icon="solar:check-circle-bold-duotone" class="text-xl"></iconify-icon>
-        <div>{{ session('success') }}</div>
-        <button type="button" class="btn-close ms-auto" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>
-@endif
 
-@if (session('error'))
-    <div class="alert alert-danger alert-dismissible fade show text-sm radius-8 mb-20 d-flex align-items-center gap-2" role="alert">
-        <iconify-icon icon="solar:danger-triangle-bold-duotone" class="text-xl"></iconify-icon>
-        <div>{{ session('error') }}</div>
-        <button type="button" class="btn-close ms-auto" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>
-@endif
-
-{{-- 4 KPI CARDS (Compact) --}}
 <div class="row g-3 mb-24">
     <div class="col-lg-3 col-sm-6">
         <div class="card radius-12 border-0 shadow-sm h-100 overflow-hidden position-relative crm-kpi-card crm-kpi-primary">
@@ -93,7 +77,7 @@
     </div>
 </div>
 
-{{-- FILTERS CARD --}}
+
 <div class="card radius-12 border-0 shadow-sm mb-20">
     <div class="card-body p-16">
         <form method="GET" action="{{ route('dashboard-admin.pmo.teams.index') }}" class="row g-2 align-items-center">
@@ -135,7 +119,7 @@
     </div>
 </div>
 
-{{-- TEAM ASSIGNMENT TABLE CARD --}}
+
 <div class="card radius-12 border-0 shadow-sm mb-24">
     <div class="card-body p-0">
         <div class="table-responsive">
@@ -207,7 +191,7 @@
                             </td>
                             <td class="text-center pe-16">
                                 <div class="d-inline-flex align-items-center gap-1">
-                                    {{-- Edit Button (Green) --}}
+                                    
                                     <button type="button"
                                             class="w-32-px h-32-px bg-success-focus text-success-main rounded-circle d-inline-flex align-items-center justify-content-center border-0 text-sm shadow-xs btn-edit-team"
                                             data-bs-toggle="modal"
@@ -223,7 +207,7 @@
                                         <iconify-icon icon="solar:pen-bold-duotone"></iconify-icon>
                                     </button>
 
-                                    {{-- Delete Button (Red) --}}
+                                    
                                     <form action="{{ route('dashboard-admin.pmo.teams.destroy', $mem->id) }}" method="POST" class="d-inline" onsubmit="return confirm('Hapus penugasan personel ini?')">
                                         @csrf
                                         @method('DELETE')
@@ -251,7 +235,7 @@
     </div>
 </div>
 
-{{-- MODAL TUGASKAN PERSONEL (id="btnSubmit") --}}
+
 <div class="modal fade" id="createTeamModal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content radius-16 border-0 shadow">
@@ -313,7 +297,7 @@
                 </div>
                 <div class="modal-footer border-top p-16">
                     <button type="button" class="btn btn-outline-secondary btn-sm radius-8" data-bs-dismiss="modal">Batal</button>
-                    {{-- User rule: id="btnSubmit" for create button --}}
+                    
                     <button type="submit" id="btnSubmit" class="btn btn-primary btn-sm radius-8 px-16 fw-semibold">
                         Tugaskan Personel
                     </button>
@@ -323,7 +307,7 @@
     </div>
 </div>
 
-{{-- MODAL EDIT EVALUASI PENUGASAN (id="btnUpdate") --}}
+
 <div class="modal fade" id="editTeamModal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content radius-16 border-0 shadow">
@@ -368,7 +352,7 @@
                 </div>
                 <div class="modal-footer border-top p-16">
                     <button type="button" class="btn btn-outline-secondary btn-sm radius-8" data-bs-dismiss="modal">Batal</button>
-                    {{-- User rule: id="btnUpdate" for update button --}}
+                    
                     <button type="submit" id="btnUpdate" class="btn btn-primary btn-sm radius-8 px-16 fw-semibold">
                         Simpan Evaluasi
                     </button>

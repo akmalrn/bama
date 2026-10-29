@@ -1,4 +1,3 @@
-{{-- Product fields intentionally mirror the Services form. --}}
 @php
     $galleryImages = old('old_images', data_get($data ?? null, 'images', []));
     $galleryImages = is_array($galleryImages) ? $galleryImages : [];
@@ -52,55 +51,57 @@
                         </div>
                     </div>
                 </div>
-                {{-- <div class="col-12">
-                <div class="d-flex flex-wrap align-items-center justify-content-between gap-2 mb-3">
-                    <div>
-                        <label class="form-label fw-semibold mb-1">Galeri Gambar</label>
-                        <div class="service-form-help">
-                            Gambar lama tetap disimpan selama tidak dihapus dari daftar. Jika ingin mengganti gambar,
-                            hapus terlebih dahulu gambar lama, kemudian tambahkan gambar baru.
-                        </div>
-                    </div>
-                    <button type="button" class="btn btn-outline-primary btn-sm" id="add-gallery">
-                        + Tambah Gambar
-                    </button>
-                </div>
-
-                <input type="hidden" name="gallery_state_submitted" value="1">
-
-                <div id="gallery-wrapper">
-                    @foreach ($galleryImages as $image)
-                        <div class="service-repeater-row gallery-item">
-                            <div class="row g-3 align-items-center">
-                                <div class="col-12 col-md-3">
-                                    <div class="service-gallery-preview">
-                                        <img src="{{ asset($image) }}" class="image-preview" alt="Gambar galeri lama">
-                                    </div>
-                                </div>
-                                <div class="col-12 col-md-7">
-                                    <input type="hidden" name="old_images[]" value="{{ $image }}"
-                                        class="old-image-input">
-                                    <input type="file" name="images[]" accept=".jpg,.jpeg,.png,.webp"
-                                        class="form-control gallery-input">
-                                    <div class="service-form-help mt-2">Kosongkan untuk mempertahankan gambar lama.
-                                    </div>
-                                </div>
-                                <div class="col-12 col-md-2">
-                                    <button type="button" class="btn btn-outline-danger remove-gallery w-100">
-                                        Hapus
-                                    </button>
-                                </div>
+                <div class="col-12">
+                    <div class="d-flex flex-wrap align-items-center justify-content-between gap-2 mb-3">
+                        <div>
+                            <label class="form-label fw-semibold mb-1">Galeri Gambar</label>
+                            <div class="service-form-help">
+                                Gambar lama tetap disimpan selama tidak dihapus dari daftar. Jika ingin mengganti
+                                gambar,
+                                hapus terlebih dahulu gambar lama, kemudian tambahkan gambar baru.
                             </div>
                         </div>
-                    @endforeach
-                </div>
-
-                @if ($errors->has('images') || $errors->has('images.*'))
-                    <div class="text-danger small mt-2">
-                        {{ $errors->first('images') ?: $errors->first('images.*') }}
+                        <button type="button" class="btn btn-outline-primary btn-sm" id="add-gallery">
+                            + Tambah Gambar
+                        </button>
                     </div>
-                @endif
-            </div> --}}
+
+                    <input type="hidden" name="gallery_state_submitted" value="1">
+
+                    <div id="gallery-wrapper">
+                        @foreach ($galleryImages as $image)
+                            <div class="service-repeater-row gallery-item">
+                                <div class="row g-3 align-items-center">
+                                    <div class="col-12 col-md-3">
+                                        <div class="service-gallery-preview">
+                                            <img src="{{ asset($image) }}" class="image-preview"
+                                                alt="Gambar galeri lama">
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-7">
+                                        <input type="hidden" name="old_images[]" value="{{ $image }}"
+                                            class="old-image-input">
+                                        <input type="file" name="images[]" accept=".jpg,.jpeg,.png,.webp"
+                                            class="form-control gallery-input">
+                                        <div class="service-form-help mt-2">Kosongkan untuk mempertahankan gambar lama.
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-2">
+                                        <button type="button" class="btn btn-outline-danger remove-gallery w-100">
+                                            Hapus
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+
+                    @if ($errors->has('images') || $errors->has('images.*'))
+                        <div class="text-danger small mt-2">
+                            {{ $errors->first('images') ?: $errors->first('images.*') }}
+                        </div>
+                    @endif
+                </div> --}}
             </div>
         </div>
     </div>

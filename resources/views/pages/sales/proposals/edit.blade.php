@@ -39,7 +39,7 @@
                     @method('PUT')
 
                     <div class="row g-3 mb-24">
-                        {{-- Opportunity Parent --}}
+                        
                         <div class="col-md-6">
                             <label class="form-label text-sm fw-semibold text-primary-light">
                                 Opportunity / Proyek <span class="text-danger">*</span>
@@ -56,7 +56,7 @@
                             @enderror
                         </div>
 
-                        {{-- Nomor Proposal --}}
+                        
                         <div class="col-md-6">
                             <label class="form-label text-sm fw-semibold text-primary-light">
                                 Nomor Proposal / Quotation <span class="text-danger">*</span>
@@ -68,7 +68,7 @@
                             @enderror
                         </div>
 
-                        {{-- Nilai Penawaran (Amount) --}}
+                        
                         <div class="col-md-6">
                             <label class="form-label text-sm fw-semibold text-primary-light">
                                 Nilai Penawaran (Selling Price) <span class="text-danger">*</span>
@@ -83,7 +83,7 @@
                             @enderror
                         </div>
 
-                        {{-- Direct Cost (RAB) --}}
+                        
                         <div class="col-md-6">
                             <label class="form-label text-sm fw-semibold text-primary-light">
                                 Estimasi Direct Cost (RAB) <span class="text-danger">*</span>
@@ -98,7 +98,7 @@
                             @enderror
                         </div>
 
-                        {{-- Live Margin Calculator Display --}}
+                        
                         <div class="col-12">
                             <div class="p-16 radius-8 bg-neutral-50-light border d-flex justify-content-between align-items-center flex-wrap gap-2">
                                 <div>
@@ -113,7 +113,7 @@
                             </div>
                         </div>
 
-                        {{-- Status Proposal --}}
+                        
                         <div class="col-md-6">
                             <label class="form-label text-sm fw-semibold text-primary-light">
                                 Status Proposal <span class="text-danger">*</span>
@@ -130,7 +130,7 @@
                             @enderror
                         </div>
 
-                        {{-- Tanggal Submit --}}
+                        
                         <div class="col-md-6">
                             <label class="form-label text-sm fw-semibold text-primary-light">
                                 Tanggal Pengajuan ke Klien
@@ -142,7 +142,7 @@
                             @enderror
                         </div>
 
-                        {{-- Upload Dokumen --}}
+                        
                         <div class="col-12">
                             <label class="form-label text-sm fw-semibold text-primary-light">
                                 Ganti Berkas Dokumen (Kosongkan jika tidak ingin mengubah)
@@ -158,7 +158,7 @@
                             @enderror
                         </div>
 
-                        {{-- Catatan / Scope --}}
+                        
                         <div class="col-12">
                             <label class="form-label text-sm fw-semibold text-primary-light">
                                 Catatan Komersial / Syarat Pembayaran (Payment Terms)
@@ -170,7 +170,7 @@
                         </div>
                     </div>
 
-                    {{-- Action Buttons --}}
+                    
                     <div class="d-flex justify-content-end align-items-center gap-2 pt-16 border-top">
                         <a href="{{ route('dashboard-admin.sales.proposals.index') }}" class="btn btn-outline-secondary radius-8 px-20 py-10">
                             Batal

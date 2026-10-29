@@ -7,7 +7,7 @@
 
 @section('content')
 <div class="ho-dashboard-wrapper">
-    {{-- Header Banner & Corporate Status (Proposional Sesuai Template) --}}
+    
     <div class="card radius-8 border shadow-none p-16 mb-20 bg-base">
         <div class="d-flex flex-wrap justify-content-between align-items-center gap-2">
             <div>
@@ -39,9 +39,9 @@
         </div>
     </div>
 
-    {{-- SECTION 1: 4 METRIC CARDS — TINGGI SERAGAM & ICON JELAS --}}
+    
     <div class="row g-3 mb-24 align-items-stretch">
-        {{-- Card 1: Sales Pipeline --}}
+        
         <div class="col-xl-3 col-sm-6 d-flex">
             <a href="{{ route('dashboard-admin.sales.opportunities.index') }}" class="text-decoration-none w-100 d-flex">
                 <div class="card radius-8 border shadow-none bg-base w-100 h-100 d-flex flex-column justify-content-between hover-shadow-sm transition-2">
@@ -72,7 +72,7 @@
             </a>
         </div>
 
-        {{-- Card 2: Nilai Portfolio Proyek --}}
+        
         <div class="col-xl-3 col-sm-6 d-flex">
             <a href="{{ route('dashboard-admin.pmo.projects.index') }}" class="text-decoration-none w-100 d-flex">
                 <div class="card radius-8 border shadow-none bg-base w-100 h-100 d-flex flex-column justify-content-between hover-shadow-sm transition-2">
@@ -103,7 +103,7 @@
             </a>
         </div>
 
-        {{-- Card 3: Invoice Outstanding --}}
+        
         <div class="col-xl-3 col-sm-6 d-flex">
             <a href="{{ route('dashboard-admin.finance.invoices.index') }}" class="text-decoration-none w-100 d-flex">
                 <div class="card radius-8 border shadow-none bg-base w-100 h-100 d-flex flex-column justify-content-between hover-shadow-sm transition-2">
@@ -131,7 +131,7 @@
             </a>
         </div>
 
-        {{-- Card 4: Komitmen Procurement --}}
+        
         <div class="col-xl-3 col-sm-6 d-flex">
             <a href="{{ route('dashboard-admin.procurement.purchase-orders.index') }}" class="text-decoration-none w-100 d-flex">
                 <div class="card radius-8 border shadow-none bg-base w-100 h-100 d-flex flex-column justify-content-between hover-shadow-sm transition-2">
@@ -160,7 +160,7 @@
         </div>
     </div>
 
-    {{-- SECTION 2: DEPARTMENT OVERVIEW — TINGGI SERAGAM & ICON REMIX/SOLAR JELAS --}}
+    
     <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-14">
         <div>
             <h6 class="mb-1 fw-bold text-primary-light text-md">Department Overview</h6>
@@ -173,7 +173,7 @@
     </div>
 
     <div class="row g-3 mb-24 align-items-stretch">
-        {{-- 1. DEPARTEMEN SALES --}}
+        
         <div class="col-xl-4 col-md-6 d-flex">
             <div class="card radius-8 border shadow-none bg-base w-100 h-100 d-flex flex-column justify-content-between">
                 <div class="card-body p-20 d-flex flex-column justify-content-between h-100">
@@ -222,7 +222,7 @@
             </div>
         </div>
 
-        {{-- 2. DEPARTEMEN FINANCE & TAX --}}
+        
         <div class="col-xl-4 col-md-6 d-flex">
             <div class="card radius-8 border shadow-none bg-base w-100 h-100 d-flex flex-column justify-content-between">
                 <div class="card-body p-20 d-flex flex-column justify-content-between h-100">
@@ -271,7 +271,7 @@
             </div>
         </div>
 
-        {{-- 3. DEPARTEMEN HCD --}}
+        
         <div class="col-xl-4 col-md-6 d-flex">
             <div class="card radius-8 border shadow-none bg-base w-100 h-100 d-flex flex-column justify-content-between">
                 <div class="card-body p-20 d-flex flex-column justify-content-between h-100">
@@ -320,7 +320,7 @@
             </div>
         </div>
 
-        {{-- 4. DEPARTEMEN PMO (PROJECT CONTROL) --}}
+        
         <div class="col-xl-4 col-md-6 d-flex">
             <div class="card radius-8 border shadow-none bg-base w-100 h-100 d-flex flex-column justify-content-between">
                 <div class="card-body p-20 d-flex flex-column justify-content-between h-100">
@@ -369,7 +369,7 @@
             </div>
         </div>
 
-        {{-- 5. DEPARTEMEN HSSE --}}
+        
         <div class="col-xl-4 col-md-6 d-flex">
             <div class="card radius-8 border shadow-none bg-base w-100 h-100 d-flex flex-column justify-content-between">
                 <div class="card-body p-20 d-flex flex-column justify-content-between h-100">
@@ -418,7 +418,7 @@
             </div>
         </div>
 
-        {{-- 6. DEPARTEMEN PROCUREMENT & LOGISTICS --}}
+        
         <div class="col-xl-4 col-md-6 d-flex">
             <div class="card radius-8 border shadow-none bg-base w-100 h-100 d-flex flex-column justify-content-between">
                 <div class="card-body p-20 d-flex flex-column justify-content-between h-100">
@@ -467,7 +467,7 @@
             </div>
         </div>
 
-        {{-- 7. DEPARTEMEN ASSET MANAGEMENT --}}
+        
         <div class="col-xl-4 col-md-6 d-flex">
             <div class="card radius-8 border shadow-none bg-base w-100 h-100 d-flex flex-column justify-content-between">
                 <div class="card-body p-20 d-flex flex-column justify-content-between h-100">
@@ -516,7 +516,7 @@
             </div>
         </div>
 
-        {{-- 8. STATISTIK PORTAL COMPANY PROFILE & VISITOR --}}
+        
         <div class="col-xl-4 col-md-6 d-flex">
             <div class="card radius-8 border shadow-none bg-base w-100 h-100 d-flex flex-column justify-content-between">
                 <div class="card-body p-20 d-flex flex-column justify-content-between h-100">

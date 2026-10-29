@@ -6,7 +6,7 @@
 @endphp
 
 @section('content')
-{{-- Compact custom tweaks --}}
+
 <style>
     .sales-kpi-card {
         transition: transform 0.15s ease, box-shadow 0.15s ease;
@@ -53,7 +53,7 @@
     }
 </style>
 
-{{-- HEADER SECTION (COMPACT WOWDASH STYLE) --}}
+
 <div class="d-flex flex-wrap justify-content-between align-items-center gap-3 mb-20">
     <div>
         <div class="d-flex align-items-center gap-2 mb-4">
@@ -67,7 +67,7 @@
     </div>
 
     <div class="d-flex align-items-center gap-2 flex-wrap">
-        {{-- Periode Filter --}}
+        
         <div class="btn-group p-1 radius-8 border bg-neutral-50" role="group">
             <a href="{{ route('dashboard-admin.sales.dashboard', ['period' => 'bulan_ini']) }}"
                class="btn btn-sm {{ $period === 'bulan_ini' ? 'btn-primary text-white fw-semibold' : 'btn-ghost text-secondary-light' }} radius-6 px-12 py-4 text-xs">
@@ -83,7 +83,7 @@
             </a>
         </div>
 
-        {{-- Export Dropdown --}}
+        
         <div class="dropdown">
             <button class="btn btn-outline-secondary btn-sm radius-8 px-12 py-6 text-xs d-flex align-items-center gap-1 dropdown-toggle"
                     type="button"
@@ -121,7 +121,7 @@
             </ul>
         </div>
 
-        {{-- New Opportunity Button --}}
+        
         <a href="{{ route('dashboard-admin.sales.opportunities.index', ['open_create' => 1]) }}"
            class="btn btn-primary btn-sm radius-8 px-14 py-6 text-xs fw-semibold d-flex align-items-center gap-1 shadow-sm">
             <iconify-icon icon="solar:add-circle-bold-duotone" class="text-sm"></iconify-icon>
@@ -130,7 +130,7 @@
     </div>
 </div>
 
-{{-- SECTION 1: 4 KPI SUMMARY CARDS (DYNAMIC FROM DATABASE) --}}
+
 @php
     $dispActiveVal = (float) $activePipelineValue;
     $dispActiveCount = (int) $activePipelineCount;
@@ -145,7 +145,7 @@
 @endphp
 
 <div class="row g-3 mb-20">
-    {{-- KPI 1: Pipeline Aktif --}}
+    
     <div class="col-xl-3 col-sm-6">
         <div class="card radius-12 border border-neutral-200 shadow-sm p-16 sales-kpi-card h-100">
             <div class="d-flex align-items-center justify-content-between mb-8">
@@ -172,7 +172,7 @@
         </div>
     </div>
 
-    {{-- KPI 2: Proposal Terkirim --}}
+    
     <div class="col-xl-3 col-sm-6">
         <div class="card radius-12 border border-neutral-200 shadow-sm p-16 sales-kpi-card h-100">
             <div class="d-flex align-items-center justify-content-between mb-8">
@@ -199,7 +199,7 @@
         </div>
     </div>
 
-    {{-- KPI 3: Closed Won --}}
+    
     <div class="col-xl-3 col-sm-6">
         <div class="card radius-12 border border-neutral-200 shadow-sm p-16 sales-kpi-card h-100">
             <div class="d-flex align-items-center justify-content-between mb-8">
@@ -226,7 +226,7 @@
         </div>
     </div>
 
-    {{-- KPI 4: Win Rate --}}
+    
     <div class="col-xl-3 col-sm-6">
         <div class="card radius-12 border border-neutral-200 shadow-sm p-16 sales-kpi-card h-100">
             <div class="d-flex align-items-center justify-content-between mb-8">
@@ -250,9 +250,9 @@
     </div>
 </div>
 
-{{-- SECTION 2: CHARTS & FUNNEL ROW --}}
+
 <div class="row g-3 mb-20">
-    {{-- Left: Performa Penjualan Area Chart --}}
+    
     <div class="col-lg-8">
         <div class="card radius-12 border border-neutral-200 shadow-sm h-100">
             <div class="card-header border-bottom py-12 px-16 d-flex justify-content-between align-items-center flex-wrap gap-2">
@@ -270,7 +270,7 @@
             </div>
 
             <div class="card-body p-16">
-                {{-- Compact Legend --}}
+                
                 <div class="d-flex align-items-center gap-3 mb-12">
                     <span class="d-inline-flex align-items-center gap-1 text-2xs text-secondary-light fw-medium">
                         <span class="w-8-px h-8-px radius-circle d-inline-block bg-primary-600"></span>
@@ -282,13 +282,13 @@
                     </span>
                 </div>
 
-                {{-- Chart Container --}}
+                
                 <div id="salesPerformanceChart" style="min-height: 240px;"></div>
             </div>
         </div>
     </div>
 
-    {{-- Right: Sales Funnel Horizontal Bars --}}
+    
     @php
         $funnelStages = [
             ['name' => '1. Qualification', 'color' => '#64748b', 'count' => ($salesFunnel['qualification']['count'] ?? 0) ?: 24, 'pct' => 100],
@@ -334,7 +334,7 @@
     </div>
 </div>
 
-{{-- SECTION 3: OPPORTUNITY PRIORITAS (DYNAMIC FROM DATABASE) --}}
+
 <div class="card radius-12 border border-neutral-200 shadow-sm mb-20 overflow-hidden">
     <div class="card-header border-bottom py-12 px-16 d-flex justify-content-between align-items-center flex-wrap gap-2">
         <div>
@@ -417,8 +417,8 @@
     </div>
 </div>
 
-{{-- SECTION 4: RECENT ACTIVITIES & UPCOMING FOLLOW-UPS --}}
-{{-- SECTION 4: RECENT ACTIVITIES & UPCOMING FOLLOW-UPS (DYNAMIC FROM DATABASE) --}}
+
+
 @php
     $actTypeMeta = [
         'outside_meeting' => [
@@ -449,7 +449,7 @@
 @endphp
 
 <div class="row g-3 mb-24">
-    {{-- Aktivitas Sales Terbaru --}}
+    
     <div class="col-lg-6">
         <div class="card radius-12 border border-neutral-200 shadow-sm h-100">
             <div class="card-header border-bottom py-12 px-16 d-flex justify-content-between align-items-center">
@@ -501,7 +501,7 @@
         </div>
     </div>
 
-    {{-- Follow-up Mendatang --}}
+    
     <div class="col-lg-6">
         <div class="card radius-12 border border-neutral-200 shadow-sm h-100">
             <div class="card-header border-bottom py-12 px-16 d-flex justify-content-between align-items-center">
@@ -561,7 +561,7 @@
     </div>
 </div>
 
-{{-- APEXCHARTS SCRIPT --}}
+
 <script>
     document.addEventListener('DOMContentLoaded', function () {
         const chartElement = document.querySelector("#salesPerformanceChart");

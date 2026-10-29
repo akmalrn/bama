@@ -6,7 +6,7 @@
 @endphp
 
 @section('content')
-{{-- Header Card Customer Profil --}}
+
 <div class="row gy-4 mb-24">
     <div class="col-12">
         <div class="card border-0 shadow-sm radius-12 overflow-hidden">
@@ -58,7 +58,7 @@
 
                 <hr class="my-20">
 
-                {{-- Quick Metrics & PIC Card --}}
+                
                 <div class="row g-3">
                     <div class="col-md-4">
                         <div class="p-16 radius-8 bg-neutral-50-light border">
@@ -100,7 +100,7 @@
     </div>
 </div>
 
-{{-- Opportunity / Project Tabs --}}
+
 <div class="card border-0 shadow-sm radius-12 overflow-hidden mb-24">
     <div class="card-header border-bottom py-16 px-24">
         <ul class="nav nav-tabs card-header-tabs" id="customerTab" role="tablist">
@@ -120,7 +120,7 @@
     </div>
 
     <div class="card-body p-0 tab-content" id="customerTabContent">
-        {{-- TAB 1: OPPORTUNITIES --}}
+        
         <div class="tab-pane fade show active" id="opportunities" role="tabpanel">
             <div class="table-responsive">
                 <table class="table bordered-table mb-0 align-middle">
@@ -198,7 +198,7 @@
             </div>
         </div>
 
-        {{-- TAB 2: PROJECTS --}}
+        
         <div class="tab-pane fade" id="projects" role="tabpanel">
             <div class="table-responsive">
                 <table class="table bordered-table mb-0 align-middle">

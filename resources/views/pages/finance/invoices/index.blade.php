@@ -20,30 +20,6 @@
     </div>
 </div>
 
-@if(session('success'))
-    <div class="alert alert-success alert-dismissible fade show d-flex align-items-center gap-2 radius-8 mb-24" role="alert">
-        <iconify-icon icon="solar:check-circle-bold" class="text-xl flex-shrink-0"></iconify-icon>
-        <div class="text-sm fw-medium">{{ session('success') }}</div>
-        <button type="button" class="btn-close ms-auto" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>
-@endif
-
-@if($errors->any())
-    <div class="alert alert-danger alert-dismissible fade show radius-8 mb-24" role="alert">
-        <div class="d-flex align-items-center gap-2 mb-1">
-            <iconify-icon icon="solar:danger-triangle-bold" class="text-xl flex-shrink-0"></iconify-icon>
-            <span class="text-sm fw-bold">Gagal menyimpan data invoice:</span>
-        </div>
-        <ul class="mb-0 text-xs ps-24">
-            @foreach($errors->all() as $err)
-                <li>{{ $err }}</li>
-            @endforeach
-        </ul>
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>
-@endif
-
-{{-- 4 KPI Summary Cards --}}
 <div class="row g-3 mb-24">
     <div class="col-xl-3 col-sm-6">
         <div class="card radius-12 border-0 shadow-sm h-100 overflow-hidden position-relative">
@@ -128,10 +104,10 @@
     </div>
 </div>
 
-{{-- Filter Tabs & Search Bar --}}
+
 <div class="card border-0 shadow-sm radius-12 mb-24">
     <div class="card-body p-20">
-        {{-- Status Filter Tabs --}}
+        
         <div class="d-flex flex-wrap align-items-center justify-content-between gap-3 border-bottom pb-16 mb-16">
             <ul class="nav nav-pills gap-2">
                 <li class="nav-item">
@@ -173,7 +149,7 @@
             </ul>
         </div>
 
-        {{-- Filter Form --}}
+        
         <form method="GET" action="{{ route('dashboard-admin.finance.invoices.index') }}" class="row g-2 align-items-center">
             @if($status)
                 <input type="hidden" name="status" value="{{ $status }}">
@@ -212,7 +188,7 @@
     </div>
 </div>
 
-{{-- Invoice Table --}}
+
 <div class="card border-0 shadow-sm radius-12 overflow-hidden mb-24">
     <div class="card-header border-bottom py-14 px-20 d-flex justify-content-between align-items-center flex-wrap gap-2">
         <h6 class="text-sm fw-semibold mb-0 text-primary-light">Daftar Faktur Penagihan & Monitoring Piutang</h6>
@@ -307,13 +283,13 @@
                             </td>
                             <td class="px-16 py-12 text-center">
                                 <div class="d-flex align-items-center justify-content-center gap-2">
-                                    {{-- Tombol Detail / 360 --}}
+                                    
                                     <button type="button" class="w-32-px h-32-px rounded-circle bg-info-focus text-info-main d-inline-flex justify-content-center align-items-center border-0 btn-view-invoice" 
                                             data-id="{{ $inv->id }}" title="Lihat Detail & Riwayat Pembayaran">
                                         <iconify-icon icon="solar:eye-bold-duotone"></iconify-icon>
                                     </button>
 
-                                    {{-- Tombol Catat Pembayaran --}}
+                                    
                                     @if($inv->status !== 'paid' && $inv->status !== 'cancelled')
                                         <button type="button" class="w-32-px h-32-px rounded-circle bg-success-focus text-success-main d-inline-flex justify-content-center align-items-center border-0 btn-pay-invoice" 
                                                 data-id="{{ $inv->id }}"
@@ -325,7 +301,7 @@
                                         </button>
                                     @endif
 
-                                    {{-- Tombol Edit --}}
+                                    
                                     <button type="button" class="w-32-px h-32-px rounded-circle bg-warning-focus text-warning-main d-inline-flex justify-content-center align-items-center border-0 btn-edit-invoice"
                                             data-id="{{ $inv->id }}"
                                             data-number="{{ $inv->invoice_number }}"
@@ -345,7 +321,7 @@
                                         <iconify-icon icon="lucide:edit"></iconify-icon>
                                     </button>
 
-                                    {{-- Tombol Hapus --}}
+                                    
                                     <form action="{{ route('dashboard-admin.finance.invoices.destroy', $inv->id) }}" method="POST" class="d-inline" onsubmit="return confirm('Apakah Anda yakin ingin menghapus invoice {{ $inv->invoice_number }}?');">
                                         @csrf
                                         @method('DELETE')
@@ -375,7 +351,7 @@
     </div>
 </div>
 
-{{-- Modal 1: Buat Invoice Baru --}}
+
 <div class="modal fade" id="createInvoiceModal" tabindex="-1" aria-labelledby="createInvoiceModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered">
         <div class="modal-content border-0 radius-16 shadow-lg">
@@ -436,7 +412,7 @@
                             <input type="text" name="payment_terms" class="form-control text-sm" value="Net 30 Days" placeholder="Net 30 Days, COD, dll">
                         </div>
 
-                        {{-- Kalkulator Pajak & Nominal --}}
+                        
                         <div class="col-12">
                             <div class="p-16 radius-12 bg-neutral-50 border border-neutral-200">
                                 <h6 class="text-xs fw-bold text-uppercase tracking-wider text-secondary-light mb-12">Perhitungan Nilai & Perpajakan</h6>
@@ -496,7 +472,7 @@
     </div>
 </div>
 
-{{-- Modal 2: Catat Pembayaran (Kas Masuk) --}}
+
 <div class="modal fade" id="addPaymentModal" tabindex="-1" aria-labelledby="addPaymentModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content border-0 radius-16 shadow-lg">
@@ -565,7 +541,7 @@
     </div>
 </div>
 
-{{-- Modal 3: Detail Invoice 360 & Riwayat Pembayaran --}}
+
 <div class="modal fade" id="invoiceDetailModal" tabindex="-1" aria-labelledby="invoiceDetailModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered">
         <div class="modal-content border-0 radius-16 shadow-lg">
@@ -588,7 +564,7 @@
     </div>
 </div>
 
-{{-- Modal 4: Edit Invoice --}}
+
 <div class="modal fade" id="editInvoiceModal" tabindex="-1" aria-labelledby="editInvoiceModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered">
         <div class="modal-content border-0 radius-16 shadow-lg">
@@ -694,7 +670,7 @@
     </div>
 </div>
 
-{{-- Interactive Scripts --}}
+
 <script>
 document.addEventListener('DOMContentLoaded', function () {
     // 1. Live Calculator for Create Invoice Modal

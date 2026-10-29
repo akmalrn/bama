@@ -10,7 +10,7 @@
     <div class="col-12">
         <div class="card border-0 shadow-sm radius-12 overflow-hidden">
             <div class="card-body p-24">
-                {{-- Header Opportunity & Status --}}
+                
                 <div class="d-flex justify-content-between align-items-start flex-wrap gap-3">
                     <div class="d-flex align-items-center gap-3">
                         <div class="w-64-px h-64-px radius-12 d-flex justify-content-center align-items-center bg-primary-100 text-primary-600 text-3xl flex-shrink-0">
@@ -54,7 +54,7 @@
 
                 <hr class="my-20">
 
-                {{-- Stage Progression Banner --}}
+                
                 @php
                     $stagesList = [
                         'qualification' => '1. Qualification',
@@ -86,7 +86,7 @@
                     </div>
                 </div>
 
-                {{-- Cards Detail --}}
+                
                 <div class="row g-3">
                     <div class="col-md-4">
                         <div class="p-16 radius-8 bg-primary-50 border border-primary-200">
@@ -111,7 +111,7 @@
     </div>
 </div>
 
-{{-- Proposal & Activity Tabs --}}
+
 <div class="card border-0 shadow-sm radius-12 overflow-hidden mb-24">
     <div class="card-header border-bottom py-16 px-24">
         <ul class="nav nav-tabs card-header-tabs" role="tablist">
@@ -137,7 +137,7 @@
     </div>
 
     <div class="card-body p-0 tab-content">
-        {{-- TAB 1: PROPOSALS --}}
+        
         <div class="tab-pane fade show active" id="tab-proposals" role="tabpanel">
             <div class="table-responsive">
                 <table class="table bordered-table mb-0 align-middle">
@@ -177,7 +177,7 @@
             </div>
         </div>
 
-        {{-- TAB 2: ACTIVITIES --}}
+        
         <div class="tab-pane fade" id="tab-activities" role="tabpanel">
             <div class="p-20">
                 @forelse ($opportunity->salesActivities as $act)
@@ -206,7 +206,7 @@
             </div>
         </div>
 
-        {{-- TAB 3: FOLLOW-UPS --}}
+        
         <div class="tab-pane fade" id="tab-followups" role="tabpanel">
             <div class="p-20">
                 @forelse ($opportunity->followUps as $fu)

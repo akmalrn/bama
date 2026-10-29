@@ -62,9 +62,9 @@
     </div>
 </div>
 
-{{-- 4 EXECUTIVE KPI CARDS --}}
+
 <div class="row g-3 mb-24">
-    {{-- Card 1: Total PO Value --}}
+    
     <div class="col-xl-3 col-sm-6">
         <div class="card radius-12 border-0 shadow-sm h-100 overflow-hidden position-relative">
             <div class="card-body p-20 d-flex flex-column justify-content-between">
@@ -85,7 +85,7 @@
         </div>
     </div>
 
-    {{-- Card 2: Purchase Requests --}}
+    
     <div class="col-xl-3 col-sm-6">
         <div class="card radius-12 border-0 shadow-sm h-100 overflow-hidden position-relative">
             <div class="card-body p-20 d-flex flex-column justify-content-between">
@@ -106,7 +106,7 @@
         </div>
     </div>
 
-    {{-- Card 3: Rekanan Vendor Terverifikasi --}}
+    
     <div class="col-xl-3 col-sm-6">
         <div class="card radius-12 border-0 shadow-sm h-100 overflow-hidden position-relative">
             <div class="card-body p-20 d-flex flex-column justify-content-between">
@@ -127,7 +127,7 @@
         </div>
     </div>
 
-    {{-- Card 4: Ekspedisi & Logistik Lapangan --}}
+    
     <div class="col-xl-3 col-sm-6">
         <div class="card radius-12 border-0 shadow-sm h-100 overflow-hidden position-relative">
             <div class="card-body p-20 d-flex flex-column justify-content-between">
@@ -150,7 +150,7 @@
 </div>
 
 <div class="row g-3 mb-24">
-    {{-- Procurement Pipeline & Status Monitor --}}
+    
     <div class="col-xxl-8 col-lg-7">
         <div class="card radius-12 border-0 shadow-sm h-100">
             <div class="card-header bg-transparent py-16 px-20 border-bottom d-flex align-items-center justify-content-between">
@@ -163,7 +163,7 @@
                 </div>
             </div>
             <div class="card-body p-20">
-                {{-- 5 Steps Visual Flow --}}
+                
                 <div class="row g-2 text-center mb-24">
                     <div class="col">
                         <div class="p-12 radius-8 bg-neutral-50 border border-neutral-200">
@@ -197,7 +197,7 @@
                     </div>
                 </div>
 
-                {{-- Table Urgent PR & Recent POs --}}
+                
                 <div class="d-flex align-items-center justify-content-between mb-12">
                     <h6 class="fs-6 fw-semibold text-primary-light mb-0">Permintaan Pengadaan (PR) Prioritas</h6>
                     <a href="{{ route('dashboard-admin.procurement.purchase-requests.index') }}" class="text-xs text-primary-600 fw-semibold text-decoration-none">Lihat Semua PR &rarr;</a>
@@ -255,7 +255,7 @@
         </div>
     </div>
 
-    {{-- Spending Breakdown by Category & Top Vendors --}}
+    
     <div class="col-xxl-4 col-lg-5">
         <div class="card radius-12 border-0 shadow-sm h-100">
             <div class="card-header bg-transparent py-16 px-20 border-bottom d-flex align-items-center justify-content-between">
@@ -300,7 +300,7 @@
     </div>
 </div>
 
-{{-- Ekspedisi & Logistik Aktif Row --}}
+
 <div class="card radius-12 border-0 shadow-sm mb-24 overflow-hidden">
     <div class="card-header bg-transparent py-16 px-24 border-bottom d-flex justify-content-between align-items-center">
         <div>

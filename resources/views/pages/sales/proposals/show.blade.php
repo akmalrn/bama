@@ -10,7 +10,7 @@
     <div class="col-xl-9 col-lg-10">
         <div class="card border-0 shadow-sm radius-12 overflow-hidden mb-24">
             <div class="card-body p-24">
-                {{-- Header Proposal --}}
+                
                 <div class="d-flex justify-content-between align-items-start flex-wrap gap-3">
                     <div class="d-flex align-items-center gap-3">
                         <div class="w-64-px h-64-px radius-12 d-flex justify-content-center align-items-center bg-warning-50 text-warning-main text-3xl flex-shrink-0">
@@ -63,7 +63,7 @@
 
                 <hr class="my-20">
 
-                {{-- Financial & Margin Breakdown --}}
+                
                 <div class="row g-3 mb-24">
                     <div class="col-md-4">
                         <div class="p-16 radius-8 bg-primary-50 border border-primary-200">
@@ -99,7 +99,7 @@
                     </div>
                 </div>
 
-                {{-- File and Notes --}}
+                
                 <div class="row g-3">
                     <div class="col-md-6">
                         <div class="p-16 radius-8 bg-neutral-50-light border h-100">

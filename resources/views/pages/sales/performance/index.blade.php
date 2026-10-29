@@ -14,7 +14,7 @@
     </div>
 </div>
 
-{{-- Filter Periode & Sales Person --}}
+
 <div class="card border-0 shadow-sm radius-12 mb-24">
     <div class="card-body p-20">
         <form method="GET" action="{{ route('dashboard-admin.sales.performance.index') }}" class="row g-3">
@@ -47,7 +47,7 @@
     </div>
 </div>
 
-{{-- KPI Summary Cards --}}
+
 <div class="row g-3 mb-20">
     <div class="col-lg-3 col-sm-6">
         <div class="card radius-12 border-0 shadow-sm h-100 overflow-hidden position-relative crm-kpi-card crm-kpi-success">
@@ -127,7 +127,7 @@
     </div>
 </div>
 
-{{-- Top Rankings Leaderboard Row --}}
+
 <div class="row g-3 mb-24">
     <div class="col-lg-4 col-md-6">
         <div class="card border-0 shadow-sm radius-12 overflow-hidden h-100">
@@ -232,7 +232,7 @@
     </div>
 </div>
 
-{{-- Performance Comparison Table --}}
+
 <div class="card border-0 shadow-sm radius-12 overflow-hidden mb-24">
     <div class="card-header border-bottom py-16 px-24 d-flex justify-content-between align-items-center flex-wrap gap-2">
         <div>

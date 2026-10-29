@@ -28,30 +28,7 @@
     </div>
 </div>
 
-@if(session('success'))
-    <div class="alert alert-success alert-dismissible fade show d-flex align-items-center gap-2 radius-8 mb-24" role="alert">
-        <iconify-icon icon="solar:check-circle-bold" class="text-xl flex-shrink-0"></iconify-icon>
-        <div class="text-sm fw-medium">{{ session('success') }}</div>
-        <button type="button" class="btn-close ms-auto" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>
-@endif
 
-@if($errors->any())
-    <div class="alert alert-danger alert-dismissible fade show radius-8 mb-24" role="alert">
-        <div class="d-flex align-items-center gap-2 mb-1">
-            <iconify-icon icon="solar:danger-triangle-bold" class="text-xl flex-shrink-0"></iconify-icon>
-            <span class="text-sm fw-bold">Gagal menyimpan data pajak:</span>
-        </div>
-        <ul class="mb-0 text-xs ps-24">
-            @foreach($errors->all() as $err)
-                <li>{{ $err }}</li>
-            @endforeach
-        </ul>
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>
-@endif
-
-{{-- 4 KPI Summary Cards --}}
 <div class="row g-3 mb-24">
     <div class="col-xl-3 col-sm-6">
         <div class="card radius-12 border-0 shadow-sm h-100 overflow-hidden position-relative">
@@ -140,7 +117,7 @@
     </div>
 </div>
 
-{{-- Navigation Tabs --}}
+
 <div class="card border-0 shadow-sm radius-12 mb-24">
     <div class="card-body p-16">
         <ul class="nav nav-pills gap-2">
@@ -170,7 +147,7 @@
 </div>
 
 @if($activeTab === 'ppn')
-    {{-- TAB 1: Rekonsiliasi SPT Masa PPN (Bulanan) --}}
+    
     <div class="card border-0 shadow-sm radius-12 overflow-hidden mb-24">
         <div class="card-header border-bottom py-14 px-20 d-flex justify-content-between align-items-center flex-wrap gap-2">
             <div>
@@ -276,9 +253,9 @@
         </div>
     </div>
 @elseif($activeTab === 'pph')
-    {{-- TAB 2: Bukti Potong PPh (Withholding Tax) --}}
+    
     <div class="row g-3 mb-24">
-        {{-- Sisi Kiri: PPh Dipotong Klien (Kredit Pajak AR) --}}
+        
         <div class="col-lg-6">
             <div class="card border-0 shadow-sm radius-12 overflow-hidden h-100">
                 <div class="card-header border-bottom py-14 px-16 bg-success-subtle">
@@ -324,7 +301,7 @@
             </div>
         </div>
 
-        {{-- Sisi Kanan: PPh Dipotong ke Vendor (Kewajiban Setor AP) --}}
+        
         <div class="col-lg-6">
             <div class="card border-0 shadow-sm radius-12 overflow-hidden h-100">
                 <div class="card-header border-bottom py-14 px-16 bg-warning-subtle">
@@ -369,7 +346,7 @@
         </div>
     </div>
 @elseif($activeTab === 'filings')
-    {{-- TAB 3: Buku Arsip NTPN & Pelaporan SPT --}}
+    
     <div class="card border-0 shadow-sm radius-12 overflow-hidden mb-24">
         <div class="card-header border-bottom py-14 px-20 d-flex justify-content-between align-items-center flex-wrap gap-2">
             <div>
@@ -451,7 +428,7 @@
     </div>
 @endif
 
-{{-- Modal: Rekam Setoran Pajak / NTPN / BPE DJP --}}
+
 <div class="modal fade" id="createTaxFilingModal" tabindex="-1" aria-labelledby="createTaxFilingModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered">
         <div class="modal-content border-0 radius-16 shadow-lg">

@@ -108,9 +108,7 @@
 
 <div class="card service-form-card">
     @if ($showServiceButtonFields ?? true)
-        {{-- ========================================================
-     HERO SECTION LAYANAN (GAYA TENTANG KAMI / KONTAK)
-     ======================================================== --}}
+    
         <div class="card service-form-card">
             <div class="card-header bg-light d-flex align-items-center justify-content-between">
                 <h6 class="card-title mb-0 d-flex align-items-center gap-2">
@@ -215,7 +213,6 @@
     <div class="card-body">
         <div class="row gy-3">
             @if ($showServiceButtonFields ?? true)
-                {{-- Kategori layanan di-hide sementara sesuai arahan --}}
                 <div class="col-12 col-md-6 d-none">
                     <label for="service-category" class="form-label">
                         Kategori
@@ -459,9 +456,7 @@ is-invalid
 </div>
 
 @if ($showServiceButtonFields ?? true)
-    {{-- ========================================================
-     BAGIAN 1: REPEATER JENIS PROJECT / SOLUSI KAMI
-     ======================================================== --}}
+
     <div class="card service-form-card">
         <div class="card-header d-flex flex-wrap justify-content-between align-items-center gap-2">
             <div>
@@ -571,7 +566,7 @@ is-invalid
                                     placeholder="Jelaskan jenis project, tujuan, dan solusinya...">{{ $p['description'] ?? '' }}</textarea>
                             </div>
 
-                            {{-- Keunggulan 1 --}}
+                            
                             <div class="col-12 col-md-6">
                                 <div class="p-3 border rounded service-feature-box dark-bg-card">
                                     <label class="form-label fw-bold text-success mb-1">
@@ -585,7 +580,7 @@ is-invalid
                                 </div>
                             </div>
 
-                            {{-- Keunggulan 2 --}}
+                            
                             <div class="col-12 col-md-6">
                                 <div class="p-3 border rounded service-feature-box dark-bg-card">
                                     <label class="form-label fw-bold text-success mb-1">
@@ -625,9 +620,7 @@ is-invalid
         </div>
     </div>
 
-    {{-- ========================================================
-     BAGIAN 2: REPEATER ALUR KERJA KAMI
-     ======================================================== --}}
+
     <div class="card service-form-card">
         <div class="card-header d-flex flex-wrap justify-content-between align-items-center gap-2">
             <div>
@@ -757,9 +750,7 @@ is-invalid
         </div>
     </div>
 
-    {{-- ========================================================
-     BAGIAN 3: REPEATER PORTOFOLIO KAMI
-     ======================================================== --}}
+
     <div class="card service-form-card">
         <div class="card-header d-flex flex-wrap justify-content-between align-items-center gap-2">
             <div>

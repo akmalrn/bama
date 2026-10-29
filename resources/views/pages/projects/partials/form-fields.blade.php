@@ -17,7 +17,6 @@
     $activeTab = request('section', 'hero');
 @endphp
 
-{{-- Section Navigation Bar --}}
 <nav class="project-form-nav" aria-label="Navigasi form perbandingan">
     @foreach ([
         'hero' => ['solar:document-text-linear', 'Hero / Informasi'],
@@ -36,9 +35,7 @@
     @endforeach
 </nav>
 
-{{-- =========================================================
-     1. TAB HERO / INFORMASI UTAMA
-========================================================= --}}
+
 <div class="project-section-panel {{ $activeTab === 'hero' ? '' : 'd-none' }}" id="section-hero">
     <div class="card">
         <div class="card-header">
@@ -188,9 +185,7 @@
     </div>
 </div>
 
-{{-- =========================================================
-     2. TAB PARTNER / KLIEN
-========================================================= --}}
+
 <div class="project-section-panel {{ $activeTab === 'partner' ? '' : 'd-none' }}" id="section-partner">
     <div class="card mb-4">
         <div class="card-header d-flex justify-content-between align-items-center">
@@ -260,9 +255,7 @@
     </div>
 </div>
 
-{{-- =========================================================
-     3. TAB SUPERIORITY (ALASAN MEMILIH)
-========================================================= --}}
+
 <div class="project-section-panel {{ $activeTab === 'superiority' ? '' : 'd-none' }}" id="section-superiority">
     <div class="card mb-4">
         <div class="card-header d-flex justify-content-between align-items-center">
@@ -337,9 +330,7 @@
     </div>
 </div>
 
-{{-- =========================================================
-     4. TAB FITUR (KOMPREHENSIF DENGAN TAB)
-========================================================= --}}
+
 <div class="project-section-panel {{ $activeTab === 'feature' ? '' : 'd-none' }}" id="section-feature">
     <div class="card mb-4">
         <div class="card-header d-flex justify-content-between align-items-center">
@@ -447,9 +438,7 @@
     </div>
 </div>
 
-{{-- =========================================================
-     5. TAB WHY US (POIN PERTIMBANGAN)
-========================================================= --}}
+
 <div class="project-section-panel {{ $activeTab === 'why_us' ? '' : 'd-none' }}" id="section-why_us">
     <div class="card mb-4">
         <div class="card-header d-flex justify-content-between align-items-center">
@@ -531,9 +520,7 @@
     </div>
 </div>
 
-{{-- =========================================================
-     6. TAB CTA (BANNER & SOLUTION)
-========================================================= --}}
+
 <div class="project-section-panel {{ $activeTab === 'cta' ? '' : 'd-none' }}" id="section-cta">
     <div class="card mb-4">
         <div class="card-header d-flex justify-content-between align-items-center">

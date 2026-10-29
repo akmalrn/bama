@@ -48,7 +48,7 @@
 </div>
 
 <div class="card radius-16 border-0 shadow-sm mb-24 p-40" id="printablePOArea" style="background: #fff; max-width: 950px; margin: 0 auto;">
-    {{-- Header Kop Surat --}}
+    
     <div class="d-flex justify-content-between align-items-start pb-24 border-bottom border-2 border-primary-600 mb-24">
         <div>
             <h4 class="fw-bold text-primary-600 mb-1 tracking-tight">PT ELBEMA INTEGRA INDONESIA</h4>
@@ -65,7 +65,7 @@
         </div>
     </div>
 
-    {{-- Info Vendor & Delivery --}}
+    
     <div class="row g-4 mb-24 text-xs">
         <div class="col-6">
             <div class="p-16 radius-8 bg-neutral-50 border border-neutral-200 h-100">
@@ -107,7 +107,7 @@
         </div>
     </div>
 
-    {{-- Items Table --}}
+    
     <div class="table-responsive mb-24">
         <table class="table bordered-table mb-0 text-xs">
             <thead class="bg-neutral-100 text-uppercase text-xxs text-secondary-light">
@@ -171,7 +171,7 @@
         </table>
     </div>
 
-    {{-- Signatures Block --}}
+    
     <div class="row text-center text-xs mt-32 pt-20">
         <div class="col-4">
             <span class="text-secondary-light d-block mb-60">Diterbitkan Oleh,</span>

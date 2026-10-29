@@ -9,7 +9,7 @@
 @section('content')
     @php($activeTab = session('activeTab', 'tab-data'))
 
-    {{-- Navigasi Tab Blog --}}
+    
     <div class="card mb-3" id="blog-tab-container-card">
         <div class="card-header">
             <ul class="nav nav-tabs card-header-tabs" role="tablist">
@@ -78,7 +78,7 @@
     </div>
 
     <div class="service-admin-page">
-        {{-- Card Data Blog --}}
+        
         <div class="card" id="module-data-card">
             <div class="card-header border-bottom bg-base py-16 px-24 d-flex align-items-center justify-content-between flex-wrap gap-3">
                 <div class="d-flex align-items-center flex-wrap gap-3">
@@ -194,7 +194,7 @@
                     </table>
                 </div>
 
-                {{-- Pagination Footer --}}
+                
                 <div class="d-flex align-items-center justify-content-between flex-wrap gap-2 mt-24">
                     <span class="text-secondary-light text-sm">
                         Showing {{ $blogs->firstItem() ?? 0 }} to {{ $blogs->lastItem() ?? 0 }} of {{ $blogs->total() }} entries
@@ -206,7 +206,7 @@
             </div>
         </div>
 
-        {{-- Card Kategori Blog (Terpisah seperti card data blog) --}}
+        
         @can('lihat kategori-blog')
             <div class="card basic-data-table {{ $activeTab === 'tab-category' ? '' : 'd-none' }}" id="module-category-card">
                 @include('pages.blogs.partials.category-tab')

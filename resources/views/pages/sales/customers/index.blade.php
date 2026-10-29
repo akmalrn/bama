@@ -8,24 +8,8 @@
 
 @section('content')
 <div class="mb-24">
-    {{-- Alerts --}}
-    @if (session('success'))
-        <div class="alert alert-success alert-dismissible fade show border-0 radius-8 mb-20 d-flex align-items-center gap-2" role="alert">
-            <iconify-icon icon="solar:check-circle-bold-duotone" class="text-xl"></iconify-icon>
-            <div>{{ session('success') }}</div>
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-    @endif
 
-    @if (session('error'))
-        <div class="alert alert-danger alert-dismissible fade show border-0 radius-8 mb-20 d-flex align-items-center gap-2" role="alert">
-            <iconify-icon icon="solar:danger-triangle-bold-duotone" class="text-xl"></iconify-icon>
-            <div>{{ session('error') }}</div>
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-    @endif
-
-    {{-- Custom Page Styles for Crisp & Balanced Typography in Light & Dark Mode --}}
+    
     <style>
         .customer-metric-card {
             transition: transform 0.15s ease, box-shadow 0.15s ease;
@@ -48,7 +32,7 @@
         }
     </style>
 
-    {{-- SECTION 1: HEADER & ACTION BUTTONS (COMPACT WOWDASH STYLE) --}}
+    
     <div class="d-flex flex-wrap justify-content-between align-items-center gap-3 mb-20">
         <div>
             <div class="d-flex align-items-center gap-2 mb-4">
@@ -80,9 +64,9 @@
         </div>
     </div>
 
-    {{-- SECTION 2: TOP METRIC CARDS (4 CARDS) --}}
+    
     <div class="row g-3 mb-24">
-        {{-- Metric 1: Total Customer --}}
+        
         <div class="col-xl-3 col-sm-6">
             <div class="card radius-12 border border-neutral-200 shadow-sm p-16 customer-metric-card h-100 d-flex flex-column justify-content-between">
                 <div class="d-flex justify-content-between align-items-start mb-12">
@@ -100,7 +84,7 @@
             </div>
         </div>
 
-        {{-- Metric 2: Sektor --}}
+        
         <div class="col-xl-3 col-sm-6">
             <div class="card radius-12 border border-neutral-200 shadow-sm p-16 customer-metric-card h-100 d-flex flex-column justify-content-between">
                 <div class="d-flex justify-content-between align-items-start mb-12">
@@ -118,7 +102,7 @@
             </div>
         </div>
 
-        {{-- Metric 3: Total Order --}}
+        
         <div class="col-xl-3 col-sm-6">
             <div class="card radius-12 border border-neutral-200 shadow-sm p-16 customer-metric-card h-100 d-flex flex-column justify-content-between">
                 <div class="d-flex justify-content-between align-items-start mb-12">
@@ -138,7 +122,7 @@
             </div>
         </div>
 
-        {{-- Metric 4: Total Opportunity --}}
+        
         <div class="col-xl-3 col-sm-6">
             <div class="card radius-12 border border-neutral-200 shadow-sm p-16 customer-metric-card h-100 d-flex flex-column justify-content-between">
                 <div class="d-flex justify-content-between align-items-start mb-12">
@@ -159,9 +143,9 @@
         </div>
     </div>
 
-    {{-- SECTION 3: SECTOR BREAKDOWN CARDS (3 CARDS) --}}
+    
     <div class="row g-3 mb-24">
-        {{-- Breakdown 1: Customer by Sector --}}
+        
         <div class="col-lg-4 col-md-12">
             <div class="card radius-12 border border-neutral-200 shadow-sm p-16 h-100">
                 <div class="d-flex justify-content-between align-items-center mb-4">
@@ -188,7 +172,7 @@
             </div>
         </div>
 
-        {{-- Breakdown 2: Orders by Sector --}}
+        
         <div class="col-lg-4 col-md-12">
             <div class="card radius-12 border border-neutral-200 shadow-sm p-16 h-100">
                 <div class="d-flex justify-content-between align-items-center mb-4">
@@ -215,7 +199,7 @@
             </div>
         </div>
 
-        {{-- Breakdown 3: Opportunities by Sector --}}
+        
         <div class="col-lg-4 col-md-12">
             <div class="card radius-12 border border-neutral-200 shadow-sm p-16 h-100">
                 <div class="d-flex justify-content-between align-items-center mb-4">
@@ -241,9 +225,9 @@
                 </div>
             </div>
         </div>
-    </div>    {{-- SECTION 4: DAFTAR CUSTOMER TABLE --}}
+    </div>    
     <div class="card border-0 shadow-sm radius-12 overflow-hidden mb-24">
-        {{-- Card Header --}}
+        
         <div class="card-header border-bottom py-16 px-24 d-flex justify-content-between align-items-center flex-wrap gap-2">
             <div>
                 <h6 class="fw-bold text-primary-light mb-0 text-sm">Daftar Customer</h6>
@@ -256,7 +240,7 @@
             </div>
         </div>
 
-        {{-- Filter & Search Bar --}}
+        
         <div class="card-body p-16 border-bottom bg-neutral-50-light">
             <form action="{{ route('dashboard-admin.sales.customers.index') }}" method="GET" class="row g-2 align-items-center">
                 <div class="col-md-7 col-sm-6">
@@ -293,7 +277,7 @@
             </form>
         </div>
 
-        {{-- Table Content --}}
+        
         <div class="card-body p-0">
             <div class="table-responsive">
                 <table class="table bordered-table customer-table mb-0 align-middle">
@@ -313,7 +297,7 @@
                     <tbody>
                         @forelse ($customers as $index => $customer)
                             <tr>
-                                {{-- Customer Name & Code --}}
+                                
                                 <td class="px-16 py-12">
                                     <a href="{{ route('dashboard-admin.sales.customers.show', $customer) }}" class="fw-bold text-primary-light hover-text-primary text-sm d-block mb-1">
                                         {{ $customer->company_name }}
@@ -323,49 +307,49 @@
                                     </span>
                                 </td>
 
-                                {{-- Sector Badge --}}
+                                
                                 <td class="px-16 py-12">
                                     <span class="badge bg-warning-50 text-warning-700 border border-warning-200 px-8 py-4 radius-6 text-2xs fw-semibold text-nowrap">
                                         {{ $customer->sector_label }}
                                     </span>
                                 </td>
 
-                                {{-- Lokasi / City --}}
+                                
                                 <td class="px-16 py-12">
                                     <span class="text-xs text-secondary-light text-nowrap">
                                         {{ $customer->city }}
                                     </span>
                                 </td>
 
-                                {{-- Total Order --}}
+                                
                                 <td class="px-16 py-12 text-center">
                                     <span class="fw-bold text-xs text-primary-light font-monospace">
                                         {{ $customer->computed_orders_count }}
                                     </span>
                                 </td>
 
-                                {{-- Nilai Total Order --}}
+                                
                                 <td class="px-16 py-12 text-end text-nowrap">
                                     <strong class="text-primary-600 text-xs font-monospace">
                                         Rp {{ number_format($customer->computed_orders_val, 0, ',', '.') }}
                                     </strong>
                                 </td>
 
-                                {{-- Opportunity Count --}}
+                                
                                 <td class="px-16 py-12 text-center">
                                     <span class="fw-bold text-xs text-primary-light font-monospace">
                                         {{ $customer->computed_opp_count }}
                                     </span>
                                 </td>
 
-                                {{-- Nilai Total Opportunity --}}
+                                
                                 <td class="px-16 py-12 text-end text-nowrap">
                                     <strong class="text-primary-600 text-xs font-monospace">
                                         Rp {{ number_format($customer->computed_opp_val, 0, ',', '.') }}
                                     </strong>
                                 </td>
 
-                                {{-- Sales Owner --}}
+                                
                                 <td class="px-16 py-12">
                                     <div class="d-flex align-items-center gap-2">
                                         <div class="w-24-px h-24-px radius-circle text-white fw-bold d-flex justify-content-center align-items-center text-2xs flex-shrink-0" style="background-color: {{ $customer->sales_owner['color'] ?? '#0284c7' }};">
@@ -377,7 +361,7 @@
                                     </div>
                                 </td>
 
-                                {{-- Direct Actions Icons --}}
+                                
                                 <td class="px-16 py-12 text-center">
                                     <div class="d-flex align-items-center justify-content-center gap-2">
                                         <a href="{{ route('dashboard-admin.sales.customers.show', $customer) }}"
@@ -431,7 +415,7 @@
             </div>
         </div>
 
-        {{-- Pagination --}}
+        
         @if ($customers->hasPages())
             <div class="p-16 border-top d-flex justify-content-between align-items-center flex-wrap gap-2">
                 <span class="text-2xs text-secondary-light">
@@ -445,7 +429,7 @@
     </div>
 </div>
 
-{{-- Datalist for Industry across modals --}}
+
 <datalist id="customerIndustryList">
     <option value="Oil & Gas">
     <option value="Petrochemical">
@@ -454,7 +438,7 @@
     <option value="Energy & Utilities">
 </datalist>
 
-{{-- Modal Create Customer --}}
+
 <div class="modal fade" id="createCustomerModal" tabindex="-1" aria-labelledby="createCustomerModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg">
         <div class="modal-content border-0 radius-12 shadow">
@@ -486,7 +470,7 @@
                         </div>
                     @endif
 
-                    {{-- Section 1: Profil Perusahaan --}}
+                    
                     <div class="border-bottom pb-12 mb-16">
                         <h6 class="fw-bold text-primary-600 mb-1 text-sm d-flex align-items-center gap-2">
                             <iconify-icon icon="solar:buildings-bold-duotone"></iconify-icon>
@@ -534,7 +518,7 @@
                         </div>
                     </div>
 
-                    {{-- Section 2: Person In Charge (PIC) --}}
+                    
                     <div class="border-bottom pb-12 mb-16">
                         <h6 class="fw-bold text-primary-600 mb-1 text-sm d-flex align-items-center gap-2">
                             <iconify-icon icon="solar:user-id-bold-duotone"></iconify-icon>
@@ -587,7 +571,7 @@
     </div>
 </div>
 
-{{-- Modal Edit Customer --}}
+
 <div class="modal fade" id="editCustomerModal" tabindex="-1" aria-labelledby="editCustomerModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg">
         <div class="modal-content border-0 radius-12 shadow">
@@ -622,7 +606,7 @@
                         </div>
                     @endif
 
-                    {{-- Section 1: Profil Perusahaan --}}
+                    
                     <div class="border-bottom pb-12 mb-16">
                         <h6 class="fw-bold text-primary-600 mb-1 text-sm d-flex align-items-center gap-2">
                             <iconify-icon icon="solar:buildings-bold-duotone"></iconify-icon>
@@ -674,7 +658,7 @@
                         </div>
                     </div>
 
-                    {{-- Section 2: Person In Charge (PIC) --}}
+                    
                     <div class="border-bottom pb-12 mb-16">
                         <h6 class="fw-bold text-primary-600 mb-1 text-sm d-flex align-items-center gap-2">
                             <iconify-icon icon="solar:user-id-bold-duotone"></iconify-icon>

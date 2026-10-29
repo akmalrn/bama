@@ -43,7 +43,7 @@
     </div>
 @endif
 
-{{-- 4 KPI Summary Cards --}}
+
 <div class="row g-3 mb-24">
     <div class="col-xl-3 col-sm-6">
         <div class="card radius-12 border-0 shadow-sm h-100 overflow-hidden position-relative">
@@ -130,7 +130,7 @@
     </div>
 </div>
 
-{{-- Navigation Tabs --}}
+
 <div class="card border-0 shadow-sm radius-12 mb-24">
     <div class="card-body p-16">
         <ul class="nav nav-pills gap-2">
@@ -160,7 +160,7 @@
 </div>
 
 @if($activeTab === 'projects')
-    {{-- TAB 1: Analisis Anggaran & Margin per Proyek --}}
+    
     <div class="card border-0 shadow-sm radius-12 overflow-hidden mb-24">
         <div class="card-header border-bottom py-14 px-20 d-flex justify-content-between align-items-center flex-wrap gap-2">
             <div>
@@ -263,7 +263,7 @@
         </div>
     </div>
 @elseif($activeTab === 'categories')
-    {{-- TAB 2: Alokasi 10 Kategori Biaya --}}
+    
     <div class="card border-0 shadow-sm radius-12 overflow-hidden mb-24">
         <div class="card-header border-bottom py-14 px-20">
             <h6 class="text-sm fw-semibold mb-0 text-primary-light">Struktur & Realisasi Anggaran Berdasarkan 10 Kategori Biaya Proyek</h6>
@@ -328,7 +328,7 @@
         </div>
     </div>
 @elseif($activeTab === 'journal')
-    {{-- TAB 3: Jurnal Beban & Tagihan Vendor AP --}}
+    
     <div class="card border-0 shadow-sm radius-12 mb-24">
         <div class="card-body p-20">
             <form method="GET" action="{{ route('dashboard-admin.finance.cost.index') }}" class="row g-2 align-items-center">
@@ -463,7 +463,7 @@
     </div>
 @endif
 
-{{-- Modal: Catat Beban Proyek Baru --}}
+
 <div class="modal fade" id="createCostModal" tabindex="-1" aria-labelledby="createCostModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered">
         <div class="modal-content border-0 radius-16 shadow-lg">

@@ -337,7 +337,7 @@
 </head>
 <body>
 
-    {{-- Top Action Bar --}}
+    
     <div class="action-bar no-print">
         <div style="display: flex; align-items: center; gap: 12px;">
             <a href="{{ route('dashboard-admin.sales.opportunities.index', ['year' => $selectedYear]) }}" class="btn btn-outline">
@@ -368,10 +368,10 @@
         </div>
     </div>
 
-    {{-- Report Content Page --}}
+    
     <div class="report-page-wrapper" id="reportContentToExport">
 
-        {{-- Header --}}
+        
         <div class="report-header">
             <div>
                 <div class="company-logo">WAN<span>Teknologi</span></div>
@@ -390,7 +390,7 @@
             </div>
         </div>
 
-        {{-- Info Strip --}}
+        
         <div class="info-strip">
             <div class="info-item">
                 <div class="label">Periode Analisis</div>
@@ -410,7 +410,7 @@
             </div>
         </div>
 
-        {{-- Metric Cards (Section 1) --}}
+        
         <div class="metric-cards-grid">
             <div class="metric-card">
                 <div class="card-label">Weighted Pipeline Value</div>
@@ -445,7 +445,7 @@
             </div>
         </div>
 
-        {{-- Detailed Opportunities Table --}}
+        
         <div class="section-title">Daftar Opportunity &amp; Pipeline Project</div>
         <table class="table-custom">
             <thead>
@@ -520,7 +520,7 @@
             </tfoot>
         </table>
 
-        {{-- Signatures --}}
+        
         <div class="signatures-row">
             <div class="sig-box">
                 <div class="sig-title">Dipersiapkan Oleh,</div>
@@ -536,7 +536,7 @@
 
     </div>
 
-    {{-- Script for HTML2PDF Download --}}
+    
     <script>
         function downloadPdfDocument() {
             const btn = document.getElementById('btnDownloadPdf');

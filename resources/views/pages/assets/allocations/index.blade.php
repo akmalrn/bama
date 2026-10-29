@@ -6,16 +6,8 @@
 @endphp
 
 @section('content')
-{{-- Alert Notification --}}
-@if (session('success'))
-    <div class="alert alert-success alert-dismissible fade show border-0 radius-8 mb-20 d-flex align-items-center gap-2" role="alert">
-        <iconify-icon icon="solar:check-circle-bold-duotone" class="text-xl"></iconify-icon>
-        <div>{{ session('success') }}</div>
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>
-@endif
 
-{{-- Header Banner & Quick Action --}}
+
 <div class="d-flex flex-wrap justify-content-between align-items-center gap-3 mb-20">
     <div>
         <div class="d-flex align-items-center gap-2 mb-4">
@@ -41,7 +33,7 @@
     </div>
 </div>
 
-{{-- SECTION 1: 3 METRIC STATUS CARDS --}}
+
 <div class="row g-3 mb-20">
     <div class="col-md-4">
         <div class="card radius-12 border border-neutral-200 shadow-sm p-16 h-100">
@@ -66,7 +58,7 @@
     </div>
 </div>
 
-{{-- SECTION 2: FILTER & DATA TABLE --}}
+
 <div class="card radius-12 border border-neutral-200 shadow-sm mb-24 overflow-hidden">
     <div class="card-header border-bottom py-14 px-20">
         <form method="GET" action="{{ route('dashboard-admin.assets.allocations.index') }}" class="row g-2 align-items-center">
@@ -173,7 +165,7 @@
                         </td>
                         <td class="px-16 py-12 text-center">
                             <div class="d-flex align-items-center justify-content-center gap-2">
-                                {{-- View Detail Button --}}
+                                
                                 <button type="button"
                                         class="w-32-px h-32-px rounded-circle bg-info-focus text-info-main d-inline-flex justify-content-center align-items-center border-0"
                                         title="Detail Alokasi"
@@ -184,7 +176,7 @@
 
                                 @can('asset.allocation.approve')
                                     @if (!$isReturned)
-                                        {{-- Return Asset Button --}}
+                                        
                                         <button type="button"
                                                 class="w-32-px h-32-px rounded-circle bg-success-focus text-success-main d-inline-flex justify-content-center align-items-center border-0"
                                                 title="Catat Pengembalian Asset"
@@ -198,7 +190,7 @@
                         </td>
                     </tr>
 
-                    {{-- MODAL DETAIL ALOKASI --}}
+                    
                     <div class="modal fade" id="detailAllocationModal{{ $alc->id }}" tabindex="-1" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered">
                             <div class="modal-content border-0 radius-16 shadow-lg overflow-hidden">
@@ -247,7 +239,7 @@
                         </div>
                     </div>
 
-                    {{-- MODAL PENGEMBALIAN ASSET --}}
+                    
                     @can('asset.allocation.approve')
                         @if (!$isReturned)
                             <div class="modal fade" id="returnAssetModal{{ $alc->id }}" tabindex="-1" aria-hidden="true">
@@ -311,7 +303,7 @@
     @endif
 </div>
 
-{{-- MODAL TAMBAH ALOKASI ASSET KE PROYEK --}}
+
 @can('asset.allocation.request')
 <div class="modal fade" id="createAllocationModal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered">

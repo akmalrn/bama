@@ -6,16 +6,8 @@
 @endphp
 
 @section('content')
-{{-- Alert Notification --}}
-@if (session('success'))
-    <div class="alert alert-success alert-dismissible fade show border-0 radius-8 mb-20 d-flex align-items-center gap-2" role="alert">
-        <iconify-icon icon="solar:check-circle-bold-duotone" class="text-xl"></iconify-icon>
-        <div>{{ session('success') }}</div>
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>
-@endif
 
-{{-- Header Banner & Quick Action --}}
+
 <div class="d-flex flex-wrap justify-content-between align-items-center gap-3 mb-20">
     <div>
         <div class="d-flex align-items-center gap-2 mb-4">
@@ -47,9 +39,9 @@
     </div>
 </div>
 
-{{-- SECTION 1: 4 EXECUTIVE METRIC CARDS --}}
+
 <div class="row g-3 mb-24">
-    {{-- Card 1: Total Valuasi Asset --}}
+    
     <div class="col-xl-3 col-sm-6">
         <div class="card radius-12 border border-neutral-200 shadow-sm p-16 h-100 d-flex flex-column justify-content-between">
             <div>
@@ -73,7 +65,7 @@
         </div>
     </div>
 
-    {{-- Card 2: Utilisasi Alat Lapangan --}}
+    
     <div class="col-xl-3 col-sm-6">
         <div class="card radius-12 border border-neutral-200 shadow-sm p-16 h-100 d-flex flex-column justify-content-between">
             <div>
@@ -97,7 +89,7 @@
         </div>
     </div>
 
-    {{-- Card 3: Perawatan & Kalibrasi --}}
+    
     <div class="col-xl-3 col-sm-6">
         <div class="card radius-12 border border-neutral-200 shadow-sm p-16 h-100 d-flex flex-column justify-content-between">
             <div>
@@ -123,7 +115,7 @@
         </div>
     </div>
 
-    {{-- Card 4: Kesiapan Operasional --}}
+    
     <div class="col-xl-3 col-sm-6">
         <div class="card radius-12 border border-neutral-200 shadow-sm p-16 h-100 d-flex flex-column justify-content-between">
             <div>
@@ -148,9 +140,9 @@
     </div>
 </div>
 
-{{-- SECTION 2: ROW CHARTS & CATEGORY DISTRIBUTION --}}
+
 <div class="row g-3 mb-24">
-    {{-- Left: Kategori Spesialisasi Alat --}}
+    
     <div class="col-lg-6">
         <div class="card radius-12 border border-neutral-200 shadow-sm h-100">
             <div class="card-header border-bottom py-12 px-16 d-flex justify-content-between align-items-center">
@@ -193,7 +185,7 @@
         </div>
     </div>
 
-    {{-- Right: Unit yang Membutuhkan Perhatian --}}
+    
     <div class="col-lg-6">
         <div class="card radius-12 border border-neutral-200 shadow-sm h-100">
             <div class="card-header border-bottom py-12 px-16 d-flex justify-content-between align-items-center">
@@ -240,7 +232,7 @@
     </div>
 </div>
 
-{{-- SECTION 3: TABEL ALOKASI PROYEK AKTIF --}}
+
 <div class="card radius-12 border border-neutral-200 shadow-sm mb-24 overflow-hidden">
     <div class="card-header border-bottom py-14 px-20 d-flex justify-content-between align-items-center flex-wrap gap-2">
         <div>

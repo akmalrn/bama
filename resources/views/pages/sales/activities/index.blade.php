@@ -69,9 +69,9 @@
     </div>
 @endif
 
-{{-- KPI Summary Cards --}}
+
 <div class="row g-3 mb-20">
-    {{-- Card 1: Total Activities --}}
+    
     <div class="col-lg-3 col-sm-6">
         <div class="card radius-12 border-0 shadow-sm h-100 overflow-hidden position-relative crm-kpi-card crm-kpi-primary">
             <div class="card-body p-16 d-flex flex-column justify-content-between">
@@ -94,7 +94,7 @@
         </div>
     </div>
 
-    {{-- Card 2: Customer Touchpoints --}}
+    
     <div class="col-lg-3 col-sm-6">
         <div class="card radius-12 border-0 shadow-sm h-100 overflow-hidden position-relative crm-kpi-card crm-kpi-success">
             <div class="card-body p-16 d-flex flex-column justify-content-between">
@@ -117,7 +117,7 @@
         </div>
     </div>
 
-    {{-- Card 3: 7 Hari Terakhir --}}
+    
     <div class="col-lg-3 col-sm-6">
         <div class="card radius-12 border-0 shadow-sm h-100 overflow-hidden position-relative crm-kpi-card crm-kpi-purple">
             <div class="card-body p-16 d-flex flex-column justify-content-between">
@@ -140,7 +140,7 @@
         </div>
     </div>
 
-    {{-- Card 4: Aktivitas Hari Ini --}}
+    
     <div class="col-lg-3 col-sm-6">
         <div class="card radius-12 border-0 shadow-sm h-100 overflow-hidden position-relative crm-kpi-card crm-kpi-warning">
             <div class="card-body p-16 d-flex flex-column justify-content-between">
@@ -164,7 +164,7 @@
     </div>
 </div>
 
-{{-- Activity Breakdown Bar Row --}}
+
 <div class="card radius-12 border-0 shadow-sm mb-20">
     <div class="card-header border-bottom py-14 px-20 d-flex justify-content-between align-items-center flex-wrap gap-2">
         <div>
@@ -231,7 +231,7 @@
     </div>
 </div>
 
-{{-- Filters & Search --}}
+
 <div class="card radius-12 border-0 shadow-sm mb-20">
     <div class="card-body p-16">
         <form method="GET" action="{{ route('dashboard-admin.sales.activities.index') }}" class="row g-3">
@@ -283,7 +283,7 @@
     </div>
 </div>
 
-{{-- Activity Table --}}
+
 <div class="card radius-12 border-0 shadow-sm overflow-hidden mb-20">
     <div class="card-header border-bottom py-12 px-20 d-flex justify-content-between align-items-center flex-wrap gap-2">
         <h6 class="card-title mb-0 fw-semibold fs-6">Daftar Log Aktivitas</h6>
@@ -401,7 +401,7 @@
     </div>
 </div>
 
-{{-- Modal Create Activity --}}
+
 <div class="modal fade" id="createActivityModal" tabindex="-1" aria-labelledby="createActivityModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content border-0 radius-12 shadow">
@@ -459,7 +459,7 @@
     </div>
 </div>
 
-{{-- Modal Edit Activity --}}
+
 <div class="modal fade" id="editActivityModal" tabindex="-1" aria-labelledby="editActivityModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content border-0 radius-12 shadow">

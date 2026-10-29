@@ -172,23 +172,7 @@
     </div>
 </div>
 
-@if(session('success'))
-    <div class="alert alert-success alert-dismissible fade show radius-8 mb-20 d-flex align-items-center gap-2" role="alert">
-        <iconify-icon icon="solar:check-circle-bold-duotone" class="text-xl"></iconify-icon>
-        <div>{{ session('success') }}</div>
-        <button type="button" class="btn-close ms-auto" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>
-@endif
 
-@if(session('error'))
-    <div class="alert alert-danger alert-dismissible fade show radius-8 mb-20 d-flex align-items-center gap-2" role="alert">
-        <iconify-icon icon="solar:danger-circle-bold-duotone" class="text-xl"></iconify-icon>
-        <div>{{ session('error') }}</div>
-        <button type="button" class="btn-close ms-auto" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>
-@endif
-
-{{-- 4 METRIC CARDS --}}
 <div class="row g-3 mb-24">
     <div class="col-xl-3 col-sm-6">
         <div class="card radius-12 border-0 shadow-sm p-16">
@@ -244,7 +228,7 @@
     </div>
 </div>
 
-{{-- FILTER ROW --}}
+
 <div class="card radius-12 border-0 shadow-sm mb-24">
     <div class="card-body p-16">
         <form method="GET" action="{{ route('dashboard-admin.procurement.purchase-orders.index') }}" class="d-flex flex-wrap align-items-end justify-content-between gap-3">
@@ -299,7 +283,7 @@
     </div>
 </div>
 
-{{-- TABLE PURCHASE ORDERS --}}
+
 <div class="card radius-12 border-0 shadow-sm mb-24 overflow-hidden">
     <div class="card-header bg-transparent py-16 px-24 border-bottom d-flex justify-content-between align-items-center">
         <div>
@@ -402,7 +386,7 @@
     </div>
 </div>
 
-{{-- MODAL TAMBAH PURCHASE ORDER DENGAN AUTO FILL DARI PR --}}
+
 <div class="modal fade" id="createPOModal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-xl">
         <div class="modal-content radius-16 border-0 shadow">
@@ -413,7 +397,7 @@
             <form action="{{ route('dashboard-admin.procurement.purchase-orders.store') }}" method="POST">
                 @csrf
                 <div class="modal-body p-24">
-                    {{-- Sumber PR Option --}}
+                    
                     <div class="p-16 radius-12 bg-primary-50 border border-primary-200 mb-20">
                         <div class="row g-2 align-items-center">
                             <div class="col-md-4">
@@ -484,7 +468,7 @@
                         </div>
                     </div>
 
-                    {{-- Dynamic Line Items --}}
+                    
                     <div class="border radius-12 p-16 bg-neutral-50 mb-20">
                         <div class="d-flex align-items-center justify-content-between mb-12">
                             <div>
@@ -533,7 +517,7 @@
                         </div>
                     </div>
 
-                    {{-- Financial Calculation Card --}}
+                    
                     <div class="row g-3 justify-content-end">
                         <div class="col-md-5">
                             <div class="p-16 radius-12 bg-neutral-50 border border-neutral-200">
@@ -574,7 +558,7 @@
     </div>
 </div>
 
-{{-- MODAL UPDATE PO STATUS --}}
+
 <div class="modal fade" id="updatePOStatusModal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content radius-16 border-0 shadow">

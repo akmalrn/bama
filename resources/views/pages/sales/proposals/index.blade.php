@@ -6,7 +6,7 @@
 @endphp
 
 @section('content')
-{{-- Alerts --}}
+
 @if (session('success'))
     <div class="alert alert-success alert-dismissible fade show border-0 radius-8 mb-20 d-flex align-items-center gap-2" role="alert">
         <iconify-icon icon="solar:check-circle-bold-duotone" class="text-xl"></iconify-icon>
@@ -15,7 +15,7 @@
     </div>
 @endif
 
-{{-- Summary Cards --}}
+
 <div class="row g-3 mb-24">
     <div class="col-lg-3 col-sm-6">
         <div class="card radius-12 border-0 shadow-sm h-100 overflow-hidden position-relative crm-kpi-card crm-kpi-primary">
@@ -106,7 +106,7 @@
     </div>
 </div>
 
-{{-- Main Card Table --}}
+
 <div class="card border-0 shadow-sm radius-12 overflow-hidden mb-24">
     <div class="card-header border-bottom py-16 px-24 d-flex justify-content-between align-items-center flex-wrap gap-3">
         <div class="d-flex align-items-center gap-2">
@@ -128,7 +128,7 @@
         @endcan
     </div>
 
-    {{-- Filter Bar --}}
+    
     <div class="card-body p-16 border-bottom bg-neutral-50-light">
         <form action="{{ route('dashboard-admin.sales.proposals.index') }}" method="GET" class="row g-2 align-items-center">
             <div class="col-md-5 col-sm-6">
@@ -172,7 +172,7 @@
         </form>
     </div>
 
-    {{-- Table --}}
+    
     <div class="card-body p-0">
         <div class="table-responsive">
             <table class="table crm-table-compact bordered-table mb-0 align-middle">
@@ -301,7 +301,7 @@
     </div>
 </div>
 
-{{-- Modal Buat Proposal / Quotation Baru --}}
+
 @can('sales.proposal.create')
 <div class="modal fade" id="createProposalModal" tabindex="-1" aria-labelledby="createProposalModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered">
@@ -336,7 +336,7 @@
                     @csrf
 
                     <div class="row g-3">
-                        {{-- Opportunity Parent --}}
+                        
                         <div class="col-md-6">
                             <label class="form-label text-sm fw-semibold text-primary-light">
                                 Opportunity / Proyek <span class="text-danger">*</span>
@@ -354,7 +354,7 @@
                             @enderror
                         </div>
 
-                        {{-- Nomor Proposal --}}
+                        
                         <div class="col-md-6">
                             <label class="form-label text-sm fw-semibold text-primary-light">
                                 Nomor Proposal / Quotation <span class="text-danger">*</span>
@@ -366,7 +366,7 @@
                             @enderror
                         </div>
 
-                        {{-- Nilai Penawaran (Amount) --}}
+                        
                         <div class="col-md-6">
                             <label class="form-label text-sm fw-semibold text-primary-light">
                                 Nilai Penawaran (Selling Price) <span class="text-danger">*</span>
@@ -381,7 +381,7 @@
                             @enderror
                         </div>
 
-                        {{-- Direct Cost (RAB) --}}
+                        
                         <div class="col-md-6">
                             <label class="form-label text-sm fw-semibold text-primary-light">
                                 Estimasi Direct Cost (RAB) <span class="text-danger">*</span>
@@ -396,7 +396,7 @@
                             @enderror
                         </div>
 
-                        {{-- Live Margin Calculator Display --}}
+                        
                         <div class="col-12">
                             <div class="p-16 radius-8 bg-neutral-50-light border d-flex justify-content-between align-items-center flex-wrap gap-2">
                                 <div>
@@ -411,7 +411,7 @@
                             </div>
                         </div>
 
-                        {{-- Status Proposal --}}
+                        
                         <div class="col-md-6">
                             <label class="form-label text-sm fw-semibold text-primary-light">
                                 Status Proposal <span class="text-danger">*</span>
@@ -428,7 +428,7 @@
                             @enderror
                         </div>
 
-                        {{-- Tanggal Submit --}}
+                        
                         <div class="col-md-6">
                             <label class="form-label text-sm fw-semibold text-primary-light">
                                 Tanggal Pengajuan ke Klien
@@ -440,7 +440,7 @@
                             @enderror
                         </div>
 
-                        {{-- Upload Dokumen --}}
+                        
                         <div class="col-12">
                             <label class="form-label text-sm fw-semibold text-primary-light">
                                 Berkas Dokumen Proposal (PDF / DOCX / XLSX, maks. 20MB)
@@ -451,7 +451,7 @@
                             @enderror
                         </div>
 
-                        {{-- Catatan / Scope --}}
+                        
                         <div class="col-12">
                             <label class="form-label text-sm fw-semibold text-primary-light">
                                 Catatan Komersial / Syarat Pembayaran (Payment Terms)

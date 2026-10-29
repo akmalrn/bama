@@ -37,7 +37,7 @@
     </div>
 </div>
 
-{{-- Banner Info --}}
+
 <div class="alert alert-warning border-warning-200 bg-warning-50 text-warning-900 radius-8 p-16 d-flex align-items-start gap-3 mb-24" role="alert">
     <iconify-icon icon="solar:info-circle-bold" class="text-xl text-warning-main flex-shrink-0 mt-2"></iconify-icon>
     <div class="text-sm">
@@ -46,7 +46,7 @@
     </div>
 </div>
 
-{{-- Filter Form --}}
+
 <div class="card shadow-none border mb-24">
     <div class="card-body p-20">
         <form method="GET" action="{{ route('dashboard-admin.sales.ai-opportunities.index') }}" class="row g-3">
@@ -87,7 +87,7 @@
     </div>
 </div>
 
-{{-- List of AI Opportunities --}}
+
 <div class="row g-3">
     @forelse($items as $item)
         @php
@@ -134,7 +134,7 @@
                             </div>
                         </div>
 
-                        {{-- AI Match Score & Action --}}
+                        
                         <div class="d-flex flex-column align-items-center align-items-sm-end gap-12 flex-shrink-0">
                             <div class="d-flex align-items-center gap-2">
                                 <div class="w-48-px h-48-px rounded-circle border border-2 d-flex align-items-center justify-content-center fw-bold text-md {{ $scoreClass }}">
@@ -181,7 +181,7 @@
     @endforelse
 </div>
 
-{{-- Modal Convert to Opportunity --}}
+
 <div class="modal fade" id="convertModal" tabindex="-1" aria-labelledby="convertModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content border-0 radius-12 shadow">

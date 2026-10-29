@@ -38,7 +38,7 @@
                     @csrf
                     @method('PUT')
 
-                    {{-- Section 1: Profil Perusahaan --}}
+                    
                     <div class="border-bottom pb-16 mb-20">
                         <h6 class="fw-bold text-primary-600 mb-1 d-flex align-items-center gap-2">
                             <iconify-icon icon="solar:buildings-bold-duotone"></iconify-icon>
@@ -106,7 +106,7 @@
                         </div>
                     </div>
 
-                    {{-- Section 2: Person In Charge (PIC) --}}
+                    
                     <div class="border-bottom pb-16 mb-20">
                         <h6 class="fw-bold text-primary-600 mb-1 d-flex align-items-center gap-2">
                             <iconify-icon icon="solar:user-id-bold-duotone"></iconify-icon>
@@ -153,7 +153,7 @@
                         </div>
                     </div>
 
-                    {{-- Action Buttons --}}
+                    
                     <div class="d-flex justify-content-end align-items-center gap-2 pt-16 border-top">
                         <a href="{{ route('dashboard-admin.sales.customers.index') }}" class="btn btn-outline-secondary radius-8 px-20 py-10">
                             Batal

@@ -12,7 +12,7 @@
     @include('pages.products.partials.theme')
     @php($activeTab = session('activeTab', 'tab-data'))
 
-    {{-- Navigasi Tab Produk --}}
+   
     <div class="card mb-3" id="product-tab-container-card">
         <div class="card-header">
             <ul class="nav nav-tabs card-header-tabs" role="tablist">
@@ -106,7 +106,7 @@
     </div>
 
     <div class="service-admin-page">
-        {{-- Card Data Produk --}}
+       
         <div class="card basic-data-table" id="module-data-card">
             <div class="card-header d-flex justify-content-between align-items-center flex-wrap gap-2">
                 <h5 class="card-title mb-0">Produk</h5>
@@ -195,7 +195,7 @@
             </div>
         </div>
 
-        {{-- Card Kategori Produk (Terpisah dan mengacu pada card table produk) --}}
+       
         @can('lihat kategori-produk')
             <div class="card basic-data-table {{ $activeTab === 'tab-category' ? '' : 'd-none' }}" id="module-category-card">
                 @include('pages.products.partials.category-tab')

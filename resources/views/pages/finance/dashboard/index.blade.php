@@ -7,7 +7,7 @@
 @endphp
 
 @section('content')
-{{-- Compact custom style tweaks --}}
+
 <style>
     .finance-kpi-card {
         transition: transform 0.15s ease, box-shadow 0.15s ease;
@@ -18,7 +18,7 @@
     }
 </style>
 
-{{-- Header Row --}}
+
 <div class="d-flex flex-wrap align-items-center justify-content-between gap-3 mb-24">
     <div>
         <div class="d-flex align-items-center gap-2 mb-4">
@@ -43,9 +43,9 @@
     </div>
 </div>
 
-{{-- 4 Executive Metric Cards --}}
+
 <div class="row g-3 mb-24">
-    {{-- 1. Net Cash Flow --}}
+    
     <div class="col-xl-3 col-sm-6">
         <div class="card radius-12 border-0 shadow-sm h-100 overflow-hidden position-relative finance-kpi-card">
             <div class="card-body p-20 d-flex flex-column justify-content-between">
@@ -72,7 +72,7 @@
         </div>
     </div>
 
-    {{-- 2. Outstanding Receivables (AR) --}}
+    
     <div class="col-xl-3 col-sm-6">
         <div class="card radius-12 border-0 shadow-sm h-100 overflow-hidden position-relative finance-kpi-card">
             <div class="card-body p-20 d-flex flex-column justify-content-between">
@@ -95,7 +95,7 @@
         </div>
     </div>
 
-    {{-- 3. Outstanding Payables (AP) --}}
+    
     <div class="col-xl-3 col-sm-6">
         <div class="card radius-12 border-0 shadow-sm h-100 overflow-hidden position-relative finance-kpi-card">
             <div class="card-body p-20 d-flex flex-column justify-content-between">
@@ -118,7 +118,7 @@
         </div>
     </div>
 
-    {{-- 4. Net Working Capital --}}
+    
     <div class="col-xl-3 col-sm-6">
         <div class="card radius-12 border-0 shadow-sm h-100 overflow-hidden position-relative finance-kpi-card">
             <div class="card-body p-20 d-flex flex-column justify-content-between">
@@ -142,9 +142,9 @@
     </div>
 </div>
 
-{{-- Middle Row: Visual Chart Trend & Aging Schedule --}}
+
 <div class="row g-3 mb-24">
-    {{-- Left: Monthly Cash Flow Trend (12 Months ApexChart) --}}
+    
     <div class="col-xl-8 col-lg-7">
         <div class="card border-0 shadow-sm radius-12 overflow-hidden h-100">
             <div class="card-header border-bottom py-14 px-20 d-flex justify-content-between align-items-center flex-wrap gap-2">
@@ -170,7 +170,7 @@
         </div>
     </div>
 
-    {{-- Right: AR Aging Schedule (Usia Piutang) --}}
+    
     <div class="col-xl-4 col-lg-5">
         <div class="card border-0 shadow-sm radius-12 overflow-hidden h-100">
             <div class="card-header border-bottom py-14 px-20">
@@ -186,7 +186,7 @@
                     $pct90 = round(($agingBuckets['days_over_90'] / $totBuckets) * 100, 1);
                 @endphp
                 <div class="d-flex flex-column gap-3">
-                    {{-- 0 - 30 Hari --}}
+                    
                     <div>
                         <div class="d-flex justify-content-between text-xs mb-1">
                             <span class="fw-semibold text-primary-light">Lancar (Current / 0 - 30 Hari)</span>
@@ -197,7 +197,7 @@
                         </div>
                     </div>
 
-                    {{-- 31 - 60 Hari --}}
+                    
                     <div>
                         <div class="d-flex justify-content-between text-xs mb-1">
                             <span class="fw-semibold text-primary-light">Overdue 1 - 30 Hari</span>
@@ -208,7 +208,7 @@
                         </div>
                     </div>
 
-                    {{-- 61 - 90 Hari --}}
+                    
                     <div>
                         <div class="d-flex justify-content-between text-xs mb-1">
                             <span class="fw-semibold text-primary-light">Overdue 31 - 60 Hari</span>
@@ -219,7 +219,7 @@
                         </div>
                     </div>
 
-                    {{-- > 90 Hari --}}
+                    
                     <div>
                         <div class="d-flex justify-content-between text-xs mb-1">
                             <span class="fw-semibold text-primary-light">Kritis (> 60 Hari Overdue)</span>
@@ -240,9 +240,9 @@
     </div>
 </div>
 
-{{-- Bottom Row: Top Project Profitability & Upcoming Invoices Due --}}
+
 <div class="row g-3 mb-24">
-    {{-- Left: Top Projects by Margin --}}
+    
     <div class="col-lg-6">
         <div class="card border-0 shadow-sm radius-12 overflow-hidden h-100">
             <div class="card-header border-bottom py-14 px-20 d-flex justify-content-between align-items-center">
@@ -292,7 +292,7 @@
         </div>
     </div>
 
-    {{-- Right: Upcoming Due Invoices --}}
+    
     <div class="col-lg-6">
         <div class="card border-0 shadow-sm radius-12 overflow-hidden h-100">
             <div class="card-header border-bottom py-14 px-20 d-flex justify-content-between align-items-center">
@@ -345,9 +345,9 @@
     </div>
 </div>
 
-{{-- Feed Transaksi Terbaru --}}
+
 <div class="row g-3 mb-24">
-    {{-- 5 Kas Masuk Terbaru --}}
+    
     <div class="col-lg-6">
         <div class="card border-0 shadow-sm radius-12 overflow-hidden h-100">
             <div class="card-header border-bottom py-14 px-20">
@@ -390,7 +390,7 @@
         </div>
     </div>
 
-    {{-- 5 Kas Keluar Operasional Terbaru --}}
+    
     <div class="col-lg-6">
         <div class="card border-0 shadow-sm radius-12 overflow-hidden h-100">
             <div class="card-header border-bottom py-14 px-20">
@@ -434,7 +434,7 @@
     </div>
 </div>
 
-{{-- ApexCharts Script --}}
+
 <script>
 document.addEventListener('DOMContentLoaded', function () {
     const chartEl = document.getElementById('cashFlowMonthlyChart');

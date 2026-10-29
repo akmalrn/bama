@@ -12,8 +12,6 @@
     @endphp
 
     <div class="row gy-4">
-
-        {{-- ================= PROFILE CARD ================= --}}
         <div class="col-lg-4">
             <div class="card h-100 p-24">
 
