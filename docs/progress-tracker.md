@@ -10,14 +10,15 @@ Dokumen ini memantau seluruh modul dan fitur yang sudah selesai dikerjakan serta
 
 | No | Modul / Departemen | Status | Halaman / Fitur Utama |
 |---|---|---|---|
+| 0 | **HO Dashboard (Executive Control Tower)** | 🟢 *Completed (100%)* | Ringkasan Eksekutif Lintas Departemen, 4 Macro Corporate KPI, 8 Department Overview Cards |
 | 1 | **Sales (CRM)** | 🟢 *Completed (100%)* | Dashboard (✓), Pipeline (✓), Proposal Register (✓), Activity Register (✓), Customer Register (✓), Customer Contact (✓), Performance (✓), AI Opportunities (✓) |
 | 2 | **PMO (Project Management)** | 🟢 *Completed (100%)* | PMO Dashboard (✓), Project Register (✓), Cost Management (✓), Planning & Scheduling (✓), Project Documents & Handover (✓) |
 | 3 | **Finance & Tax** | 🟢 *Completed (100%)* | Dashboard (✓), Invoice Monitoring (✓), Project Cost Management (✓), Corporate Tax (✓) |
 | 4 | **HCD (Human Capital)** | 🟢 *Completed (100%)* | Dashboard (✓), Task Monitoring (✓), Employee Register (✓), Training & Development (✓), Professional Database (✓) |
-| 5 | **HSSE** | ⚪ *Pending (0%)* | Safety Metrics (Zero Accident Counter), Permit to Work (PTW), Incident Log |
-| 6 | **Procurement & Logistics** | ⚪ *Pending (0%)* | PR/PO Register, Approval Flow, Partner Register |
-| 7 | **Asset Management** | ⚪ *Pending (0%)* | Asset Register (UHP Water Jet, Torque Wrench), Maintenance, MRO Release Flow |
-| 8 | **My Workspace** | ⚪ *Pending (0%)* | Quick Quotation/PO Print A4 Layout, Personal Workbench, Timesheet |
+| 5 | **HSSE** | 🟢 *Completed (100%)* | Safety Dashboard (✓), Permit to Work & JSA (✓), Inspeksi Alat & APD (✓), Laporan Insiden & CAPA (✓) |
+| 6 | **Procurement & Logistics** | 🟢 *Completed (100%)* | Dashboard Procurement (✓), Vendor Management (✓), Purchase Request & Items (✓), Purchase Order & Print A4 (✓), Ekspedisi & Logistik Site (✓) |
+| 7 | **Asset Management** | 🟢 *Completed (100%)* | Dashboard Asset (✓), Inventaris Mesin & Alat (✓), Alokasi & Mobilisasi Project (✓), Jadwal Maintenance & Kalibrasi (✓) |
+| 8 | **My Workspace** | 🟢 *Completed (100%)* | Personal Workbench Karyawan, Timesheet Harian & Log Jam Kerja Mingguan, Quick Status Task Update, Akses Cepat Dokumen & Proyek Lapangan |
 
 ---
 
@@ -209,14 +210,139 @@ Dokumen ini memantau seluruh modul dan fitur yang sudah selesai dikerjakan serta
 
 ---
 
-### 6. DEPARTEMEN PROCUREMENT & LOGISTICS
-- [ ] **Procurement Register**: Purchase Request (PR) & Purchase Order (PO)
-- [ ] **Vendor Management**: Database supplier & subkontraktor migas terverifikasi
-- [ ] **Logistics Tracking**: Pengiriman barang/sparepart ke site
+### 6. DEPARTEMEN PROCUREMENT & LOGISTICS — 🟢 Completed (100%)
+- [x] **Database & Migration Procurement**:
+  - Tabel `procurement_vendors`: Master database rekanan vendor terverifikasi, spesialisasi, rating kinerja, NPWP, dan rekening bank untuk integrasi Finance AP.
+  - Tabel `purchase_requests` & `purchase_request_items`: Alur pengajuan kebutuhan material/alat proyek PMO, persetujuan bertingkat, dan estimasi anggaran.
+  - Tabel `purchase_orders` & `purchase_order_items`: Kontrak pemesanan barang/jasa resmi, perhitungan subtotal, PPN 11%, diskon, grand total, syarat pembayaran, dan pencatatan komitmen biaya proyek (PMO & Finance AP).
+  - Tabel `logistics_deliveries`: Pelacakan ekspedisi surat jalan, nomor resi AWB, armada kendaraan, rute pengiriman, dan tanda terima berita acara (BAP) di site proyek.
+- [x] **1. Procurement Executive Dashboard**:
+  - 4 Executive KPI Cards: Total Nilai PO Diterbitkan, Total PR Menunggu Review/Approval, Mitra Rekanan Aktif, dan Ekspedisi Material Dalam Perjalanan.
+  - Alur Pengadaan Interaktif: Siklus status 5 langkah (Draft -> Review -> PO Issued -> In Transit -> Selesai di Site).
+  - Donut Chart Analisis Belanja per Kategori Spesialisasi Vendor (Piping, Heavy Equipment, Consumables, Safety, dll.).
+  - Monitoring PR Prioritas Mendesak (Urgent Shutdown / Turnaround) & Top 5 Rekanan Vendor Terbesar.
+  - Radar Logistik Aktif & Tracking Pergerakan Kargo ke Lapangan.
+- [x] **2. Vendor Management (Mitra Rekanan)**:
+  - 4 Status KPI Metrik: Total Vendor, Aktif Terverifikasi, Dalam Penilaian (Under Review), dan Blacklisted.
+  - Filter interaktif Kategori Spesialisasi, Status Kualifikasi, dan pencarian teks.
+  - Modal Daftarkan Rekanan Baru & Modal Edit Vendor.
+  - Modal Detail 360 Rekanan: Profil perusahaan, PIC, alamat kantor/workshop, rekening bank AP, rating bintang, dan catatan kualifikasi.
+- [x] **3. Purchase Request (PR) Register**:
+  - 4 Metrik Status: Total PR, Menunggu Review, Disetujui, dan Converted to PO.
+  - Filter Tingkat Prioritas (Urgent, High, Medium, Low), Proyek Terkait, dan Kategori.
+  - Form Pembuatan PR Baru Dinamis: Tambah/hapus baris item material dengan kalkulasi otomatis subtotal dan total anggaran.
+  - Modal Alur Persetujuan & Tinjau Ulang PR (Approval Workflow & Catatan Evaluasi).
+  - Modal Detail 360 PR & Tombol Cepat Konversi ke PO (Convert to PO) saat disetujui.
+- [x] **4. Purchase Order (PO) Register & Cetak A4**:
+  - 4 Metrik Finansial: Total PO Terbit, PO Aktif Berjalan, Dalam Pengiriman, dan Selesai di Site.
+  - Filter Mitra Vendor, Proyek PMO, Status, dan Pencarian.
+  - Form Pembuatan PO Baru dengan fitur **Impor Otomatis dari PR yang Disetujui** atau input manual.
+  - Kalkulator Finansial Otomatis: Subtotal (DPP), Potongan Diskon, PPN 11%, dan Grand Total PO.
+  - Integrasi Otomatis ke Komitmen Biaya Proyek PMO & Jurnal Beban Finance AP.
+  - Halaman Cetak Resmi / Download PDF (`/procurement/purchase-orders/{id}`): Format kop surat standar PT ELBEMA Integra Indonesia, ship-to proyek, terms & conditions, dan blok tanda tangan tiga pihak (Buyer, Direktur, Vendor).
+- [x] **5. Ekspedisi & Logistik Lapangan**:
+  - 4 Metrik Logistik: Total Pengiriman, Dalam Perjalanan (In Transit), Tiba di Site, dan Diterima Lengkap (BAP).
+  - Filter Status Pengiriman, Proyek Lapangan Tujuan, dan Pencarian No. Resi/Surat Jalan.
+  - Modal Catat Pengiriman Logistik Baru terhubung ke PO dan Proyek.
+  - Modal Update Status Pengiriman (In Transit -> Arrived at Site -> Inspected & Received di Site) dengan pencatatan tanggal tiba aktual dan auto-complete status PO.
+  - Modal Detail 360 Pengiriman & Catatan BAP Lapangan.
+- [x] **Seeder Data Industri Migas Realistis (`ProcurementSeeder`)**:
+  - 5 Rekanan vendor migas tersertifikasi (ASME B16.5, Hydrojet 40k psi, APD K3, Gas Industri, Stud Bolt B7).
+  - 4 Dokumen PR realistis lengkap dengan rincian item material turnaround.
+  - 3 Dokumen PO lengkap dengan perhitungan pajak PPN 11% dan status delivery.
+  - 3 Pengiriman kargo logistik ekspedisi laut & darat (Balikpapan, Bontang, Palembang).
 
 ---
 
-### 7. DEPARTEMEN ASSET MANAGEMENT
-- [ ] **Asset Register**: Mesin dan peralatan kerja khusus (UHP Water Jet Pump, Torque Wrench, Gas Detector)
-- [ ] **Maintenance & Kalibrasi**: Jadwal inspeksi dan sertifikasi kelaikan alat
-- [ ] **Material & Consumable Release**: Approval alokasi consumable gudang
+### 7. DEPARTEMEN ASSET MANAGEMENT — 🟢 Completed (100%)
+- [x] **Database & Migration Asset Management**:
+  - Tabel `assets`: Master register mesin & instrumen khusus (UHP Hydrojet 40k psi, Torque Wrench, Machining Split Frame, Compressor 900 CFM, Hydrotest Skid), nomor seri, valuasi perolehan, kondisi fisik (good, fair, maintenance_needed, damaged), status operasional (available, mobilized, under_maintenance, decommissioned), lokasi standby, dan relasi PIC & Proyek.
+  - Tabel `asset_allocations`: Mobilisasi alat ke site klien (Pupuk Kaltim Bontang, PT Vale Sorowako), nomor surat jalan BAST, armada pengangkut, pelacak tanggal estimasi kembali vs realisasi, dan pencatatan kondisi fisik saat diterima kembali di workshop.
+  - Tabel `asset_maintenances`: Buku jadwal servis & kalibrasi berkala (Preventive, Corrective, Calibration, Overhaul, Certification), estimasi vs realisasi biaya, nomor sertifikat akreditasi KAN/Disnaker, dan pembaharuan otomatis tanggal next service.
+- [x] **1. Asset Executive Dashboard**:
+  - 4 Executive KPI Cards: Total Valuasi Asset (Rp Milyar), Utilisasi Alat Lapangan %, Perawatan & Kalibrasi Mendekati Jatuh Tempo, dan Kesiapan Operasional %.
+  - Distribusi Valuasi & Kuantitas per Kategori (High Pressure Pump, Bolting Tool, Machining Tool, Compressor, Testing Instrument).
+  - Radar Unit Kritis & Perlu Perbaikan Workshop.
+  - Monitoring Alokasi Lapangan Aktif & Surat Jalan BAST.
+- [x] **2. Inventaris Mesin & Peralatan (Asset Register)**:
+  - 4 Status KPI Metrik: Total Unit, Tersedia di Workshop (Available), Dimobilisasi (Mobilized), dan Under Maintenance.
+  - Filter Kategori, Status Operasional, Kondisi Fisik, dan Pencarian serial number / merk.
+  - Modal Daftarkan Asset Baru dengan generate otomatis kode `AST-YYYY-xxx`.
+  - Modal Edit Asset & Update Kondisi Fisik.
+  - Modal Detail 360 Asset: Spesifikasi teknis, nomor seri, riwayat perawatan, tanggal kalibrasi, dan lokasi unit.
+  - Proteksi integritas: Asset yang sedang dimobilisasi ke proyek dilarang dihapus.
+- [x] **3. Alokasi Project Lapangan (Asset Mobilization)**:
+  - 3 Status Metrik: Total Riwayat Alokasi, Aktif di Site, dan Sudah Dikembalikan (Returned).
+  - Form Mobilisasi Cepat: Pemilihan asset yang berstatus *available*, proyek PMO tujuan, site lapangan, dan nomor surat jalan BAST.
+  - Otomatisasi Status: Saat dimobilisasi, status asset otomatis berubah menjadi *mobilized* dan lokasi ter-update ke site proyek.
+  - Modal Catat Pengembalian (Return Asset): Tanggal tiba di gudang, checklist kondisi penerimaan alat, dan auto-release status asset kembali menjadi *available*.
+  - Modal Detail 360 Alokasi.
+- [x] **4. Jadwal Maintenance & Kalibrasi (Maintenance Schedule)**:
+  - 4 Status Metrik: Total Record, Terjadwal, Sedang Dikerjakan (In Progress), dan Selesai (Completed) beserta alert keterlambatan (*overdue*).
+  - Filter Tipe Servis (Preventive, Corrective, Calibration, Overhaul, Certification).
+  - Modal Buat Jadwal Servis & Kalibrasi Baru dengan kode otomatis `MTC-YYYY-xxx`.
+  - Modal Selesaikan Perawatan: Input tanggal selesai, tindakan perbaikan, penggantian spare part, nomor sertifikat kalibrasi, dan auto-update tanggal kalibrasi berikutnya pada master asset.
+- [x] **Seeder Data Industri Migas Realistis (`AssetManagementSeeder`)**:
+  - 5 Asset utama bernilai miliaran rupiah (Hammelmann UHP 40k psi, Enerpac Torque Wrench, Wachs Split Frame Cutter, Atlas Copco 900 CFM, Maximator Hydrotest Skid).
+  - 2 Alokasi site aktif di Bontang & Sorowako.
+  - 2 Dokumen jadwal servis kompresor & kalibrasi pressure gauge berlisensi KAN.
+
+---
+
+### 8. MODUL PERSONAL: MY WORKSPACE — 🟢 Completed (100%)
+- [x] **Database & Migration Personal Timesheet**:
+  - Tabel `user_timesheets`: Catatan harian log jam kerja mandiri staf operasional/lapangan/kantor (`user_id`, `employee_id`, `project_id`, `task_id`, `date`, `hours`, `work_type`, `activity_summary`, `location`, `status`, `notes`).
+- [x] **1. Posisi Menu Sidebar Paling Atas**:
+  - Ditempatkan langsung pada urutan teratas di bawah header *Aplikasi* (sebelum modul departemen) dengan badge *Personal* dan icon *solar:laptop-minimalistic-bold-duotone*.
+  - Dapat diakses langsung oleh seluruh user login tanpa terhalang permission departemen khusus.
+- [x] **2. Executive Profile Banner & Greeting**:
+  - Menyapa nama akun user aktif secara personal (`Selamat Datang, {User}`) disertai NIK dan jabatan dari profil pegawai (`employees`).
+  - Indikator status akun aktif & tanggal lokal Bahasa Indonesia.
+  - Tombol aksi cepat modal `+ Catat Timesheet / Jam Kerja`.
+- [x] **3. 4 KPI Metrics Card Personal**:
+  - Total Tugas Ditugaskan (dengan rincian counter Selesai vs Tertunda).
+  - Tugas Aktif yang sedang berjalan (Pending / In Progress / Review).
+  - Total Jam Kerja (Timesheet) Minggu Berjalan & Progress Bar capaian target 40 Jam/Minggu.
+  - Akumulasi Man-Hours Bulan Berjalan untuk dasar payroll & pelaporan man-power proyek.
+- [x] **4. Tabel Daftar Tugas Personal (My Tasks)**:
+  - Menampilkan daftar tugas dari modul HCD yang ditugaskan (*assigned*) langsung ke akun/pegawai atau dibuat oleh user.
+  - Informasi lengkap: Kode & judul tugas, proyek terkait, badge prioritas, batas waktu (*due date*), dan status saat ini.
+  - Tombol aksi lingkaran (*circular action button*) untuk membuka Modal Quick Update Status pengerjaan & pencatatan jam aktual.
+- [x] **5. Timesheet & Log Jam Kerja Mingguan**:
+  - Tabel catatan jam kerja Senin s/d Minggu pada minggu berjalan.
+  - Rincian kolom: Tanggal, Jenis Pekerjaan (On-Site Project, Workshop Prep, Engineering Design, Customer Meeting, Administration, Overtime), Proyek Terkait, Uraian Ringkas Pekerjaan, Lokasi (Site/Workshop), Durasi Jam, dan Status Validasi.
+  - Modal Form Pencatatan Jam Kerja Harian lengkap dengan input proyek, tipe aktivitas, lokasi, dan catatan kendala lapangan.
+- [x] **6. Pintasan Cepat Proyek & Dokumen Resmi**:
+  - Card daftar proyek PMO yang diikuti oleh user dengan shortcut langsung ke detail proyek.
+  - Tombol pintasan langsung ke formulir operasional rutin: Buat Purchase Request (PR), Permohonan Alokasi Asset Lapangan, dan Pelaporan Insiden Keselamatan HSSE / Nearmiss.
+
+---
+
+### 0. EXECUTIVE CONTROL TOWER: HO DASHBOARD — 🟢 Completed (100%)
+- [x] **Transformasi Dashboard Index ke HO Dashboard**:
+  - Mengubah halaman default utama `/dashboard-admin` (`dashboard-admin.index`) dari template lama menjadi **HO Dashboard (Head Office Dashboard)** sesuai benchmark PT ELBEMA Integra Indonesia.
+- [x] **1. Header & Tagline Korporat**:
+  - Badge `CORPORATE · HEAD OFFICE` & `DATA TERINTEGRASI` (Live Data).
+  - Judul `HO Dashboard` dan deskripsi: *"Ringkasan eksekutif lintas departemen ELBEMA. Pilih kartu untuk membuka detail unit kerja."*
+  - Tombol navigasi cepat ke `My Workbench` & badge tanggal pembaruan sistem.
+- [x] **2. 4 Kartu Metrik Eksekutif Makro**:
+  - **Sales Pipeline**: Menampilkan total potensi nilai pipeline dan jumlah peluang aktif yang sedang diprospek.
+  - **Nilai Portfolio Proyek**: Akumulasi total nilai kontrak seluruh proyek yang terdaftar di sistem.
+  - **Invoice Outstanding**: Nilai piutang tagihan berjalan (*submitted minus paid*).
+  - **Komitmen Procurement**: Total komitmen pesanan pembelian (PO) pada register pembiayaan proyek.
+- [x] **3. Department Overview (8 Kartu Ringkasan Unit Kerja)**:
+  - **Sales (CRM)**: Opportunity aktif, pipeline value, proposal terkirim, sales order (won), dan link langsung `Buka Sales →`.
+  - **Finance & Tax**: Total invoice terbit, submitted, pembayaran diterima (paid), sisa outstanding, dan link `Buka Finance & Tax →`.
+  - **HCD**: Jumlah pegawai terdaftar, program training aktif, sertifikasi kompetensi, dan link `Buka HCD →`.
+  - **PMO (Project Control)**: Proyek terdaftar, proyek on progress, rata-rata progres fisik %, status CPI/SPI, dan link `Buka PMO →`.
+  - **HSSE**: Akumulasi safe man-hours, izin kerja (PTW) aktif, inspeksi alat kelaikan, open incident, dan link `Buka HSSE →`.
+  - **Procurement & Logistics**: Total PO terbit, PR menunggu review, mitra rekanan aktif, ekspedisi in transit, dan link `Buka Procurement →`.
+  - **Asset Management**: Total valuasi asset mesin, unit standby di workshop, mobilisasi di site, jadwal servis/kalibrasi, dan link `Buka Asset →`.
+  - **Portal & Web Traffic**: Total pengunjung web company profile publik, artikel blog, dan layanan publik.
+- [x] **4. Struktur Navigasi Sidebar**:
+  - `My Workspace` -> `My Workbench`
+  - `Dashboard` -> `HO Dashboard`
+  - `Functional Departments` -> Modul per departemen teknis.
+
+
+

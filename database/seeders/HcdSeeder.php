@@ -47,6 +47,16 @@ class HcdSeeder extends Seeder
                 ]
             );
 
+            if ($user->roles()->count() === 0) {
+                $roleName = match (true) {
+                    str_contains(strtolower($position->title), 'hse') || str_contains(strtolower($department->name), 'hsse') => 'hsse-officer',
+                    str_contains(strtolower($department->name), 'asset') || str_contains(strtolower($position->title), 'hydro') || str_contains(strtolower($position->title), 'bolt') => 'asset-manager',
+                    str_contains(strtolower($department->name), 'project') || str_contains(strtolower($position->title), 'engineer') => 'pmo-manager',
+                    default => 'hcd-manager',
+                };
+                $user->assignRole($roleName);
+            }
+
             return Employee::updateOrCreate(
                 ['user_id' => $user->id],
                 array_merge([

@@ -199,7 +199,7 @@
                     ],
                     'customer_visit' => [
                         'label' => 'Customer Visit',
-                        'icon' => 'solar:map-point-wave-bold-duotone',
+                        'icon' => 'solar:map-point-bold-duotone',
                         'color' => 'purple',
                         'count' => $typeCounts['customer_visit'] ?? 0,
                     ],
@@ -363,7 +363,7 @@
                             </td>
                             <td class="text-end pe-20">
                                 <div class="d-flex align-items-center justify-content-end gap-2">
-                                    <button type="button" class="w-28-px h-28-px bg-success-focus text-success-main rounded-circle border-0 d-inline-flex align-items-center justify-content-center btn-edit-activity"
+                                    <button type="button" class="w-32-px h-32-px bg-success-focus text-success-main rounded-circle border-0 d-inline-flex align-items-center justify-content-center btn-edit-activity"
                                         data-bs-toggle="modal" data-bs-target="#editActivityModal"
                                         data-id="{{ $act->id }}"
                                         data-opp="{{ $act->opportunity_id }}"
@@ -372,13 +372,13 @@
                                         data-date="{{ $act->activity_at ? $act->activity_at->format('Y-m-d\TH:i') : '' }}"
                                         data-notes="{{ $act->notes }}"
                                         title="Edit Aktivitas">
-                                        <iconify-icon icon="lucide:edit" class="text-xs"></iconify-icon>
+                                        <iconify-icon icon="lucide:edit"></iconify-icon>
                                     </button>
                                     <form action="{{ route('dashboard-admin.sales.activities.destroy', $act->id) }}" method="POST" class="d-inline" onsubmit="return confirm('Apakah Anda yakin ingin menghapus aktivitas ini?')">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" class="w-28-px h-28-px bg-danger-focus text-danger-main rounded-circle border-0 d-inline-flex align-items-center justify-content-center" title="Hapus Aktivitas">
-                                            <iconify-icon icon="mingcute:delete-2-line" class="text-xs"></iconify-icon>
+                                        <button type="submit" class="w-32-px h-32-px bg-danger-focus text-danger-main rounded-circle border-0 d-inline-flex align-items-center justify-content-center" title="Hapus Aktivitas">
+                                            <iconify-icon icon="mingcute:delete-2-line"></iconify-icon>
                                         </button>
                                     </form>
                                 </div>

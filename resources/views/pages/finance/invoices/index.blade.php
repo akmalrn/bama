@@ -306,16 +306,16 @@
                                 </span>
                             </td>
                             <td class="px-16 py-12 text-center">
-                                <div class="d-inline-flex align-items-center gap-1">
+                                <div class="d-flex align-items-center justify-content-center gap-2">
                                     {{-- Tombol Detail / 360 --}}
-                                    <button type="button" class="btn btn-sm btn-icon btn-light text-primary-600 rounded-circle w-32-px h-32-px d-flex align-items-center justify-content-center btn-view-invoice" 
+                                    <button type="button" class="w-32-px h-32-px rounded-circle bg-info-focus text-info-main d-inline-flex justify-content-center align-items-center border-0 btn-view-invoice" 
                                             data-id="{{ $inv->id }}" title="Lihat Detail & Riwayat Pembayaran">
-                                        <iconify-icon icon="solar:eye-outline"></iconify-icon>
+                                        <iconify-icon icon="solar:eye-bold-duotone"></iconify-icon>
                                     </button>
 
                                     {{-- Tombol Catat Pembayaran --}}
                                     @if($inv->status !== 'paid' && $inv->status !== 'cancelled')
-                                        <button type="button" class="btn btn-sm btn-icon btn-success-subtle text-success-main rounded-circle w-32-px h-32-px d-flex align-items-center justify-content-center btn-pay-invoice" 
+                                        <button type="button" class="w-32-px h-32-px rounded-circle bg-success-focus text-success-main d-inline-flex justify-content-center align-items-center border-0 btn-pay-invoice" 
                                                 data-id="{{ $inv->id }}"
                                                 data-number="{{ $inv->invoice_number }}"
                                                 data-balance="{{ $inv->balance }}"
@@ -326,7 +326,7 @@
                                     @endif
 
                                     {{-- Tombol Edit --}}
-                                    <button type="button" class="btn btn-sm btn-icon btn-light text-warning-main rounded-circle w-32-px h-32-px d-flex align-items-center justify-content-center btn-edit-invoice"
+                                    <button type="button" class="w-32-px h-32-px rounded-circle bg-warning-focus text-warning-main d-inline-flex justify-content-center align-items-center border-0 btn-edit-invoice"
                                             data-id="{{ $inv->id }}"
                                             data-number="{{ $inv->invoice_number }}"
                                             data-customer="{{ $inv->customer_id }}"
@@ -342,15 +342,15 @@
                                             data-status="{{ $inv->status }}"
                                             data-notes="{{ $inv->notes }}"
                                             title="Edit Invoice">
-                                        <iconify-icon icon="solar:pen-outline"></iconify-icon>
+                                        <iconify-icon icon="lucide:edit"></iconify-icon>
                                     </button>
 
                                     {{-- Tombol Hapus --}}
                                     <form action="{{ route('dashboard-admin.finance.invoices.destroy', $inv->id) }}" method="POST" class="d-inline" onsubmit="return confirm('Apakah Anda yakin ingin menghapus invoice {{ $inv->invoice_number }}?');">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" class="btn btn-sm btn-icon btn-light text-danger-main rounded-circle w-32-px h-32-px d-flex align-items-center justify-content-center" title="Hapus Invoice">
-                                            <iconify-icon icon="solar:trash-bin-trash-outline"></iconify-icon>
+                                        <button type="submit" class="w-32-px h-32-px rounded-circle bg-danger-focus text-danger-main d-inline-flex justify-content-center align-items-center border-0" title="Hapus Invoice">
+                                            <iconify-icon icon="mingcute:delete-2-line"></iconify-icon>
                                         </button>
                                     </form>
                                 </div>

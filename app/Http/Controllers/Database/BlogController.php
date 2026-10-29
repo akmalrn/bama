@@ -30,8 +30,7 @@ class BlogController extends Controller implements HasMiddleware
         if (blank($description)) {
             return $description;
         }
-
-        // Ubah <input ... type="image" ...> menjadi <img ...>
+       
         $description = preg_replace_callback(
             '/<input\b([^>]*?)\/?>/i',
             function ($matches) {

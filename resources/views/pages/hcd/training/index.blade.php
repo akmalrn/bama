@@ -213,8 +213,8 @@
                                     <form method="POST" action="{{ route('dashboard-admin.hcd.training.certificates.destroy', $cert->id) }}" onsubmit="return confirm('Hapus catatan sertifikat ini?');" class="d-inline">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" class="btn btn-sm btn-outline-danger p-6 radius-6" title="Hapus">
-                                            <iconify-icon icon="solar:trash-bin-trash-outline" class="text-sm"></iconify-icon>
+                                        <button type="submit" class="w-32-px h-32-px rounded-circle bg-danger-focus text-danger-main d-inline-flex justify-content-center align-items-center border-0" title="Hapus">
+                                            <iconify-icon icon="mingcute:delete-2-line"></iconify-icon>
                                         </button>
                                     </form>
                                 </td>

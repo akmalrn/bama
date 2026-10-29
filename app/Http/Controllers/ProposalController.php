@@ -100,6 +100,15 @@ class ProposalController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
+        if ($request->has('amount')) {
+            $cleanAmount = preg_replace('/[^0-9]/', '', (string) $request->input('amount'));
+            $request->merge(['amount' => $cleanAmount !== '' ? (float) $cleanAmount : 0]);
+        }
+        if ($request->has('estimated_cost')) {
+            $cleanCost = preg_replace('/[^0-9]/', '', (string) $request->input('estimated_cost'));
+            $request->merge(['estimated_cost' => $cleanCost !== '' ? (float) $cleanCost : 0]);
+        }
+
         $validated = $request->validate([
             'opportunity_id' => ['required', 'exists:opportunities,id'],
             'proposal_number' => ['required', 'string', 'max:100', 'unique:proposals,proposal_number'],
@@ -169,6 +178,15 @@ class ProposalController extends Controller
      */
     public function update(Request $request, Proposal $proposal): RedirectResponse
     {
+        if ($request->has('amount')) {
+            $cleanAmount = preg_replace('/[^0-9]/', '', (string) $request->input('amount'));
+            $request->merge(['amount' => $cleanAmount !== '' ? (float) $cleanAmount : 0]);
+        }
+        if ($request->has('estimated_cost')) {
+            $cleanCost = preg_replace('/[^0-9]/', '', (string) $request->input('estimated_cost'));
+            $request->merge(['estimated_cost' => $cleanCost !== '' ? (float) $cleanCost : 0]);
+        }
+
         $validated = $request->validate([
             'opportunity_id' => ['required', 'exists:opportunities,id'],
             'proposal_number' => ['required', 'string', 'max:100', 'unique:proposals,proposal_number,'.$proposal->id],

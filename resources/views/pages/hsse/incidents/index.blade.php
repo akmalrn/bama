@@ -110,7 +110,7 @@
                         <th class="py-12 px-16">Tanggal & Pelapor</th>
                         <th class="py-12 px-16">Akar Masalah (RCA) & CAPA</th>
                         <th class="py-12 px-16">Status</th>
-                        <th class="py-12 px-20 text-end">Aksi</th>
+                        <th class="py-12 px-20 text-center" width="100">Aksi</th>
                     </tr>
                 </thead>
                 <tbody class="text-sm">
@@ -161,34 +161,23 @@
                                     {{ ucfirst(str_replace('_', ' ', $incident->status)) }}
                                 </span>
                             </td>
-                            <td class="py-12 px-20 text-end">
-                                <div class="dropdown">
-                                    <button class="btn btn-sm btn-outline-secondary radius-8 px-8 py-4" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                        <iconify-icon icon="solar:menu-dots-bold"></iconify-icon>
-                                    </button>
-                                    <ul class="dropdown-menu dropdown-menu-end shadow-sm border-0 radius-8">
-                                        @can('hsse.incident.report')
-                                            <li>
-                                                <button class="dropdown-item text-xs d-flex align-items-center gap-2 py-8"
-                                                        data-bs-toggle="modal"
-                                                        data-bs-target="#updateCapaModal{{ $incident->id }}">
-                                                    <iconify-icon icon="solar:checklist-minimalistic-bold-duotone" class="text-warning-main"></iconify-icon>
-                                                    Update RCA & CAPA
-                                                </button>
-                                            </li>
-                                            <li><hr class="dropdown-divider my-1"></li>
-                                            <li>
-                                                <form action="{{ route('dashboard-admin.hsse.incidents.destroy', $incident) }}" method="POST" onsubmit="return confirm('Hapus laporan insiden {{ $incident->incident_number }}?')">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button type="submit" class="dropdown-item text-xs text-danger-600 d-flex align-items-center gap-2 py-8">
-                                                        <iconify-icon icon="solar:trash-bin-trash-bold"></iconify-icon>
-                                                        Hapus Laporan
-                                                    </button>
-                                                </form>
-                                            </li>
-                                        @endcan
-                                    </ul>
+                            <td class="py-12 px-20 text-center">
+                                <div class="d-flex align-items-center justify-content-center gap-2">
+                                    @can('hsse.incident.report')
+                                        <button type="button" class="w-32-px h-32-px rounded-circle bg-warning-focus text-warning-main d-inline-flex justify-content-center align-items-center border-0"
+                                                data-bs-toggle="modal"
+                                                data-bs-target="#updateCapaModal{{ $incident->id }}"
+                                                title="Update RCA & CAPA">
+                                            <iconify-icon icon="solar:checklist-minimalistic-bold-duotone"></iconify-icon>
+                                        </button>
+                                        <form action="{{ route('dashboard-admin.hsse.incidents.destroy', $incident) }}" method="POST" onsubmit="return confirm('Hapus laporan insiden {{ $incident->incident_number }}?')" class="d-inline">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="w-32-px h-32-px rounded-circle bg-danger-focus text-danger-main d-inline-flex justify-content-center align-items-center border-0" title="Hapus Laporan">
+                                                <iconify-icon icon="mingcute:delete-2-line"></iconify-icon>
+                                            </button>
+                                        </form>
+                                    @endcan
                                 </div>
 
                                 

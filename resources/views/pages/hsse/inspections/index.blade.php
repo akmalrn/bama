@@ -121,7 +121,7 @@
                         <th class="py-12 px-16">Jadwal & Inspektor</th>
                         <th class="py-12 px-16">Hasil & Tagging</th>
                         <th class="py-12 px-16">Temuan / Catatan</th>
-                        <th class="py-12 px-20 text-end">Aksi</th>
+                        <th class="py-12 px-20 text-center" width="80">Aksi</th>
                     </tr>
                 </thead>
                 <tbody class="text-sm">
@@ -172,16 +172,18 @@
                                     </div>
                                 @endif
                             </td>
-                            <td class="py-12 px-20 text-end">
-                                @can('hsse.inspection.manage')
-                                    <form action="{{ route('dashboard-admin.hsse.inspections.destroy', $insp) }}" method="POST" onsubmit="return confirm('Hapus riwayat inspeksi {{ $insp->inspection_number }}?')">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="btn btn-sm btn-outline-danger radius-8 px-8 py-4" title="Hapus Inspeksi">
-                                            <iconify-icon icon="solar:trash-bin-trash-bold"></iconify-icon>
-                                        </button>
-                                    </form>
-                                @endcan
+                            <td class="py-12 px-20 text-center">
+                                <div class="d-flex align-items-center justify-content-center">
+                                    @can('hsse.inspection.manage')
+                                        <form action="{{ route('dashboard-admin.hsse.inspections.destroy', $insp) }}" method="POST" onsubmit="return confirm('Hapus riwayat inspeksi {{ $insp->inspection_number }}?')">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="w-32-px h-32-px rounded-circle bg-danger-focus text-danger-main d-inline-flex justify-content-center align-items-center border-0" title="Hapus Inspeksi">
+                                                <iconify-icon icon="mingcute:delete-2-line"></iconify-icon>
+                                            </button>
+                                        </form>
+                                    @endcan
+                                </div>
                             </td>
                         </tr>
                     @empty

@@ -254,17 +254,17 @@
                             </td>
                             <td class="pe-24 py-14 text-center">
                                 <div class="d-flex align-items-center justify-content-center gap-2">
-                                    <a href="{{ route('dashboard-admin.hcd.employees.show', $emp->id) }}" class="btn btn-sm btn-outline-primary p-6 radius-6" title="Profil 360">
-                                        <iconify-icon icon="iconamoon:eye-light" class="text-sm"></iconify-icon>
+                                    <a href="{{ route('dashboard-admin.hcd.employees.show', $emp->id) }}" class="w-32-px h-32-px rounded-circle bg-info-focus text-info-main d-inline-flex justify-content-center align-items-center" title="Profil 360">
+                                        <iconify-icon icon="solar:eye-bold-duotone"></iconify-icon>
                                     </a>
-                                    <button type="button" class="btn btn-sm btn-outline-secondary p-6 radius-6" onclick="openEditModal({{ json_encode($emp) }})" title="Edit Karyawan">
-                                        <iconify-icon icon="solar:pen-linear" class="text-sm"></iconify-icon>
+                                    <button type="button" class="w-32-px h-32-px rounded-circle bg-success-focus text-success-main d-inline-flex justify-content-center align-items-center border-0" onclick="openEditModal({{ json_encode($emp) }})" title="Edit Karyawan">
+                                        <iconify-icon icon="lucide:edit"></iconify-icon>
                                     </button>
                                     <form method="POST" action="{{ route('dashboard-admin.hcd.employees.destroy', $emp->id) }}" onsubmit="return confirm('Hapus data karyawan {{ $emp->name }}?');" class="d-inline">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" class="btn btn-sm btn-outline-danger p-6 radius-6" title="Hapus">
-                                            <iconify-icon icon="solar:trash-bin-trash-outline" class="text-sm"></iconify-icon>
+                                        <button type="submit" class="w-32-px h-32-px rounded-circle bg-danger-focus text-danger-main d-inline-flex justify-content-center align-items-center border-0" title="Hapus">
+                                            <iconify-icon icon="mingcute:delete-2-line"></iconify-icon>
                                         </button>
                                     </form>
                                 </div>

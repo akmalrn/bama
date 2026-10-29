@@ -1,9 +1,20 @@
+@php
+    $sidebarUser = auth()->user();
+    $isPmoRole = $sidebarUser && $sidebarUser->hasRole('pmo-manager');
+    $isSalesRole = $sidebarUser && $sidebarUser->hasAnyRole(['sales-director', 'sales-executive']);
+    $isFinanceRole = $sidebarUser && $sidebarUser->hasRole('finance-officer');
+    $isHcdRole = $sidebarUser && $sidebarUser->hasRole('hcd-manager');
+    $isHsseRole = $sidebarUser && $sidebarUser->hasRole('hsse-officer');
+    $isProcRole = $sidebarUser && $sidebarUser->hasRole('procurement-officer');
+    $isAssetRole = $sidebarUser && $sidebarUser->hasRole('asset-manager');
+@endphp
 <aside class="sidebar">
     <button type="button" class="sidebar-close-btn">
         <iconify-icon icon="radix-icons:cross-2"></iconify-icon>
     </button>
     <div>
-        <a href="{{ route('dashboard-admin.index') }}" class="sidebar-logo">
+        <a href="{{ $isPmoRole ? route('dashboard-admin.pmo.dashboard') : route('dashboard-admin.index') }}"
+            class="sidebar-logo">
             <img src="{{ asset($configuration->logo_dashboard ?? '') }}" alt="site logo" class="light-logo">
             <img src="{{ asset($configuration->logo_dashboard_2 ?? '') }}" alt="site logo" class="dark-logo">
             <img src="{{ asset($configuration->favicon_dashboard ?? '') }}" alt="site logo" class="logo-icon">
@@ -11,19 +22,90 @@
     </div>
     <div class="sidebar-menu-area">
         <ul class="sidebar-menu" id="sidebar-menu">
-            <li>
-                <a href="{{ route('dashboard-admin.index') }}">
-                    <iconify-icon icon="solar:home-smile-angle-outline" class="menu-icon"></iconify-icon>
-                    <span>Dashboard</span>
+            <li class="sidebar-menu-group-title">My Workspace</li>
+
+            <li class="{{ request()->routeIs('dashboard-admin.workspace.*') ? 'active-page' : '' }}">
+                <a href="{{ route('dashboard-admin.workspace.index') }}"
+                    class="d-flex align-items-center justify-content-between">
+                    <span class="d-flex align-items-center gap-2">
+                        <iconify-icon icon="solar:laptop-minimalistic-outline"
+                            class="menu-icon"></iconify-icon>
+                        <span>My Workbench</span>
+                    </span>
                 </a>
             </li>
 
-            <li class="sidebar-menu-group-title">Aplikasi</li>
-            @canany(['sales.dashboard.view', 'pmo.dashboard.view', 'finance.dashboard.view', 'hcd.dashboard.view',
-                'hsse.dashboard.view', 'procurement.dashboard.view', 'asset.dashboard.view'])
-            @endcanany
+            <li class="sidebar-menu-group-title">Dashboard</li>
 
-            
+            @if ($isPmoRole)
+                <li class="{{ request()->routeIs('dashboard-admin.pmo.dashboard') ? 'active-page' : '' }}">
+                    <a href="{{ route('dashboard-admin.pmo.dashboard') }}">
+                        <iconify-icon icon="solar:chart-square-outline"
+                            class="menu-icon"></iconify-icon>
+                        <span>PMO Dashboard</span>
+                    </a>
+                </li>
+            @elseif ($isSalesRole)
+                <li class="{{ request()->routeIs('dashboard-admin.sales.dashboard') ? 'active-page' : '' }}">
+                    <a href="{{ route('dashboard-admin.sales.dashboard') }}">
+                        <iconify-icon icon="solar:chart-square-outline"
+                            class="menu-icon"></iconify-icon>
+                        <span>Sales Dashboard</span>
+                    </a>
+                </li>
+            @elseif ($isFinanceRole)
+                <li class="{{ request()->routeIs('dashboard-admin.finance.dashboard') ? 'active-page' : '' }}">
+                    <a href="{{ route('dashboard-admin.finance.dashboard') }}">
+                        <iconify-icon icon="solar:chart-square-outline"
+                            class="menu-icon"></iconify-icon>
+                        <span>Finance Dashboard</span>
+                    </a>
+                </li>
+            @elseif ($isHcdRole)
+                <li class="{{ request()->routeIs('dashboard-admin.hcd.dashboard') ? 'active-page' : '' }}">
+                    <a href="{{ route('dashboard-admin.hcd.dashboard') }}">
+                        <iconify-icon icon="solar:chart-square-outline"
+                            class="menu-icon"></iconify-icon>
+                        <span>HCD Dashboard</span>
+                    </a>
+                </li>
+            @elseif ($isHsseRole)
+                <li class="{{ request()->routeIs('dashboard-admin.hsse.dashboard') ? 'active-page' : '' }}">
+                    <a href="{{ route('dashboard-admin.hsse.dashboard') }}">
+                        <iconify-icon icon="solar:chart-square-outline"
+                            class="menu-icon"></iconify-icon>
+                        <span>HSSE Dashboard</span>
+                    </a>
+                </li>
+            @elseif ($isProcRole)
+                <li class="{{ request()->routeIs('dashboard-admin.procurement.dashboard') ? 'active-page' : '' }}">
+                    <a href="{{ route('dashboard-admin.procurement.dashboard') }}">
+                        <iconify-icon icon="solar:chart-square-outline"
+                            class="menu-icon"></iconify-icon>
+                        <span>Procurement Dashboard</span>
+                    </a>
+                </li>
+            @elseif ($isAssetRole)
+                <li class="{{ request()->routeIs('dashboard-admin.assets.dashboard') ? 'active-page' : '' }}">
+                    <a href="{{ route('dashboard-admin.assets.dashboard') }}">
+                        <iconify-icon icon="solar:chart-square-outline"
+                            class="menu-icon"></iconify-icon>
+                        <span>Asset Dashboard</span>
+                    </a>
+                </li>
+            @else
+                <li class="{{ request()->routeIs('dashboard-admin.index') ? 'active-page' : '' }}">
+                    <a href="{{ route('dashboard-admin.index') }}">
+                        <iconify-icon icon="solar:home-smile-angle-outline"
+                            class="menu-icon"></iconify-icon>
+                        <span>HO Dashboard</span>
+                    </a>
+                </li>
+            @endif
+
+            <li class="sidebar-menu-group-title">Functional Departments</li>
+
+
             @canany(['sales.dashboard.view', 'sales.opportunity.view_all', 'sales.opportunity.view_own',
                 'sales.customer.view', 'sales.proposal.view', 'sales.activity.view'])
                 @php
@@ -114,7 +196,7 @@
                 </li>
             @endcanany
 
-            
+
             @canany(['pmo.dashboard.view', 'pmo.project.view_all', 'pmo.project.view_own', 'pmo.milestone.manage',
                 'pmo.wbs.manage', 'pmo.team.assign'])
                 @php
@@ -124,64 +206,106 @@
                         \App\Models\Project::STATUS_ON_PROGRESS,
                     )->count();
                 @endphp
-                <li class="dropdown {{ $isPmoActive ? 'dropdown-open open' : '' }}">
-                    <a href="javascript:void(0);" class="dropdown-toggle">
-                        <iconify-icon icon="solar:folder-with-files-outline" class="menu-icon"></iconify-icon>
-                        <span style="font-size: 13.5px;">Project Management (PMO)</span>
-                    </a>
-                    <ul class="sidebar-submenu {{ $isPmoActive ? 'show' : '' }}">
-                        @can('pmo.dashboard.view')
-                            <li class="{{ request()->routeIs('dashboard-admin.pmo.dashboard') ? 'active-page' : '' }}">
-                                <a href="{{ route('dashboard-admin.pmo.dashboard') }}">
-                                    <i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i>
-                                    PMO Dashboard
-                                </a>
-                            </li>
-                        @endcan
-                        @canany(['pmo.project.view_all', 'pmo.project.view_own'])
-                            <li class="{{ request()->routeIs('dashboard-admin.pmo.projects.*') ? 'active-page' : '' }}">
-                                <a href="{{ route('dashboard-admin.pmo.projects.index') }}"
-                                    class="d-flex align-items-center justify-content-between">
-                                    <span class="d-flex align-items-center gap-2">
-                                        <i class="ri-circle-fill circle-icon text-info-main w-auto"></i>
-                                        Project Register
-                                    </span>
-                                    <span
-                                        class="badge rounded-pill bg-info-600 text-white px-2 py-0 text-xs">{{ $sidebarActiveProjectCount }}</span>
-                                </a>
-                            </li>
-                        @endcanany
-                        @can('pmo.dashboard.view')
-                            <li class="{{ request()->routeIs('dashboard-admin.pmo.cost.*') ? 'active-page' : '' }}">
-                                <a href="{{ route('dashboard-admin.pmo.cost.index') }}">
-                                    <i class="ri-circle-fill circle-icon text-warning-main w-auto"></i>
-                                    Cost Management
-                                </a>
-                            </li>
-                        @endcan
-                        @can('pmo.milestone.manage')
-                            <li
-                                class="{{ request()->routeIs('dashboard-admin.pmo.planning.*') || request()->routeIs('dashboard-admin.pmo.milestones.*') ? 'active-page' : '' }}">
-                                <a href="{{ route('dashboard-admin.pmo.planning.index') }}">
-                                    <i class="ri-circle-fill circle-icon text-purple-main w-auto"></i>
-                                    Planning &amp; Scheduling
-                                </a>
-                            </li>
-                        @endcan
-                        @canany(['pmo.project.view_all', 'pmo.project.view_own'])
-                            <li
-                                class="{{ request()->routeIs('dashboard-admin.pmo.documents-handover.*') ? 'active-page' : '' }}">
-                                <a href="{{ route('dashboard-admin.pmo.documents-handover.index') }}">
-                                    <i class="ri-circle-fill circle-icon text-success-main w-auto"></i>
-                                    Project Documents &amp; Handover
-                                </a>
-                            </li>
-                        @endcanany
-                    </ul>
-                </li>
+                @if ($isPmoRole)
+                    {{-- Flat Menu for PMO (No Dropdown) --}}
+                    @canany(['pmo.project.view_all', 'pmo.project.view_own'])
+                        <li class="{{ request()->routeIs('dashboard-admin.pmo.projects.*') ? 'active-page' : '' }}">
+                            <a href="{{ route('dashboard-admin.pmo.projects.index') }}"
+                                class="d-flex align-items-center justify-content-between">
+                                <span class="d-flex align-items-center gap-2">
+                                    <iconify-icon icon="solar:folder-with-files-outline" class="menu-icon"></iconify-icon>
+                                    <span>Project Register</span>
+                                </span>
+                                <span
+                                    class="badge rounded-pill bg-info-600 text-white px-2 py-0 text-xs">{{ $sidebarActiveProjectCount }}</span>
+                            </a>
+                        </li>
+                    @endcanany
+                    @can('pmo.dashboard.view')
+                        <li class="{{ request()->routeIs('dashboard-admin.pmo.cost.*') ? 'active-page' : '' }}">
+                            <a href="{{ route('dashboard-admin.pmo.cost.index') }}">
+                                <iconify-icon icon="solar:dollar-minimalistic-outline" class="menu-icon"></iconify-icon>
+                                <span>Cost Management</span>
+                            </a>
+                        </li>
+                    @endcan
+                    @can('pmo.milestone.manage')
+                        <li
+                            class="{{ request()->routeIs('dashboard-admin.pmo.planning.*') || request()->routeIs('dashboard-admin.pmo.milestones.*') ? 'active-page' : '' }}">
+                            <a href="{{ route('dashboard-admin.pmo.planning.index') }}">
+                                <iconify-icon icon="solar:calendar-date-outline" class="menu-icon"></iconify-icon>
+                                <span>Planning &amp; Scheduling</span>
+                            </a>
+                        </li>
+                    @endcan
+                    @canany(['pmo.project.view_all', 'pmo.project.view_own'])
+                        <li class="{{ request()->routeIs('dashboard-admin.pmo.documents-handover.*') ? 'active-page' : '' }}">
+                            <a href="{{ route('dashboard-admin.pmo.documents-handover.index') }}">
+                                <iconify-icon icon="solar:document-text-outline" class="menu-icon"></iconify-icon>
+                                <span>Project Documents &amp; Handover</span>
+                            </a>
+                        </li>
+                    @endcanany
+                @else
+                    <li class="dropdown {{ $isPmoActive ? 'dropdown-open open' : '' }}">
+                        <a href="javascript:void(0);" class="dropdown-toggle">
+                            <iconify-icon icon="solar:folder-with-files-outline" class="menu-icon"></iconify-icon>
+                            <span style="font-size: 13.5px;">Project Management (PMO)</span>
+                        </a>
+                        <ul class="sidebar-submenu {{ $isPmoActive ? 'show' : '' }}">
+                            @can('pmo.dashboard.view')
+                                <li class="{{ request()->routeIs('dashboard-admin.pmo.dashboard') ? 'active-page' : '' }}">
+                                    <a href="{{ route('dashboard-admin.pmo.dashboard') }}">
+                                        <i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i>
+                                        PMO Dashboard
+                                    </a>
+                                </li>
+                            @endcan
+                            @canany(['pmo.project.view_all', 'pmo.project.view_own'])
+                                <li class="{{ request()->routeIs('dashboard-admin.pmo.projects.*') ? 'active-page' : '' }}">
+                                    <a href="{{ route('dashboard-admin.pmo.projects.index') }}"
+                                        class="d-flex align-items-center justify-content-between">
+                                        <span class="d-flex align-items-center gap-2">
+                                            <i class="ri-circle-fill circle-icon text-info-main w-auto"></i>
+                                            Project Register
+                                        </span>
+                                        <span
+                                            class="badge rounded-pill bg-info-600 text-white px-2 py-0 text-xs">{{ $sidebarActiveProjectCount }}</span>
+                                    </a>
+                                </li>
+                            @endcanany
+                            @can('pmo.dashboard.view')
+                                <li class="{{ request()->routeIs('dashboard-admin.pmo.cost.*') ? 'active-page' : '' }}">
+                                    <a href="{{ route('dashboard-admin.pmo.cost.index') }}">
+                                        <i class="ri-circle-fill circle-icon text-warning-main w-auto"></i>
+                                        Cost Management
+                                    </a>
+                                </li>
+                            @endcan
+                            @can('pmo.milestone.manage')
+                                <li
+                                    class="{{ request()->routeIs('dashboard-admin.pmo.planning.*') || request()->routeIs('dashboard-admin.pmo.milestones.*') ? 'active-page' : '' }}">
+                                    <a href="{{ route('dashboard-admin.pmo.planning.index') }}">
+                                        <i class="ri-circle-fill circle-icon text-purple-main w-auto"></i>
+                                        Planning &amp; Scheduling
+                                    </a>
+                                </li>
+                            @endcan
+                            @canany(['pmo.project.view_all', 'pmo.project.view_own'])
+                                <li
+                                    class="{{ request()->routeIs('dashboard-admin.pmo.documents-handover.*') ? 'active-page' : '' }}">
+                                    <a href="{{ route('dashboard-admin.pmo.documents-handover.index') }}">
+                                        <i class="ri-circle-fill circle-icon text-success-main w-auto"></i>
+                                        Project Documents &amp; Handover
+                                    </a>
+                                </li>
+                            @endcanany
+                        </ul>
+                    </li>
+                @endif
             @endcanany
 
-            
+
             @canany(['finance.dashboard.view', 'finance.budget_rab.view', 'finance.invoice.view',
                 'finance.vendor_bill.view', 'finance.tax.view'])
                 @php
@@ -232,8 +356,9 @@
                 </li>
             @endcanany
 
-            
-            @canany(['hcd.dashboard.view', 'hcd.employee.view', 'hcd.task.view', 'hcd.certification.manage', 'hcd.professional.view'])
+
+            @canany(['hcd.dashboard.view', 'hcd.employee.view', 'hcd.task.view', 'hcd.certification.manage',
+                'hcd.professional.view'])
                 @php
                     $isHcdActive = request()->routeIs('dashboard-admin.hcd.*');
                 @endphp
@@ -287,7 +412,7 @@
                 </li>
             @endcanany
 
-            
+
             @canany(['hsse.dashboard.view', 'hsse.permit.view', 'hsse.inspection.manage', 'hsse.incident.report'])
                 @php
                     $isHsseActive = request()->routeIs('dashboard-admin.hsse.*');
@@ -334,50 +459,58 @@
                 </li>
             @endcanany
 
-            
+
             @canany(['procurement.dashboard.view', 'procurement.vendor.manage', 'procurement.pr.create',
                 'procurement.po.view', 'procurement.logistic.track'])
-                <li class="dropdown">
+                @php
+                    $isProcActive = request()->routeIs('dashboard-admin.procurement.*');
+                @endphp
+                <li class="dropdown {{ $isProcActive ? 'dropdown-open open' : '' }}">
                     <a href="javascript:void(0);" class="dropdown-toggle">
                         <iconify-icon icon="solar:box-minimalistic-outline" class="menu-icon"></iconify-icon>
                         <span>Procurement & Logistic</span>
                     </a>
-                    <ul class="sidebar-submenu">
+                    <ul class="sidebar-submenu {{ $isProcActive ? 'show' : '' }}">
                         @can('procurement.dashboard.view')
-                            <li>
-                                <a href="javascript:void(0);" class="text-secondary-light">
+                            <li
+                                class="{{ request()->routeIs('dashboard-admin.procurement.dashboard') ? 'active-page' : '' }}">
+                                <a href="{{ route('dashboard-admin.procurement.dashboard') }}">
                                     <i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i>
                                     Dashboard Procurement
                                 </a>
                             </li>
                         @endcan
                         @can('procurement.vendor.manage')
-                            <li>
-                                <a href="javascript:void(0);" class="text-secondary-light">
+                            <li
+                                class="{{ request()->routeIs('dashboard-admin.procurement.vendors.*') ? 'active-page' : '' }}">
+                                <a href="{{ route('dashboard-admin.procurement.vendors.index') }}">
                                     <i class="ri-circle-fill circle-icon text-info-main w-auto"></i>
                                     Vendor Management
                                 </a>
                             </li>
                         @endcan
                         @can('procurement.pr.create')
-                            <li>
-                                <a href="javascript:void(0);" class="text-secondary-light">
+                            <li
+                                class="{{ request()->routeIs('dashboard-admin.procurement.purchase-requests.*') ? 'active-page' : '' }}">
+                                <a href="{{ route('dashboard-admin.procurement.purchase-requests.index') }}">
                                     <i class="ri-circle-fill circle-icon text-warning-main w-auto"></i>
                                     Purchase Request (PR)
                                 </a>
                             </li>
                         @endcan
                         @can('procurement.po.view')
-                            <li>
-                                <a href="javascript:void(0);" class="text-secondary-light">
+                            <li
+                                class="{{ request()->routeIs('dashboard-admin.procurement.purchase-orders.*') ? 'active-page' : '' }}">
+                                <a href="{{ route('dashboard-admin.procurement.purchase-orders.index') }}">
                                     <i class="ri-circle-fill circle-icon text-success-main w-auto"></i>
                                     Purchase Order (PO)
                                 </a>
                             </li>
                         @endcan
                         @can('procurement.logistic.track')
-                            <li>
-                                <a href="javascript:void(0);" class="text-secondary-light">
+                            <li
+                                class="{{ request()->routeIs('dashboard-admin.procurement.logistics.*') ? 'active-page' : '' }}">
+                                <a href="{{ route('dashboard-admin.procurement.logistics.index') }}">
                                     <i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i>
                                     Ekspedisi & Logistik
                                 </a>
@@ -390,7 +523,7 @@
             {{-- 7. DEPARTEMEN ASSET MANAGEMENT --}}
             @canany(['asset.dashboard.view', 'asset.inventory.view', 'asset.allocation.request',
                 'asset.allocation.approve', 'asset.maintenance.schedule'])
-                <li class="dropdown">
+                <li class="dropdown {{ request()->routeIs('dashboard-admin.assets.*') ? 'open' : '' }}">
                     <a href="javascript:void(0);" class="dropdown-toggle">
                         <iconify-icon icon="solar:tuning-2-outline" class="menu-icon"></iconify-icon>
                         <span>Asset Management</span>
@@ -398,7 +531,8 @@
                     <ul class="sidebar-submenu">
                         @can('asset.dashboard.view')
                             <li>
-                                <a href="javascript:void(0);" class="text-secondary-light">
+                                <a href="{{ route('dashboard-admin.assets.dashboard') }}"
+                                    class="{{ request()->routeIs('dashboard-admin.assets.dashboard') ? 'active-page' : '' }}">
                                     <i class="ri-circle-fill circle-icon text-primary-600 w-auto"></i>
                                     Dashboard Asset
                                 </a>
@@ -406,7 +540,8 @@
                         @endcan
                         @can('asset.inventory.view')
                             <li>
-                                <a href="javascript:void(0);" class="text-secondary-light">
+                                <a href="{{ route('dashboard-admin.assets.inventory.index') }}"
+                                    class="{{ request()->routeIs('dashboard-admin.assets.inventory.*') ? 'active-page' : '' }}">
                                     <i class="ri-circle-fill circle-icon text-danger-main w-auto"></i>
                                     Inventaris Mesin & Alat
                                 </a>
@@ -414,7 +549,8 @@
                         @endcan
                         @can('asset.allocation.request')
                             <li>
-                                <a href="javascript:void(0);" class="text-secondary-light">
+                                <a href="{{ route('dashboard-admin.assets.allocations.index') }}"
+                                    class="{{ request()->routeIs('dashboard-admin.assets.allocations.*') ? 'active-page' : '' }}">
                                     <i class="ri-circle-fill circle-icon text-warning-main w-auto"></i>
                                     Alokasi Project
                                 </a>
@@ -422,7 +558,8 @@
                         @endcan
                         @can('asset.maintenance.schedule')
                             <li>
-                                <a href="javascript:void(0);" class="text-secondary-light">
+                                <a href="{{ route('dashboard-admin.assets.maintenance.index') }}"
+                                    class="{{ request()->routeIs('dashboard-admin.assets.maintenance.*') ? 'active-page' : '' }}">
                                     <i class="ri-circle-fill circle-icon text-success-main w-auto"></i>
                                     Jadwal Maintenance
                                 </a>
@@ -440,41 +577,43 @@
                     </a>
                 </li>
             @endcan --}}
-            <li class="sidebar-menu-group-title">User Management</li>
+            @canany(['GOD-To_aDmIn', 'lihat role', 'lihat user'])
+                <li class="sidebar-menu-group-title">User Management</li>
 
-            @can('GOD-To_aDmIn')
-                <li>
-                    <a href="{{ route('dashboard-admin.permissions.index') }}"
-                        class="{{ request()->routeIs('dashboard-admin.permissions.*') ? 'active-page' : '' }}">
-                        <iconify-icon icon="solar:shield-keyhole-outline" class="menu-icon"></iconify-icon>
-                        <span>Permission</span>
-                    </a>
-                </li>
-            @endcan
+                @can('GOD-To_aDmIn')
+                    <li>
+                        <a href="{{ route('dashboard-admin.permissions.index') }}"
+                            class="{{ request()->routeIs('dashboard-admin.permissions.*') ? 'active-page' : '' }}">
+                            <iconify-icon icon="solar:shield-keyhole-outline" class="menu-icon"></iconify-icon>
+                            <span>Permission</span>
+                        </a>
+                    </li>
+                @endcan
 
-            @can('lihat role')
-                <li>
-                    <a href="{{ route('dashboard-admin.roles.index') }}"
-                        class="{{ request()->routeIs('dashboard-admin.roles.*') ? 'active-page' : '' }}">
-                        <iconify-icon icon="solar:user-id-outline" class="menu-icon"></iconify-icon>
-                        <span>Role</span>
-                    </a>
-                </li>
-            @endcan
-            @can('lihat user')
-                <li id="menu-users">
-                    <a href="{{ route('dashboard-admin.users.index') }}"
-                        class="{{ request()->routeIs('dashboard-admin.users.*') ? 'active-page' : '' }}">
-                        <iconify-icon icon="solar:users-group-rounded-outline" class="menu-icon"></iconify-icon>
-                        <span>User</span>
-                    </a>
-                </li>
-            @endcan
+                @can('lihat role')
+                    <li>
+                        <a href="{{ route('dashboard-admin.roles.index') }}"
+                            class="{{ request()->routeIs('dashboard-admin.roles.*') ? 'active-page' : '' }}">
+                            <iconify-icon icon="solar:user-id-outline" class="menu-icon"></iconify-icon>
+                            <span>Role</span>
+                        </a>
+                    </li>
+                @endcan
 
-            <li class="sidebar-menu-group-title">Pengaturan Website</li>
-
-
+                @can('lihat user')
+                    <li id="menu-users">
+                        <a href="{{ route('dashboard-admin.users.index') }}"
+                            class="{{ request()->routeIs('dashboard-admin.users.*') ? 'active-page' : '' }}">
+                            <iconify-icon icon="solar:users-group-rounded-outline" class="menu-icon"></iconify-icon>
+                            <span>User</span>
+                        </a>
+                    </li>
+                @endcan
+            @endcanany
             @can('lihat pengaturan-website')
+                <li class="sidebar-menu-group-title">Pengaturan Website</li>
+
+
                 <li>
                     <a href="{{ route('dashboard-admin.configurations.create') }}">
                         <iconify-icon icon="solar:settings-bold" class="menu-icon"></iconify-icon>

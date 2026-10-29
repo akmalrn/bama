@@ -226,8 +226,19 @@ Route::post('/logout', [LogoutController::class, 'logout'])->name('logout');
 
 Route::middleware(['auth'])->prefix('dashboard-admin')->name('dashboard-admin.')->group(function () {
     Route::get('/', [DashboardController::class, 'index'])->name('index');
+
+    // My Workspace (Personal Workbench)
+    Route::prefix('workspace')->name('workspace.')->group(function () {
+        Route::get('/', [\App\Http\Controllers\MyWorkspaceController::class, 'index'])->name('index');
+        Route::post('/timesheet', [\App\Http\Controllers\MyWorkspaceController::class, 'storeTimesheet'])->name('timesheet.store');
+        Route::patch('/tasks/{task}/status', [\App\Http\Controllers\MyWorkspaceController::class, 'updateTaskStatus'])->name('task.status');
+    });
+
     Route::get('/sales/dashboard', [\App\Http\Controllers\SalesDashboardController::class, 'index'])
         ->name('sales.dashboard')
+        ->middleware('permission:sales.dashboard.view');
+    Route::get('/sales/dashboard/export', [\App\Http\Controllers\SalesDashboardController::class, 'export'])
+        ->name('sales.dashboard.export')
         ->middleware('permission:sales.dashboard.view');
 
     // Sales CRM - Customers
@@ -259,6 +270,9 @@ Route::middleware(['auth'])->prefix('dashboard-admin')->name('dashboard-admin.')
     Route::prefix('sales/opportunities')->name('sales.opportunities.')->group(function () {
         Route::get('/', [\App\Http\Controllers\OpportunityController::class, 'index'])
             ->name('index')
+            ->middleware('permission:sales.opportunity.view_all|sales.opportunity.view_own');
+        Route::get('/export', [\App\Http\Controllers\OpportunityController::class, 'export'])
+            ->name('export')
             ->middleware('permission:sales.opportunity.view_all|sales.opportunity.view_own');
         Route::get('/create', [\App\Http\Controllers\OpportunityController::class, 'create'])
             ->name('create')
@@ -644,6 +658,131 @@ Route::middleware(['auth'])->prefix('dashboard-admin')->name('dashboard-admin.')
             Route::delete('/{incident}', [\App\Http\Controllers\HsseIncidentController::class, 'destroy'])
                 ->name('destroy')
                 ->middleware('permission:hsse.incident.report');
+        });
+    });
+
+    // Departemen Procurement & Logistics
+    Route::prefix('procurement')->name('procurement.')->group(function () {
+        // 1. Dashboard
+        Route::get('/dashboard', [\App\Http\Controllers\ProcurementDashboardController::class, 'index'])
+            ->name('dashboard')
+            ->middleware('permission:procurement.dashboard.view');
+
+        // 2. Vendor Management
+        Route::prefix('vendors')->name('vendors.')->group(function () {
+            Route::get('/', [\App\Http\Controllers\ProcurementVendorController::class, 'index'])
+                ->name('index')
+                ->middleware('permission:procurement.vendor.manage');
+            Route::post('/', [\App\Http\Controllers\ProcurementVendorController::class, 'store'])
+                ->name('store')
+                ->middleware('permission:procurement.vendor.manage');
+            Route::put('/{vendor}', [\App\Http\Controllers\ProcurementVendorController::class, 'update'])
+                ->name('update')
+                ->middleware('permission:procurement.vendor.manage');
+            Route::delete('/{vendor}', [\App\Http\Controllers\ProcurementVendorController::class, 'destroy'])
+                ->name('destroy')
+                ->middleware('permission:procurement.vendor.manage');
+        });
+
+        // 3. Purchase Request (PR)
+        Route::prefix('purchase-requests')->name('purchase-requests.')->group(function () {
+            Route::get('/', [\App\Http\Controllers\PurchaseRequestController::class, 'index'])
+                ->name('index')
+                ->middleware('permission:procurement.pr.create|procurement.pr.approve');
+            Route::post('/', [\App\Http\Controllers\PurchaseRequestController::class, 'store'])
+                ->name('store')
+                ->middleware('permission:procurement.pr.create');
+            Route::patch('/{purchaseRequest}/status', [\App\Http\Controllers\PurchaseRequestController::class, 'updateStatus'])
+                ->name('status')
+                ->middleware('permission:procurement.pr.approve');
+            Route::delete('/{purchaseRequest}', [\App\Http\Controllers\PurchaseRequestController::class, 'destroy'])
+                ->name('destroy')
+                ->middleware('permission:procurement.pr.create');
+        });
+
+        // 4. Purchase Order (PO)
+        Route::prefix('purchase-orders')->name('purchase-orders.')->group(function () {
+            Route::get('/', [\App\Http\Controllers\PurchaseOrderController::class, 'index'])
+                ->name('index')
+                ->middleware('permission:procurement.po.view');
+            Route::post('/', [\App\Http\Controllers\PurchaseOrderController::class, 'store'])
+                ->name('store')
+                ->middleware('permission:procurement.po.create');
+            Route::get('/{purchaseOrder}', [\App\Http\Controllers\PurchaseOrderController::class, 'show'])
+                ->name('show')
+                ->middleware('permission:procurement.po.view');
+            Route::patch('/{purchaseOrder}/status', [\App\Http\Controllers\PurchaseOrderController::class, 'updateStatus'])
+                ->name('status')
+                ->middleware('permission:procurement.po.create');
+            Route::delete('/{purchaseOrder}', [\App\Http\Controllers\PurchaseOrderController::class, 'destroy'])
+                ->name('destroy')
+                ->middleware('permission:procurement.po.create');
+        });
+
+        // 5. Ekspedisi & Logistik
+        Route::prefix('logistics')->name('logistics.')->group(function () {
+            Route::get('/', [\App\Http\Controllers\LogisticsController::class, 'index'])
+                ->name('index')
+                ->middleware('permission:procurement.logistic.track');
+            Route::post('/', [\App\Http\Controllers\LogisticsController::class, 'store'])
+                ->name('store')
+                ->middleware('permission:procurement.logistic.track');
+            Route::patch('/{delivery}/status', [\App\Http\Controllers\LogisticsController::class, 'updateStatus'])
+                ->name('status')
+                ->middleware('permission:procurement.logistic.track');
+            Route::delete('/{delivery}', [\App\Http\Controllers\LogisticsController::class, 'destroy'])
+                ->name('destroy')
+                ->middleware('permission:procurement.logistic.track');
+        });
+    });
+
+    // Departemen Asset Management (Mesin, Peralatan & Kalibrasi)
+    Route::prefix('assets')->name('assets.')->group(function () {
+        // 1. Dashboard Asset
+        Route::get('/dashboard', [\App\Http\Controllers\AssetDashboardController::class, 'index'])
+            ->name('dashboard')
+            ->middleware('permission:asset.dashboard.view');
+
+        // 2. Inventaris Mesin & Alat
+        Route::prefix('inventory')->name('inventory.')->group(function () {
+            Route::get('/', [\App\Http\Controllers\AssetInventoryController::class, 'index'])
+                ->name('index')
+                ->middleware('permission:asset.inventory.view');
+            Route::post('/', [\App\Http\Controllers\AssetInventoryController::class, 'store'])
+                ->name('store')
+                ->middleware('permission:asset.inventory.manage');
+            Route::put('/{asset}', [\App\Http\Controllers\AssetInventoryController::class, 'update'])
+                ->name('update')
+                ->middleware('permission:asset.inventory.manage');
+            Route::delete('/{asset}', [\App\Http\Controllers\AssetInventoryController::class, 'destroy'])
+                ->name('destroy')
+                ->middleware('permission:asset.inventory.manage');
+        });
+
+        // 3. Alokasi Project Lapangan
+        Route::prefix('allocations')->name('allocations.')->group(function () {
+            Route::get('/', [\App\Http\Controllers\AssetAllocationController::class, 'index'])
+                ->name('index')
+                ->middleware('permission:asset.allocation.request|asset.allocation.approve');
+            Route::post('/', [\App\Http\Controllers\AssetAllocationController::class, 'store'])
+                ->name('store')
+                ->middleware('permission:asset.allocation.request');
+            Route::post('/{allocation}/return', [\App\Http\Controllers\AssetAllocationController::class, 'returnAsset'])
+                ->name('return')
+                ->middleware('permission:asset.allocation.approve');
+        });
+
+        // 4. Jadwal Maintenance & Kalibrasi
+        Route::prefix('maintenance')->name('maintenance.')->group(function () {
+            Route::get('/', [\App\Http\Controllers\AssetMaintenanceController::class, 'index'])
+                ->name('index')
+                ->middleware('permission:asset.maintenance.schedule');
+            Route::post('/', [\App\Http\Controllers\AssetMaintenanceController::class, 'store'])
+                ->name('store')
+                ->middleware('permission:asset.maintenance.schedule');
+            Route::post('/{maintenance}/complete', [\App\Http\Controllers\AssetMaintenanceController::class, 'complete'])
+                ->name('complete')
+                ->middleware('permission:asset.maintenance.schedule');
         });
     });
 

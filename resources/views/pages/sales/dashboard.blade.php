@@ -83,10 +83,43 @@
             </a>
         </div>
 
-        {{-- Export Button --}}
-        <button type="button" class="btn btn-outline-secondary btn-sm radius-8 px-12 py-6 text-xs d-flex align-items-center gap-1" onclick="window.print()">
-            <iconify-icon icon="solar:download-linear"></iconify-icon> Export
-        </button>
+        {{-- Export Dropdown --}}
+        <div class="dropdown">
+            <button class="btn btn-outline-secondary btn-sm radius-8 px-12 py-6 text-xs d-flex align-items-center gap-1 dropdown-toggle"
+                    type="button"
+                    id="exportSalesDropdown"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false">
+                <iconify-icon icon="solar:download-linear"></iconify-icon> Export
+            </button>
+            <ul class="dropdown-menu dropdown-menu-end shadow-sm border border-neutral-200 radius-8 p-8" aria-labelledby="exportSalesDropdown">
+                <li class="dropdown-header text-xxs text-uppercase fw-semibold text-secondary-light px-12 py-4">
+                    Format ({{ $periodLabel }})
+                </li>
+                <li>
+                    <a class="dropdown-item radius-6 px-12 py-6 text-xs d-flex align-items-center gap-2"
+                       href="{{ route('dashboard-admin.sales.dashboard.export', ['type' => 'excel', 'period' => $period]) }}">
+                        <iconify-icon icon="vscode-icons:file-type-excel" class="text-base flex-shrink-0"></iconify-icon>
+                        <div>
+                            <div class="fw-semibold text-primary-light">Export ke Excel (.csv)</div>
+                            <small class="text-secondary-light text-xxs">Data &amp; KPI {{ strtolower($periodLabel) }}</small>
+                        </div>
+                    </a>
+                </li>
+                <li><hr class="dropdown-divider my-4"></li>
+                <li>
+                    <a class="dropdown-item radius-6 px-12 py-6 text-xs d-flex align-items-center gap-2"
+                       href="{{ route('dashboard-admin.sales.dashboard.export', ['type' => 'pdf', 'period' => $period]) }}"
+                       target="_blank">
+                        <iconify-icon icon="vscode-icons:file-type-pdf2" class="text-base flex-shrink-0"></iconify-icon>
+                        <div>
+                            <div class="fw-semibold text-primary-light">Export &amp; Unduh PDF</div>
+                            <small class="text-secondary-light text-xxs">Unduh file PDF langsung &amp; cetak laporan</small>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+        </div>
 
         {{-- New Opportunity Button --}}
         <a href="{{ route('dashboard-admin.sales.opportunities.index', ['open_create' => 1]) }}"
@@ -97,24 +130,24 @@
     </div>
 </div>
 
-{{-- SECTION 1: 4 KPI SUMMARY CARDS (COMPACT & PROPORTIONAL) --}}
+{{-- SECTION 1: 4 KPI SUMMARY CARDS (DYNAMIC FROM DATABASE) --}}
 @php
-    $dispActiveVal = $activePipelineValue > 0 ? $activePipelineValue : 7750000000;
-    $dispActiveCount = $activePipelineCount > 0 ? $activePipelineCount : 4;
+    $dispActiveVal = (float) $activePipelineValue;
+    $dispActiveCount = (int) $activePipelineCount;
 
-    $dispPropVal = $proposalsValue > 0 ? $proposalsValue : 8950000000;
-    $dispPropCount = $proposalsCount > 0 ? $proposalsCount : 4;
+    $dispPropVal = (float) $proposalsValue;
+    $dispPropCount = (int) $proposalsCount;
 
-    $dispWonVal = $closedWonValue > 0 ? $closedWonValue : 1850000000;
-    $dispWonCount = $closedWonCount > 0 ? $closedWonCount : 1;
+    $dispWonVal = (float) $closedWonValue;
+    $dispWonCount = (int) $closedWonCount;
 
-    $dispWinRate = $winRate > 0 ? $winRate : 100.0;
+    $dispWinRate = (float) $winRate;
 @endphp
 
 <div class="row g-3 mb-20">
     {{-- KPI 1: Pipeline Aktif --}}
     <div class="col-xl-3 col-sm-6">
-        <div class="card radius-12 border border-neutral-200 shadow-sm p-16 bg-white sales-kpi-card h-100">
+        <div class="card radius-12 border border-neutral-200 shadow-sm p-16 sales-kpi-card h-100">
             <div class="d-flex align-items-center justify-content-between mb-8">
                 <span class="text-xs fw-bold text-uppercase tracking-wider text-secondary-light">Pipeline Aktif</span>
                 <div class="w-32-px h-32-px radius-8 d-flex justify-content-center align-items-center bg-primary-50 text-primary-600 text-lg flex-shrink-0">
@@ -123,19 +156,25 @@
             </div>
             <div class="mb-8">
                 <h5 class="fw-bold text-primary-light mb-0 text-nowrap" title="Rp {{ number_format($dispActiveVal, 0, ',', '.') }}">
-                    Rp {{ number_format($dispActiveVal / 1000000000, 2, ',', '.') }} M
+                    @if ($dispActiveVal >= 1000000000)
+                        Rp {{ number_format($dispActiveVal / 1000000000, 2, ',', '.') }} M
+                    @elseif ($dispActiveVal >= 1000000)
+                        Rp {{ number_format($dispActiveVal / 1000000, 2, ',', '.') }} Jt
+                    @else
+                        Rp {{ number_format($dispActiveVal, 0, ',', '.') }}
+                    @endif
                 </h5>
             </div>
             <div class="d-flex align-items-center justify-content-between pt-8 border-top text-xs text-secondary-light">
                 <span>{{ $dispActiveCount }} opportunity aktif</span>
-                <span class="badge bg-success-50 text-success-600 border border-success-200 px-6 py-2 radius-4 text-2xs fw-bold">↗ 18,6%</span>
+                <span class="badge bg-primary-50 text-primary-600 border border-primary-200 px-6 py-2 radius-4 text-2xs fw-bold">Aktif</span>
             </div>
         </div>
     </div>
 
     {{-- KPI 2: Proposal Terkirim --}}
     <div class="col-xl-3 col-sm-6">
-        <div class="card radius-12 border border-neutral-200 shadow-sm p-16 bg-white sales-kpi-card h-100">
+        <div class="card radius-12 border border-neutral-200 shadow-sm p-16 sales-kpi-card h-100">
             <div class="d-flex align-items-center justify-content-between mb-8">
                 <span class="text-xs fw-bold text-uppercase tracking-wider text-secondary-light">Proposal Terkirim</span>
                 <div class="w-32-px h-32-px radius-8 d-flex justify-content-center align-items-center bg-danger-50 text-danger-main text-lg flex-shrink-0">
@@ -144,19 +183,25 @@
             </div>
             <div class="mb-8">
                 <h5 class="fw-bold text-primary-light mb-0 text-nowrap" title="Rp {{ number_format($dispPropVal, 0, ',', '.') }}">
-                    Rp {{ number_format($dispPropVal / 1000000000, 2, ',', '.') }} M
+                    @if ($dispPropVal >= 1000000000)
+                        Rp {{ number_format($dispPropVal / 1000000000, 2, ',', '.') }} M
+                    @elseif ($dispPropVal >= 1000000)
+                        Rp {{ number_format($dispPropVal / 1000000, 2, ',', '.') }} Jt
+                    @else
+                        Rp {{ number_format($dispPropVal, 0, ',', '.') }}
+                    @endif
                 </h5>
             </div>
             <div class="d-flex align-items-center justify-content-between pt-8 border-top text-xs text-secondary-light">
-                <span>{{ $dispPropCount }} proposal bulan ini</span>
-                <span class="badge bg-success-50 text-success-600 border border-success-200 px-6 py-2 radius-4 text-2xs fw-bold">↗ 12,4%</span>
+                <span>{{ $dispPropCount }} proposal {{ strtolower($periodLabel) }}</span>
+                <span class="badge bg-danger-50 text-danger-main border border-danger-200 px-6 py-2 radius-4 text-2xs fw-bold">{{ $period === 'bulan_ini' ? 'Bulan Ini' : ($period === 'kuartal_ini' ? 'Kuartal' : 'Tahun') }}</span>
             </div>
         </div>
     </div>
 
     {{-- KPI 3: Closed Won --}}
     <div class="col-xl-3 col-sm-6">
-        <div class="card radius-12 border border-neutral-200 shadow-sm p-16 bg-white sales-kpi-card h-100">
+        <div class="card radius-12 border border-neutral-200 shadow-sm p-16 sales-kpi-card h-100">
             <div class="d-flex align-items-center justify-content-between mb-8">
                 <span class="text-xs fw-bold text-uppercase tracking-wider text-success-main">Closed Won</span>
                 <div class="w-32-px h-32-px radius-8 d-flex justify-content-center align-items-center bg-success-50 text-success-600 text-lg flex-shrink-0">
@@ -165,19 +210,25 @@
             </div>
             <div class="mb-8">
                 <h5 class="fw-bold text-success-main mb-0 text-nowrap" title="Rp {{ number_format($dispWonVal, 0, ',', '.') }}">
-                    Rp {{ number_format($dispWonVal / 1000000000, 2, ',', '.') }} M
+                    @if ($dispWonVal >= 1000000000)
+                        Rp {{ number_format($dispWonVal / 1000000000, 2, ',', '.') }} M
+                    @elseif ($dispWonVal >= 1000000)
+                        Rp {{ number_format($dispWonVal / 1000000, 2, ',', '.') }} Jt
+                    @else
+                        Rp {{ number_format($dispWonVal, 0, ',', '.') }}
+                    @endif
                 </h5>
             </div>
             <div class="d-flex align-items-center justify-content-between pt-8 border-top text-xs text-secondary-light">
                 <span>{{ $dispWonCount }} kontrak berhasil</span>
-                <span class="badge bg-success-50 text-success-600 border border-success-200 px-6 py-2 radius-4 text-2xs fw-bold">↗ 9,2%</span>
+                <span class="badge bg-success-50 text-success-600 border border-success-200 px-6 py-2 radius-4 text-2xs fw-bold">Won</span>
             </div>
         </div>
     </div>
 
     {{-- KPI 4: Win Rate --}}
     <div class="col-xl-3 col-sm-6">
-        <div class="card radius-12 border border-neutral-200 shadow-sm p-16 bg-white sales-kpi-card h-100">
+        <div class="card radius-12 border border-neutral-200 shadow-sm p-16 sales-kpi-card h-100">
             <div class="d-flex align-items-center justify-content-between mb-8">
                 <span class="text-xs fw-bold text-uppercase tracking-wider text-purple-main">Win Rate</span>
                 <div class="w-32-px h-32-px radius-8 d-flex justify-content-center align-items-center bg-purple-50 text-purple-main text-lg flex-shrink-0">
@@ -191,7 +242,9 @@
             </div>
             <div class="d-flex align-items-center justify-content-between pt-8 border-top text-xs text-secondary-light">
                 <span>Target kuartal 35%</span>
-                <span class="badge bg-warning-50 text-warning-700 border border-warning-200 px-6 py-2 radius-4 text-2xs fw-bold">Optimal</span>
+                <span class="badge {{ $dispWinRate >= 35 ? 'bg-success-50 text-success-700 border-success-200' : 'bg-warning-50 text-warning-700 border-warning-200' }} border px-6 py-2 radius-4 text-2xs fw-bold">
+                    {{ $dispWinRate >= 35 ? 'Optimal' : 'Needs Review' }}
+                </span>
             </div>
         </div>
     </div>
@@ -201,16 +254,17 @@
 <div class="row g-3 mb-20">
     {{-- Left: Performa Penjualan Area Chart --}}
     <div class="col-lg-8">
-        <div class="card radius-12 border border-neutral-200 shadow-sm bg-white h-100">
+        <div class="card radius-12 border border-neutral-200 shadow-sm h-100">
             <div class="card-header border-bottom py-12 px-16 d-flex justify-content-between align-items-center flex-wrap gap-2">
                 <div>
                     <h6 class="fw-bold text-primary-light mb-0 text-sm">Performa Penjualan &amp; Nilai Deal</h6>
                     <span class="text-2xs text-secondary-light">Tren nominal proposal terkirim vs deal closed won</span>
                 </div>
                 <div class="d-flex align-items-center gap-2">
-                    <select class="form-select form-select-sm radius-6 px-10 py-4 text-xs bg-white border-neutral-300" style="width: 80px;">
-                        <option>2026</option>
-                        <option>2025</option>
+                    <select id="chartYearSelect" class="form-select form-select-sm radius-6 px-10 py-4 text-xs border-neutral-300 fw-semibold text-primary-light" style="width: 85px;">
+                        @foreach ($availableYears as $yr)
+                            <option value="{{ $yr }}" {{ $yr == $selectedYear ? 'selected' : '' }}>{{ $yr }}</option>
+                        @endforeach
                     </select>
                 </div>
             </div>
@@ -237,16 +291,16 @@
     {{-- Right: Sales Funnel Horizontal Bars --}}
     @php
         $funnelStages = [
-            ['name' => '1. Qualification', 'color' => '#64748b', 'count' => $salesFunnel['qualification']['count'] ?: 24, 'pct' => 100],
-            ['name' => '2. Need Analysis', 'color' => '#0284c7', 'count' => $salesFunnel['need_analysis']['count'] ?: 18, 'pct' => 75],
-            ['name' => '3. Tender / RFQ', 'color' => '#d97706', 'count' => $salesFunnel['tender_rfq']['count'] ?? 15, 'pct' => 62],
-            ['name' => '4. Proposal Submitted', 'color' => '#487fff', 'count' => $salesFunnel['proposal_submitted']['count'] ?: 13, 'pct' => 54],
-            ['name' => '5. Negotiation', 'color' => '#7c3aed', 'count' => $salesFunnel['negotiation']['count'] ?: 8, 'pct' => 33],
-            ['name' => 'Closed Won', 'color' => '#16a34a', 'count' => $salesFunnel['closed_won']['count'] ?: 4, 'pct' => 16],
+            ['name' => '1. Qualification', 'color' => '#64748b', 'count' => ($salesFunnel['qualification']['count'] ?? 0) ?: 24, 'pct' => 100],
+            ['name' => '2. Need Analysis', 'color' => '#0284c7', 'count' => ($salesFunnel['need_analysis']['count'] ?? 0) ?: 18, 'pct' => 75],
+            ['name' => '3. Tender / RFQ', 'color' => '#d97706', 'count' => ($salesFunnel['tender_rfq']['count'] ?? 0) ?: 15, 'pct' => 62],
+            ['name' => '4. Proposal Submitted', 'color' => '#487fff', 'count' => ($salesFunnel['proposal_submitted']['count'] ?? 0) ?: 13, 'pct' => 54],
+            ['name' => '5. Negotiation', 'color' => '#7c3aed', 'count' => ($salesFunnel['negotiation']['count'] ?? 0) ?: 8, 'pct' => 33],
+            ['name' => 'Closed Won', 'color' => '#16a34a', 'count' => ($salesFunnel['closed_won']['count'] ?? 0) ?: 4, 'pct' => 16],
         ];
     @endphp
     <div class="col-lg-4">
-        <div class="card radius-12 border border-neutral-200 shadow-sm bg-white h-100 d-flex flex-column justify-content-between">
+        <div class="card radius-12 border border-neutral-200 shadow-sm h-100 d-flex flex-column justify-content-between">
             <div class="card-header border-bottom py-12 px-16 d-flex justify-content-between align-items-center">
                 <div>
                     <h6 class="fw-bold text-primary-light mb-0 text-sm">Sales Funnel</h6>
@@ -280,61 +334,8 @@
     </div>
 </div>
 
-{{-- SECTION 3: OPPORTUNITY PRIORITAS (STANDAR TABEL WOWDASH) --}}
-@php
-    $samplePriorities = [
-        [
-            'title' => 'Spherical Tank Cleaning - CO2',
-            'customer' => 'PT Kaltim Parna Industri · Bontang',
-            'owner_initial' => 'AR',
-            'owner_name' => 'Andi R.',
-            'value' => 'Rp 2,40 M',
-            'stage' => 'Negotiation',
-            'stage_color' => '#7c3aed',
-            'stage_badge' => 'bg-purple-50 text-purple-700 border border-purple-200',
-            'next_step' => 'Finalisasi komersial',
-            'target_close' => '22.10.2026'
-        ],
-        [
-            'title' => 'OLSS Ammonia Converter',
-            'customer' => 'PT Pupuk Sriwidjaja · Palembang',
-            'owner_initial' => 'JS',
-            'owner_name' => 'Juliyanto',
-            'value' => 'Rp 2,50 M',
-            'stage' => 'Proposal Submitted',
-            'stage_color' => '#487fff',
-            'stage_badge' => 'bg-primary-50 text-primary-700 border border-primary-200',
-            'next_step' => 'Follow-up evaluasi',
-            'target_close' => '28.10.2026'
-        ],
-        [
-            'title' => 'Heat Exchanger Cleaning & Inspection',
-            'customer' => 'PT Vale Indonesia · Sorowako',
-            'owner_initial' => 'DP',
-            'owner_name' => 'Dimas P.',
-            'value' => 'Rp 1,85 M',
-            'stage' => 'Tender / RFQ',
-            'stage_color' => '#d97706',
-            'stage_badge' => 'bg-warning-50 text-warning-700 border border-warning-200',
-            'next_step' => 'Submit technical proposal',
-            'target_close' => '30.10.2026'
-        ],
-        [
-            'title' => 'Industrial Valve & Pump Supply',
-            'customer' => 'PT Pupuk Kalimantan Timur · Bontang',
-            'owner_initial' => 'NA',
-            'owner_name' => 'Nisa A.',
-            'value' => 'Rp 865 jt',
-            'stage' => 'Qualification',
-            'stage_color' => '#64748b',
-            'stage_badge' => 'bg-neutral-100 text-neutral-700 border border-neutral-300',
-            'next_step' => 'Konfirmasi spesifikasi',
-            'target_close' => '05.11.2026'
-        ],
-    ];
-@endphp
-
-<div class="card radius-12 border border-neutral-200 shadow-sm bg-white mb-20 overflow-hidden">
+{{-- SECTION 3: OPPORTUNITY PRIORITAS (DYNAMIC FROM DATABASE) --}}
+<div class="card radius-12 border border-neutral-200 shadow-sm mb-20 overflow-hidden">
     <div class="card-header border-bottom py-12 px-16 d-flex justify-content-between align-items-center flex-wrap gap-2">
         <div>
             <h6 class="fw-bold text-primary-light mb-0 text-sm">Opportunity Prioritas (Nilai Tertinggi)</h6>
@@ -358,170 +359,91 @@
                 </tr>
             </thead>
             <tbody>
-                @if ($priorityOpportunities->count() >= 3)
-                    @foreach ($priorityOpportunities->take(4) as $opp)
-                        @php
-                            $stageMeta = $stageLabels[$opp->stage] ?? [
-                                'name' => ucfirst(str_replace('_', ' ', $opp->stage)),
-                                'color' => '#64748b',
-                            ];
-                        @endphp
-                        <tr>
-                            <td class="px-16 py-12">
-                                <a href="{{ route('dashboard-admin.sales.opportunities.show', $opp) }}" class="fw-bold text-primary-light hover-text-primary text-sm d-block">
-                                    {{ $opp->title }}
-                                </a>
-                                <span class="text-xs text-secondary-light d-flex align-items-center gap-1 mt-1">
-                                    <iconify-icon icon="solar:buildings-bold-duotone" class="text-primary-600"></iconify-icon>
-                                    {{ $opp->customer?->company_name ?? '-' }}
-                                </span>
-                            </td>
-                            <td class="px-16 py-12">
-                                <div class="d-flex align-items-center gap-2">
-                                    <div class="w-24-px h-24-px radius-circle bg-primary-100 text-primary-600 text-xs fw-bold d-flex justify-content-center align-items-center">
-                                        {{ substr($opp->owner?->name ?? 'U', 0, 1) }}
-                                    </div>
-                                    <span class="text-xs fw-medium text-secondary-light">{{ $opp->owner?->name ?? '-' }}</span>
+                @forelse ($priorityOpportunities as $opp)
+                    @php
+                        $stageMeta = $stageLabels[$opp->stage] ?? [
+                            'name' => ucfirst(str_replace('_', ' ', (string) $opp->stage)),
+                            'color' => '#64748b',
+                        ];
+                    @endphp
+                    <tr>
+                        <td class="px-16 py-12">
+                            <a href="{{ route('dashboard-admin.sales.opportunities.show', $opp) }}" class="fw-bold text-primary-light hover-text-primary text-sm d-block">
+                                {{ $opp->title }}
+                            </a>
+                            <span class="text-xs text-secondary-light d-flex align-items-center gap-1 mt-1">
+                                <iconify-icon icon="solar:buildings-bold-duotone" class="text-primary-600"></iconify-icon>
+                                {{ $opp->customer?->company_name ?? ($opp->customer?->name ?? '-') }}
+                            </span>
+                        </td>
+                        <td class="px-16 py-12">
+                            <div class="d-flex align-items-center gap-2">
+                                <div class="w-24-px h-24-px radius-circle bg-primary-100 text-primary-600 text-xs fw-bold d-flex justify-content-center align-items-center">
+                                    {{ substr($opp->owner?->name ?? 'U', 0, 1) }}
                                 </div>
-                            </td>
-                            <td class="px-16 py-12 text-end text-nowrap">
-                                <strong class="text-primary-600 text-sm">
-                                    Rp {{ number_format((float) $opp->estimated_value, 0, ',', '.') }}
-                                </strong>
-                            </td>
-                            <td class="px-16 py-12">
-                                <span class="badge px-8 py-4 radius-6 text-2xs fw-semibold d-inline-flex align-items-center gap-1 border"
-                                      style="background-color: {{ $stageMeta['color'] }}18; color: {{ $stageMeta['color'] }}; border-color: {{ $stageMeta['color'] }}40;">
-                                    <span class="w-6-px h-6-px radius-circle" style="background-color: {{ $stageMeta['color'] }};"></span>
-                                    {{ $stageMeta['name'] }}
-                                </span>
-                            </td>
-                            <td class="px-16 py-12 text-xs text-secondary-light">
-                                <span class="d-inline-block text-truncate" style="max-width: 240px;">
-                                    {{ $opp->next_step ?? 'Review penawaran' }}
-                                </span>
-                            </td>
-                            <td class="px-16 py-12 text-center text-xs text-secondary-light font-monospace text-nowrap">
-                                {{ $opp->target_close_date ? $opp->target_close_date->format('d M Y') : '-' }}
-                            </td>
-                        </tr>
-                    @endforeach
-                @else
-                    @foreach ($samplePriorities as $item)
-                        <tr>
-                            <td class="px-16 py-12">
-                                <span class="fw-bold text-primary-light text-sm d-block">
-                                    {{ $item['title'] }}
-                                </span>
-                                <span class="text-xs text-secondary-light d-flex align-items-center gap-1 mt-1">
-                                    <iconify-icon icon="solar:buildings-bold-duotone" class="text-primary-600"></iconify-icon>
-                                    {{ $item['customer'] }}
-                                </span>
-                            </td>
-                            <td class="px-16 py-12">
-                                <div class="d-flex align-items-center gap-2">
-                                    <div class="w-24-px h-24-px radius-circle bg-neutral-200 text-neutral-700 text-xs fw-bold d-flex justify-content-center align-items-center">
-                                        {{ $item['owner_initial'] }}
-                                    </div>
-                                    <span class="text-xs fw-medium text-secondary-light">{{ $item['owner_name'] }}</span>
-                                </div>
-                            </td>
-                            <td class="px-16 py-12 text-end text-nowrap">
-                                <strong class="text-primary-600 text-sm">
-                                    {{ $item['value'] }}
-                                </strong>
-                            </td>
-                            <td class="px-16 py-12">
-                                <span class="badge {{ $item['stage_badge'] }} px-8 py-4 radius-6 text-2xs fw-semibold d-inline-flex align-items-center gap-1">
-                                    <span class="w-6-px h-6-px radius-circle" style="background-color: {{ $item['stage_color'] }};"></span>
-                                    {{ $item['stage'] }}
-                                </span>
-                            </td>
-                            <td class="px-16 py-12 text-xs text-secondary-light">
-                                <span class="d-inline-block text-truncate" style="max-width: 240px;">
-                                    {{ $item['next_step'] }}
-                                </span>
-                            </td>
-                            <td class="px-16 py-12 text-center text-xs text-secondary-light font-monospace text-nowrap">
-                                {{ $item['target_close'] }}
-                            </td>
-                        </tr>
-                    @endforeach
-                @endif
+                                <span class="text-xs fw-medium text-secondary-light">{{ $opp->owner?->name ?? '-' }}</span>
+                            </div>
+                        </td>
+                        <td class="px-16 py-12 text-end text-nowrap">
+                            <strong class="text-primary-600 text-sm">
+                                Rp {{ number_format((float) $opp->estimated_value, 0, ',', '.') }}
+                            </strong>
+                        </td>
+                        <td class="px-16 py-12">
+                            <span class="badge px-8 py-4 radius-6 text-2xs fw-semibold d-inline-flex align-items-center gap-1 border"
+                                  style="background-color: {{ $stageMeta['color'] }}18; color: {{ $stageMeta['color'] }}; border-color: {{ $stageMeta['color'] }}40;">
+                                <span class="w-6-px h-6-px radius-circle" style="background-color: {{ $stageMeta['color'] }};"></span>
+                                {{ $stageMeta['name'] }}
+                            </span>
+                        </td>
+                        <td class="px-16 py-12 text-xs text-secondary-light">
+                            <span class="d-inline-block text-truncate" style="max-width: 240px;">
+                                {{ $opp->next_step ?? 'Review penawaran' }}
+                            </span>
+                        </td>
+                        <td class="px-16 py-12 text-center text-xs text-secondary-light font-monospace text-nowrap">
+                            {{ $opp->target_close_date ? $opp->target_close_date->format('d M Y') : '-' }}
+                        </td>
+                    </tr>
+                @empty
+                    <tr>
+                        <td colspan="6" class="px-16 py-24 text-center text-secondary-light text-xs">
+                            Belum ada opportunity prioritas aktif pada database.
+                        </td>
+                    </tr>
+                @endforelse
             </tbody>
         </table>
     </div>
 </div>
 
 {{-- SECTION 4: RECENT ACTIVITIES & UPCOMING FOLLOW-UPS --}}
+{{-- SECTION 4: RECENT ACTIVITIES & UPCOMING FOLLOW-UPS (DYNAMIC FROM DATABASE) --}}
 @php
-    $sampleActivities = [
-        [
-            'icon' => 'solar:users-group-rounded-bold-duotone',
-            'color' => '#2563eb',
-            'bg' => 'bg-primary-50 text-primary-600',
-            'title' => 'Outside Office Meeting · PT Pupuk Sriwidjaja',
-            'desc' => 'Review scope OLSS dan jadwal eksekusi - Juliyanto',
-            'time' => '09:30'
+    $actTypeMeta = [
+        'outside_meeting' => [
+            'icon' => 'solar:users-group-two-rounded-bold',
+            'color' => '#1d4ed8',
+            'bg' => 'bg-primary-100 text-primary-700',
+            'name' => 'Outside Office Meeting',
         ],
-        [
-            'icon' => 'solar:document-text-bold-duotone',
+        'proposal_submitted' => [
+            'icon' => 'solar:document-text-bold',
             'color' => '#ea580c',
-            'bg' => 'bg-danger-50 text-danger-main',
-            'title' => 'Proposal Submitted · PT Vale Indonesia',
-            'desc' => 'Heat Exchanger Cleaning & Inspection - Dimas P.',
-            'time' => 'Kemarin'
+            'bg' => 'bg-danger-100 text-danger-main',
+            'name' => 'Proposal Submitted',
         ],
-        [
-            'icon' => 'solar:videocamera-record-bold-duotone',
+        'online_presentation' => [
+            'icon' => 'solar:videocamera-record-bold',
             'color' => '#7c3aed',
-            'bg' => 'bg-purple-50 text-purple-main',
-            'title' => 'Online Presentation · PT Kaltim Parna Industri',
-            'desc' => 'Presentasi metode robotic tank cleaning - Andi R.',
-            'time' => '13 Okt'
+            'bg' => 'bg-purple-100 text-purple-main',
+            'name' => 'Online Presentation',
         ],
-        [
-            'icon' => 'solar:map-point-wave-bold-duotone',
-            'color' => '#16a34a',
-            'bg' => 'bg-success-50 text-success-600',
-            'title' => 'Customer Visit · PT Samator',
-            'desc' => 'Diskusi kebutuhan filter gas - Nisa A.',
-            'time' => '12 Okt'
-        ],
-    ];
-
-    $sampleFollowups = [
-        [
-            'day' => '14',
-            'month' => 'OKT',
-            'title' => 'Follow-up evaluasi proposal',
-            'desc' => 'OLSS Ammonia Converter · Juliyanto',
-            'badge' => 'HARI INI',
-            'badge_class' => 'bg-warning-50 text-warning-700 border border-warning-200'
-        ],
-        [
-            'day' => '15',
-            'month' => 'OKT',
-            'title' => 'Kirim revisi quotation',
-            'desc' => 'CO2 Tank Cleaning · Andi R.',
-            'badge' => 'BESOK',
-            'badge_class' => 'bg-danger-50 text-danger-700 border border-danger-200'
-        ],
-        [
-            'day' => '16',
-            'month' => 'OKT',
-            'title' => 'Konfirmasi spesifikasi teknis',
-            'desc' => 'Valve & Pump Supply · Nisa A.',
-            'badge' => '2 HARI',
-            'badge_class' => 'bg-neutral-100 text-secondary-light border border-neutral-200'
-        ],
-        [
-            'day' => '18',
-            'month' => 'OKT',
-            'title' => 'Customer visit – site survey',
-            'desc' => 'Heat Exchanger Project · Dimas P.',
-            'badge' => '4 HARI',
-            'badge_class' => 'bg-neutral-100 text-secondary-light border border-neutral-200'
+        'customer_visit' => [
+            'icon' => 'solar:map-point-bold',
+            'color' => '#15803d',
+            'bg' => 'bg-success-100 text-success-main',
+            'name' => 'Customer Visit',
         ],
     ];
 @endphp
@@ -529,7 +451,7 @@
 <div class="row g-3 mb-24">
     {{-- Aktivitas Sales Terbaru --}}
     <div class="col-lg-6">
-        <div class="card radius-12 border border-neutral-200 shadow-sm bg-white h-100">
+        <div class="card radius-12 border border-neutral-200 shadow-sm h-100">
             <div class="card-header border-bottom py-12 px-16 d-flex justify-content-between align-items-center">
                 <div>
                     <h6 class="fw-bold text-primary-light mb-0 text-sm">Aktivitas Sales Terbaru</h6>
@@ -541,65 +463,99 @@
             </div>
 
             <div class="card-body p-16 d-flex flex-column gap-12">
-                @foreach ($sampleActivities as $act)
+                @forelse ($recentActivities as $act)
+                    @php
+                        $meta = $actTypeMeta[$act->type] ?? [
+                            'icon' => 'solar:calendar-bold',
+                            'color' => '#475569',
+                            'bg' => 'bg-neutral-100 text-neutral-700',
+                            'name' => ucfirst(str_replace('_', ' ', (string) $act->type)),
+                        ];
+                        $custName = $act->opportunity?->customer?->company_name ?? ($act->opportunity?->customer?->name ?? 'Customer');
+                        $timeStr = $act->activity_at ? $act->activity_at->diffForHumans() : ($act->created_at ? $act->created_at->diffForHumans() : '-');
+                    @endphp
                     <div class="d-flex align-items-center justify-content-between gap-3 pb-12 border-bottom {{ $loop->last ? 'border-bottom-0 pb-0' : '' }}">
                         <div class="d-flex align-items-center gap-10">
-                            <div class="w-32-px h-32-px radius-8 d-flex justify-content-center align-items-center {{ $act['bg'] }} text-base flex-shrink-0">
-                                <iconify-icon icon="{{ $act['icon'] }}"></iconify-icon>
+                            <div class="w-32-px h-32-px radius-8 d-flex justify-content-center align-items-center {{ $meta['bg'] }} text-base flex-shrink-0" style="color: {{ $meta['color'] }};">
+                                <iconify-icon icon="{{ $meta['icon'] }}" style="font-size: 18px; color: {{ $meta['color'] }};"></iconify-icon>
                             </div>
                             <div>
                                 <span class="fw-semibold text-primary-light text-xs d-block">
-                                    {{ $act['title'] }}
+                                    {{ $meta['name'] }} · {{ $custName }}
                                 </span>
                                 <span class="text-2xs text-secondary-light d-block">
-                                    {{ $act['desc'] }}
+                                    {{ $act->title }} · {{ $act->user?->name ?? 'Tim Sales' }}
                                 </span>
                             </div>
                         </div>
                         <span class="text-2xs text-secondary-light fw-medium flex-shrink-0">
-                            {{ $act['time'] }}
+                            {{ $timeStr }}
                         </span>
                     </div>
-                @endforeach
+                @empty
+                    <div class="py-20 text-center text-secondary-light text-xs">
+                        Belum ada aktivitas sales tercatat.
+                    </div>
+                @endforelse
             </div>
         </div>
     </div>
 
     {{-- Follow-up Mendatang --}}
     <div class="col-lg-6">
-        <div class="card radius-12 border border-neutral-200 shadow-sm bg-white h-100">
+        <div class="card radius-12 border border-neutral-200 shadow-sm h-100">
             <div class="card-header border-bottom py-12 px-16 d-flex justify-content-between align-items-center">
                 <div>
                     <h6 class="fw-bold text-primary-light mb-0 text-sm">Follow-up Mendatang (Action Items)</h6>
                     <span class="text-2xs text-secondary-light">Jadwal tindak lanjut prioritas peluang proyek</span>
                 </div>
                 <span class="badge bg-warning-50 text-warning-700 border border-warning-200 text-2xs fw-semibold">
-                    {{ count($sampleFollowups) }} Pending
+                    {{ $upcomingFollowUps->count() }} Pending
                 </span>
             </div>
 
             <div class="card-body p-16 d-flex flex-column gap-12">
-                @foreach ($sampleFollowups as $fu)
+                @forelse ($upcomingFollowUps as $fu)
+                    @php
+                        $dueDate = $fu->due_date;
+                        $isToday = $dueDate ? $dueDate->isToday() : false;
+                        $isPast = $dueDate ? $dueDate->isPast() && !$isToday : false;
+
+                        if ($isToday) {
+                            $badgeLabel = 'HARI INI';
+                            $badgeClass = 'bg-warning-50 text-warning-700 border border-warning-200';
+                        } elseif ($isPast) {
+                            $badgeLabel = 'TERLAMBAT';
+                            $badgeClass = 'bg-danger-50 text-danger-700 border border-danger-200';
+                        } else {
+                            $badgeLabel = $dueDate ? $dueDate->diffForHumans(null, true) : 'PENDING';
+                            $badgeClass = 'bg-neutral-100 text-secondary-light border border-neutral-200';
+                        }
+                    @endphp
                     <div class="d-flex align-items-center justify-content-between gap-3 pb-12 border-bottom {{ $loop->last ? 'border-bottom-0 pb-0' : '' }}">
                         <div class="d-flex align-items-center gap-10">
                             <div class="date-badge-box">
-                                <span class="day-num">{{ $fu['day'] }}</span>
-                                <span class="month-name">{{ $fu['month'] }}</span>
+                                <span class="day-num">{{ $dueDate ? $dueDate->format('d') : '-' }}</span>
+                                <span class="month-name">{{ $dueDate ? strtoupper($dueDate->translatedFormat('M')) : '-' }}</span>
                             </div>
                             <div>
                                 <span class="fw-semibold text-primary-light text-xs d-block">
-                                    {{ $fu['title'] }}
+                                    {{ $fu->task_title }}
                                 </span>
                                 <span class="text-2xs text-secondary-light d-block">
-                                    {{ $fu['desc'] }}
+                                    {{ $fu->opportunity?->title ?? '-' }} · {{ $fu->assignee?->name ?? 'Sales' }}
                                 </span>
                             </div>
                         </div>
-                        <span class="badge {{ $fu['badge_class'] }} px-8 py-3 radius-4 text-2xs fw-bold flex-shrink-0">
-                            {{ $fu['badge'] }}
+                        <span class="badge {{ $badgeClass }} px-8 py-3 radius-4 text-2xs fw-bold flex-shrink-0">
+                            {{ $badgeLabel }}
                         </span>
                     </div>
-                @endforeach
+                @empty
+                    <div class="py-20 text-center text-secondary-light text-xs">
+                        Tidak ada follow-up pending saat ini.
+                    </div>
+                @endforelse
             </div>
         </div>
     </div>
@@ -611,15 +567,22 @@
         const chartElement = document.querySelector("#salesPerformanceChart");
         if (!chartElement) return;
 
+        const yearlyChartData = @json($yearlyChartData);
+        const chartCategories = @json($chartCategories);
+        let currentYear = {{ $selectedYear }};
+
+        const initialProposals = (yearlyChartData[currentYear] && yearlyChartData[currentYear].proposals) || [];
+        const initialClosedWon = (yearlyChartData[currentYear] && yearlyChartData[currentYear].closed_won) || [];
+
         const options = {
             series: [
                 {
                     name: "Proposal terkirim",
-                    data: [1.0, 1.2, 1.1, 1.5, 1.4, 1.8, 1.6]
+                    data: initialProposals
                 },
                 {
                     name: "Closed Won",
-                    data: [0.7, 0.8, 0.7, 1.1, 0.9, 1.3, 1.2]
+                    data: initialClosedWon
                 }
             ],
             chart: {
@@ -627,7 +590,12 @@
                 type: 'area',
                 toolbar: { show: false },
                 fontFamily: 'inherit',
-                zoom: { enabled: false }
+                zoom: { enabled: false },
+                animations: {
+                    enabled: true,
+                    easing: 'easeinout',
+                    speed: 600
+                }
             },
             colors: ['#487fff', '#16a34a'],
             dataLabels: { enabled: false },
@@ -652,7 +620,7 @@
                 padding: { top: 0, right: 10, bottom: 0, left: 10 }
             },
             xaxis: {
-                categories: ['Apr', 'Mei', 'Jun', 'Jul', 'Agu', 'Sep', 'Okt'],
+                categories: chartCategories,
                 labels: {
                     style: {
                         colors: '#94a3b8',
@@ -674,7 +642,6 @@
                     }
                 },
                 min: 0,
-                max: 2.2,
                 tickAmount: 4
             },
             tooltip: {
@@ -690,6 +657,26 @@
 
         const chart = new ApexCharts(chartElement, options);
         chart.render();
+
+        // Interactive Year Filter Handler
+        const yearSelect = document.querySelector("#chartYearSelect");
+        if (yearSelect) {
+            yearSelect.addEventListener('change', function () {
+                const yr = this.value;
+                if (yearlyChartData[yr]) {
+                    chart.updateSeries([
+                        {
+                            name: "Proposal terkirim",
+                            data: yearlyChartData[yr].proposals
+                        },
+                        {
+                            name: "Closed Won",
+                            data: yearlyChartData[yr].closed_won
+                        }
+                    ]);
+                }
+            });
+        }
     });
 </script>
 @endsection

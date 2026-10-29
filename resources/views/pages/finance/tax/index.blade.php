@@ -423,17 +423,17 @@
                                     </span>
                                 </td>
                                 <td class="px-16 py-12 text-center">
-                                    <div class="d-inline-flex align-items-center gap-1">
+                                    <div class="d-flex align-items-center justify-content-center gap-2">
                                         @if($f->bpe_file)
-                                            <a href="{{ asset($f->bpe_file) }}" target="_blank" class="btn btn-sm btn-icon btn-light text-primary-600 rounded-circle w-32-px h-32-px d-flex align-items-center justify-content-center" title="Download Bukti BPE">
+                                            <a href="{{ asset($f->bpe_file) }}" target="_blank" class="w-32-px h-32-px rounded-circle bg-info-focus text-info-main d-inline-flex justify-content-center align-items-center" title="Download Bukti BPE">
                                                 <iconify-icon icon="solar:file-download-bold"></iconify-icon>
                                             </a>
                                         @endif
                                         <form action="{{ route('dashboard-admin.finance.tax.destroy', $f->id) }}" method="POST" class="d-inline" onsubmit="return confirm('Hapus arsip pajak ini?');">
                                             @csrf
                                             @method('DELETE')
-                                            <button type="submit" class="btn btn-sm btn-icon btn-light text-danger-main rounded-circle w-32-px h-32-px d-flex align-items-center justify-content-center" title="Hapus">
-                                                <iconify-icon icon="solar:trash-bin-trash-outline"></iconify-icon>
+                                            <button type="submit" class="w-32-px h-32-px rounded-circle bg-danger-focus text-danger-main d-inline-flex justify-content-center align-items-center border-0" title="Hapus">
+                                                <iconify-icon icon="mingcute:delete-2-line"></iconify-icon>
                                             </button>
                                         </form>
                                     </div>

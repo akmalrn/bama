@@ -92,9 +92,9 @@
                                 Estimasi Nilai Kontrak (Rp) <span class="text-danger">*</span>
                             </label>
                             <div class="input-group">
-                                <span class="input-group-text radius-8-start bg-neutral-100 text-xs fw-bold">Rp</span>
-                                <input type="number" step="1000" name="estimated_value" value="{{ old('estimated_value', 0) }}"
-                                       class="form-control radius-8-end @error('estimated_value') is-invalid @enderror" required>
+                                <span class="input-group-text radius-8-start text-xs fw-bold">Rp</span>
+                                <input type="text" inputmode="numeric" name="estimated_value" value="{{ old('estimated_value') ? number_format((float) preg_replace('/[^0-9]/', '', old('estimated_value')), 0, ',', '.') : '0' }}"
+                                       class="form-control radius-8-end rupiah-input @error('estimated_value') is-invalid @enderror" required placeholder="10.000" autocomplete="off">
                             </div>
                             @error('estimated_value')
                                 <div class="invalid-feedback text-xs d-block">{{ $message }}</div>
@@ -161,4 +161,23 @@
         </div>
     </div>
 </div>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        document.querySelectorAll('.rupiah-input').forEach(function(input) {
+            input.addEventListener('input', function() {
+                let cursor = this.selectionStart;
+                let prevLen = this.value.length;
+                let raw = this.value.replace(/[^0-9]/g, '');
+                if (raw === '') {
+                    this.value = '';
+                    return;
+                }
+                let formatted = new Intl.NumberFormat('id-ID').format(raw);
+                this.value = formatted;
+                let diff = formatted.length - prevLen;
+                this.setSelectionRange(cursor + diff, cursor + diff);
+            });
+        });
+    });
+</script>
 @endsection

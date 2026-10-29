@@ -292,13 +292,13 @@
                                 @endif
                             </td>
                             <td class="px-16 py-12 text-center">
-                                <div class="d-flex align-items-center justify-content-center gap-1">
+                                <div class="d-flex align-items-center justify-content-center gap-2">
                                     <a href="{{ route('dashboard-admin.sales.customers.show', $c) }}"
-                                       class="w-28-px h-28-px rounded-circle bg-info-focus text-info-main d-inline-flex justify-content-center align-items-center"
+                                       class="w-32-px h-32-px rounded-circle bg-info-focus text-info-main d-inline-flex justify-content-center align-items-center"
                                        title="Detail Customer & PIC">
-                                        <iconify-icon icon="solar:eye-bold-duotone" class="text-sm"></iconify-icon>
+                                        <iconify-icon icon="solar:eye-bold-duotone"></iconify-icon>
                                     </a>
-                                    <button type="button" class="w-28-px h-28-px bg-success-focus text-success-main rounded-circle border-0 d-inline-flex align-items-center justify-content-center btn-edit-contact"
+                                    <button type="button" class="w-32-px h-32-px bg-success-focus text-success-main rounded-circle border-0 d-inline-flex align-items-center justify-content-center btn-edit-contact"
                                         data-bs-toggle="modal" data-bs-target="#editContactModal"
                                         data-id="{{ $c->id }}"
                                         data-company="{{ $c->company_name }}"
@@ -308,7 +308,7 @@
                                         data-phone="{{ $c->pic_phone }}"
                                         data-email="{{ $c->pic_email }}"
                                         title="Edit Contact">
-                                        <iconify-icon icon="lucide:edit" class="text-sm"></iconify-icon>
+                                        <iconify-icon icon="lucide:edit"></iconify-icon>
                                     </button>
                                 </div>
                             </td>

@@ -265,14 +265,14 @@
                             </td>
                             <td class="pe-24 py-14 text-center">
                                 <div class="d-flex align-items-center justify-content-center gap-2">
-                                    <button type="button" class="btn btn-sm btn-outline-primary p-6 radius-6" onclick="openStatusModal({{ $task->id }}, '{{ $task->task_code }}', '{{ $task->status }}', {{ $task->actual_hours }})" title="Ubah Status & Jam Kerja">
-                                        <iconify-icon icon="solar:pen-linear" class="text-sm"></iconify-icon>
+                                    <button type="button" class="w-32-px h-32-px rounded-circle bg-warning-focus text-warning-main d-inline-flex justify-content-center align-items-center border-0" onclick="openStatusModal({{ $task->id }}, '{{ $task->task_code }}', '{{ $task->status }}', {{ $task->actual_hours }})" title="Ubah Status & Jam Kerja">
+                                        <iconify-icon icon="solar:pen-linear"></iconify-icon>
                                     </button>
                                     <form method="POST" action="{{ route('dashboard-admin.hcd.tasks.destroy', $task->id) }}" onsubmit="return confirm('Hapus tugas {{ $task->task_code }}?');" class="d-inline">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" class="btn btn-sm btn-outline-danger p-6 radius-6" title="Hapus">
-                                            <iconify-icon icon="solar:trash-bin-trash-outline" class="text-sm"></iconify-icon>
+                                        <button type="submit" class="w-32-px h-32-px rounded-circle bg-danger-focus text-danger-main d-inline-flex justify-content-center align-items-center border-0" title="Hapus">
+                                            <iconify-icon icon="mingcute:delete-2-line"></iconify-icon>
                                         </button>
                                     </form>
                                 </div>

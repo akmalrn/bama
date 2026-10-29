@@ -346,8 +346,8 @@
                                 <form action="{{ route('dashboard-admin.pmo.milestones.destroy', $m->id) }}" method="POST" class="d-inline" onsubmit="return confirm('Hapus milestone ini?')">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="w-28-px h-28-px bg-danger-focus text-danger-main rounded-circle d-inline-flex align-items-center justify-content-center border-0 text-xs shadow-xs" title="Hapus Milestone">
-                                        <iconify-icon icon="solar:trash-bin-trash-linear"></iconify-icon>
+                                    <button type="submit" class="w-32-px h-32-px rounded-circle bg-danger-focus text-danger-main d-inline-flex justify-content-center align-items-center border-0" title="Hapus Milestone">
+                                        <iconify-icon icon="mingcute:delete-2-line"></iconify-icon>
                                     </button>
                                 </form>
                             </td>
@@ -419,8 +419,8 @@
                                 <form action="{{ route('dashboard-admin.pmo.teams.destroy', $mem->id) }}" method="POST" class="d-inline" onsubmit="return confirm('Hapus penugasan personel ini?')">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="w-28-px h-28-px bg-danger-focus text-danger-main rounded-circle d-inline-flex align-items-center justify-content-center border-0 text-xs shadow-xs" title="Hapus Penugasan">
-                                        <iconify-icon icon="solar:trash-bin-trash-linear"></iconify-icon>
+                                    <button type="submit" class="w-32-px h-32-px rounded-circle bg-danger-focus text-danger-main d-inline-flex justify-content-center align-items-center border-0" title="Hapus Penugasan">
+                                        <iconify-icon icon="mingcute:delete-2-line"></iconify-icon>
                                     </button>
                                 </form>
                             </td>
@@ -478,8 +478,8 @@
                                 <form action="{{ route('dashboard-admin.pmo.documents.destroy', $doc->id) }}" method="POST" class="d-inline" onsubmit="return confirm('Hapus dokumen ini?')">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" class="w-28-px h-28-px bg-danger-focus text-danger-main rounded-circle d-inline-flex align-items-center justify-content-center border-0 text-xs shadow-xs" title="Hapus Dokumen">
-                                        <iconify-icon icon="solar:trash-bin-trash-linear"></iconify-icon>
+                                    <button type="submit" class="w-32-px h-32-px rounded-circle bg-danger-focus text-danger-main d-inline-flex justify-content-center align-items-center border-0" title="Hapus Dokumen">
+                                        <iconify-icon icon="mingcute:delete-2-line"></iconify-icon>
                                     </button>
                                 </form>
                             </td>

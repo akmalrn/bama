@@ -477,7 +477,7 @@
                             </td>
                             <td class="text-center pe-16">
                                 <a href="{{ route('dashboard-admin.pmo.projects.show', $p->id) }}"
-                                   class="w-32-px h-32-px bg-primary-light text-primary-600 rounded-circle d-inline-flex align-items-center justify-content-center border-0 text-sm shadow-xs"
+                                   class="w-32-px h-32-px rounded-circle bg-info-focus text-info-main d-inline-flex justify-content-center align-items-center"
                                    title="Detail Project 360">
                                     <iconify-icon icon="solar:eye-bold-duotone"></iconify-icon>
                                 </a>

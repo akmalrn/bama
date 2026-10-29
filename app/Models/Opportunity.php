@@ -42,15 +42,21 @@ class Opportunity extends Model
         'customer_id',
         'owner_id',
         'title',
+        'service_line',
+        'project_location',
+        'lead_source',
         'estimated_value',
         'stage',
         'next_step',
         'target_close_date',
+        'next_follow_up_date',
+        'notes',
     ];
 
     protected $casts = [
         'estimated_value' => 'decimal:2',
         'target_close_date' => 'date',
+        'next_follow_up_date' => 'date',
     ];
 
     public function customer(): BelongsTo

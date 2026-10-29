@@ -52,7 +52,8 @@ html:not(.theme-initializing) .card,
 html:not(.theme-initializing) .dropdown-menu,
 html:not(.theme-initializing) .modal-content,
 html:not(.theme-initializing) .form-control,
-html:not(.theme-initializing) .form-select {
+html:not(.theme-initializing) .form-select,
+html:not(.theme-initializing) .input-group-text {
     transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease,
         box-shadow 0.2s ease;
 }
@@ -138,10 +139,10 @@ html[data-theme="dark"] .dropdown-item:focus {
     color: var(--admin-text);
 }
 
-html[data-theme="dark"] :is(.form-control, .form-select, textarea, .dt-input) {
+html[data-theme="dark"] :is(.form-control, .form-select, textarea, .dt-input, .input-group-text) {
     border-color: #64748b;
-    background-color: var(--admin-surface-raised);
-    color: var(--admin-text);
+    background-color: var(--admin-surface-raised) !important;
+    color: var(--admin-text) !important;
 }
 
 
@@ -1133,5 +1134,131 @@ html[data-theme="dark"] .crm-table-compact tbody td {
 html[data-theme="dark"] .crm-table-compact tbody tr:hover td {
     background-color: var(--admin-surface-raised) !important;
 }
+
+/* ==========================================================================
+   Global Dark Theme Overrides for Core Utility Classes & Cards
+   Guarantees that elements with Bootstrap utility classes (.bg-white, .border-neutral-*, etc.)
+   seamlessly adapt when dark mode (data-theme="dark") is active.
+   ========================================================================== */
+html[data-theme="dark"] .card.bg-white,
+html[data-theme="dark"] .pipeline-metric-card,
+html[data-theme="dark"] .sales-kpi-card,
+html[data-theme="dark"] .crm-kanban-card,
+html[data-theme="dark"] .customer-metric-card {
+    background-color: var(--admin-surface) !important;
+    border-color: var(--admin-border) !important;
+    color: var(--admin-text) !important;
+}
+
+html[data-theme="dark"] .bg-white {
+    background-color: var(--admin-surface) !important;
+}
+
+html[data-theme="dark"] .border-neutral-200,
+html[data-theme="dark"] .border-neutral-300 {
+    border-color: var(--admin-border) !important;
+}
+
+html[data-theme="dark"] .bg-neutral-50 {
+    background-color: rgba(255, 255, 255, 0.04) !important;
+}
+
+html[data-theme="dark"] .bg-neutral-100 {
+    background-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+html[data-theme="dark"] .text-neutral-800,
+html[data-theme="dark"] .text-neutral-700 {
+    color: var(--admin-text) !important;
+}
+
+html[data-theme="dark"] .text-secondary-light {
+    color: var(--admin-muted) !important;
+}
+
+html[data-theme="dark"] .text-primary-light {
+    color: var(--admin-text) !important;
+}
+
+html[data-theme="dark"] .kanban-column {
+    background-color: rgba(15, 23, 42, 0.55) !important;
+    border-color: var(--admin-border) !important;
+}
+
+html[data-theme="dark"] .kanban-container::-webkit-scrollbar-track {
+    background: var(--admin-surface-raised) !important;
+}
+
+html[data-theme="dark"] .kanban-container::-webkit-scrollbar-thumb {
+    background: #475569 !important;
+}
+
+html[data-theme="dark"] .kanban-container::-webkit-scrollbar-thumb:hover {
+    background: #64748b !important;
+}
+
+html[data-theme="dark"] .mini-breakdown-row .progress {
+    background-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+html[data-theme="dark"] .btn-outline-secondary {
+    border-color: var(--admin-border) !important;
+    color: var(--admin-muted) !important;
+    background-color: var(--admin-surface) !important;
+}
+
+html[data-theme="dark"] .btn-outline-secondary:hover {
+    background-color: var(--admin-surface-raised) !important;
+    color: var(--admin-text) !important;
+    border-color: var(--admin-focus) !important;
+}
+
+html[data-theme="dark"] .dropdown-menu {
+    background-color: var(--admin-surface-raised) !important;
+    border-color: var(--admin-border) !important;
+    color: var(--admin-text) !important;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5) !important;
+}
+
+html[data-theme="dark"] .dropdown-menu .dropdown-item {
+    color: var(--admin-muted) !important;
+}
+
+html[data-theme="dark"] .dropdown-menu .dropdown-item:hover,
+html[data-theme="dark"] .dropdown-menu .dropdown-item:focus {
+    background-color: rgba(255, 255, 255, 0.06) !important;
+    color: var(--admin-text) !important;
+}
+
+html[data-theme="dark"] .dropdown-menu .dropdown-item.active {
+    background-color: var(--admin-focus) !important;
+    color: #ffffff !important;
+}
+
+html[data-theme="dark"] .modal-content {
+    background-color: var(--admin-surface) !important;
+    border-color: var(--admin-border) !important;
+    color: var(--admin-text) !important;
+}
+
+html[data-theme="dark"] .modal-header,
+html[data-theme="dark"] .modal-footer {
+    border-color: var(--admin-border) !important;
+}
+
+html[data-theme="dark"] .form-control,
+html[data-theme="dark"] .form-select {
+    background-color: var(--admin-surface-raised) !important;
+    border-color: var(--admin-border) !important;
+    color: var(--admin-text) !important;
+}
+
+html[data-theme="dark"] .form-control:focus,
+html[data-theme="dark"] .form-select:focus {
+    border-color: var(--admin-focus) !important;
+    color: var(--admin-text) !important;
+    box-shadow: 0 0 0 0.25rem rgba(72, 127, 255, 0.25) !important;
+}
+
 
 

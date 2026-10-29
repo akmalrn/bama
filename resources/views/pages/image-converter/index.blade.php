@@ -200,8 +200,8 @@
                                 ? `<span class="badge bg-danger-focus text-danger-main px-12 py-6">${escapeHtml(issue)}</span>`
                                 : '<span class="badge bg-warning-focus text-warning-main px-12 py-6">Siap dikonversi</span>'}</td>
                             <td class="text-center">
-                                <button type="button" class="btn btn-sm btn-outline-danger remove-file" data-index="${index}" aria-label="Hapus ${escapeHtml(file.name)}">
-                                    <iconify-icon icon="solar:trash-bin-trash-outline"></iconify-icon>
+                                <button type="button" class="w-32-px h-32-px bg-danger-focus text-danger-main rounded-circle border-0 d-inline-flex align-items-center justify-content-center remove-file" data-index="${index}" aria-label="Hapus ${escapeHtml(file.name)}">
+                                    <iconify-icon icon="mingcute:delete-2-line"></iconify-icon>
                                 </button>
                             </td>
                         </tr>`);

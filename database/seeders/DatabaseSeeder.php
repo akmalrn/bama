@@ -30,6 +30,13 @@ class DatabaseSeeder extends Seeder
             TestimonialSeeder::class,
             RolePermissionSeeder::class,
             SalesCrmSeeder::class,
+            PmoSeeder::class,
+            FinanceInvoiceSeeder::class,
+            FinanceTaxSeeder::class,
+            HcdSeeder::class,
+            HsseSeeder::class,
+            ProcurementSeeder::class,
+            AssetManagementSeeder::class,
         ]);
     }
 }

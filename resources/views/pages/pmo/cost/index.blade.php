@@ -422,8 +422,8 @@
                                     </span>
                                 </td>
                                 <td class="text-center text-nowrap pe-24 py-14">
-                                    <a href="{{ route('dashboard-admin.pmo.projects.show', $project->id) }}" class="w-32-px h-32-px bg-primary-light text-primary-600 rounded-circle d-inline-flex align-items-center justify-content-center hover-bg-primary hover-text-white transition-all shadow-xs" title="Lihat Detail Proyek">
-                                        <iconify-icon icon="iconamoon:eye-light" class="text-lg"></iconify-icon>
+                                    <a href="{{ route('dashboard-admin.pmo.projects.show', $project->id) }}" class="w-32-px h-32-px rounded-circle bg-info-focus text-info-main d-inline-flex justify-content-center align-items-center" title="Detail Proyek">
+                                        <iconify-icon icon="solar:eye-bold-duotone"></iconify-icon>
                                     </a>
                                 </td>
                             </tr>

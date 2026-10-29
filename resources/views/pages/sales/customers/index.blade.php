@@ -379,16 +379,16 @@
 
                                 {{-- Direct Actions Icons --}}
                                 <td class="px-16 py-12 text-center">
-                                    <div class="d-flex align-items-center justify-content-center gap-1">
+                                    <div class="d-flex align-items-center justify-content-center gap-2">
                                         <a href="{{ route('dashboard-admin.sales.customers.show', $customer) }}"
-                                           class="w-28-px h-28-px rounded-circle bg-info-focus text-info-main d-inline-flex justify-content-center align-items-center"
+                                           class="w-32-px h-32-px rounded-circle bg-info-focus text-info-main d-inline-flex justify-content-center align-items-center"
                                            title="Detail Customer">
-                                            <iconify-icon icon="solar:eye-bold-duotone" class="text-sm"></iconify-icon>
+                                            <iconify-icon icon="solar:eye-bold-duotone"></iconify-icon>
                                         </a>
 
                                         @can('sales.customer.edit')
                                             <button type="button"
-                                                    class="w-28-px h-28-px rounded-circle bg-success-focus text-success-main d-inline-flex justify-content-center align-items-center border-0 btn-edit-customer"
+                                                    class="w-32-px h-32-px rounded-circle bg-success-focus text-success-main d-inline-flex justify-content-center align-items-center border-0 btn-edit-customer"
                                                     data-id="{{ $customer->id }}"
                                                     data-company="{{ $customer->company_name }}"
                                                     data-industry="{{ $customer->industry }}"
@@ -399,7 +399,7 @@
                                                     data-email="{{ $customer->pic_email }}"
                                                     data-bs-toggle="modal" data-bs-target="#editCustomerModal"
                                                     title="Edit Customer">
-                                                <iconify-icon icon="lucide:edit" class="text-sm"></iconify-icon>
+                                                <iconify-icon icon="lucide:edit"></iconify-icon>
                                             </button>
                                         @endcan
 
@@ -409,9 +409,9 @@
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit"
-                                                        class="w-28-px h-28-px rounded-circle bg-danger-focus text-danger-main d-inline-flex justify-content-center align-items-center border-0"
+                                                        class="w-32-px h-32-px rounded-circle bg-danger-focus text-danger-main d-inline-flex justify-content-center align-items-center border-0"
                                                         title="Hapus Customer">
-                                                    <iconify-icon icon="mingcute:delete-2-line" class="text-sm"></iconify-icon>
+                                                    <iconify-icon icon="mingcute:delete-2-line"></iconify-icon>
                                                 </button>
                                             </form>
                                         @endcan

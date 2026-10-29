@@ -43,6 +43,11 @@ class PmoSeeder extends Seeder
                 ]
             );
 
+            if ($user->roles()->count() === 0) {
+                $roleName = str_contains(strtolower($position->title), 'hsse') ? 'hsse-officer' : 'pmo-manager';
+                $user->assignRole($roleName);
+            }
+
             return Employee::firstOrCreate(
                 ['employee_number' => $code],
                 [

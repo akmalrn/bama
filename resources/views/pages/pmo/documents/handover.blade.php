@@ -200,10 +200,11 @@
                                 </span>
                             </td>
                             <td class="text-center pe-20 py-14">
-                                <button type="button" class="btn btn-sm btn-outline-primary px-10 py-4 radius-6 text-xs" 
+                                <button type="button" class="w-32-px h-32-px rounded-circle bg-warning-focus text-warning-main d-inline-flex justify-content-center align-items-center border-0" 
                                     data-bs-toggle="modal" 
-                                    data-bs-target="#editHandoverStatusModal{{ $project->id }}">
-                                    Update Status
+                                    data-bs-target="#editHandoverStatusModal{{ $project->id }}"
+                                    title="Update Status Handover">
+                                    <iconify-icon icon="solar:pen-outline"></iconify-icon>
                                 </button>
 
                                 
@@ -310,14 +311,14 @@
                             <td class="py-12 text-xs text-secondary-light">{{ \Carbon\Carbon::parse($doc->uploaded_date)->format('d M Y') }}</td>
                             <td class="text-center pe-20 py-12">
                                 <div class="d-flex align-items-center justify-content-center gap-2">
-                                    <a href="{{ asset('storage/' . $doc->file_path) }}" target="_blank" class="btn btn-sm btn-outline-primary px-8 py-4 radius-6 text-xs" title="Lihat Dokumen">
-                                        Unduh
+                                    <a href="{{ asset('storage/' . $doc->file_path) }}" target="_blank" class="w-32-px h-32-px rounded-circle bg-info-focus text-info-main d-inline-flex justify-content-center align-items-center" title="Unduh Dokumen">
+                                        <iconify-icon icon="solar:download-outline"></iconify-icon>
                                     </a>
                                     <form action="{{ route('dashboard-admin.pmo.documents-handover.destroy', $doc->id) }}" method="POST" class="d-inline" onsubmit="return confirm('Hapus dokumen ini?')">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" class="btn btn-sm btn-outline-danger p-4 radius-6" title="Hapus">
-                                            <iconify-icon icon="solar:trash-bin-trash-outline" class="text-base"></iconify-icon>
+                                        <button type="submit" class="w-32-px h-32-px rounded-circle bg-danger-focus text-danger-main d-inline-flex justify-content-center align-items-center border-0" title="Hapus">
+                                            <iconify-icon icon="mingcute:delete-2-line"></iconify-icon>
                                         </button>
                                     </form>
                                 </div>

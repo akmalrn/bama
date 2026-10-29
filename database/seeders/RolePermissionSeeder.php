@@ -256,7 +256,32 @@ class RolePermissionSeeder extends Seeder
             ['level' => 'Manager']
         );
 
-        // 4. Create Simulated Users & Associated Employee Records
+        $posFinanceOfficer = Position::firstOrCreate(
+            ['department_id' => $deptFin->id, 'title' => 'Finance & Tax Officer'],
+            ['level' => 'Officer']
+        );
+
+        $posHcdManager = Position::firstOrCreate(
+            ['department_id' => $deptHcd->id, 'title' => 'Human Capital Manager'],
+            ['level' => 'Manager']
+        );
+
+        $posHsseOfficer = Position::firstOrCreate(
+            ['department_id' => $deptHsse->id, 'title' => 'HSSE Officer'],
+            ['level' => 'Officer']
+        );
+
+        $posProcurementOfficer = Position::firstOrCreate(
+            ['department_id' => $deptProc->id, 'title' => 'Procurement & Logistics Officer'],
+            ['level' => 'Officer']
+        );
+
+        $posAssetManager = Position::firstOrCreate(
+            ['department_id' => $deptAsset->id, 'title' => 'Asset & Equipment Manager'],
+            ['level' => 'Manager']
+        );
+
+        // 4. Create Simulated Users & Associated Employee Records for ALL Roles
         $simulatedStaff = [
             [
                 'name' => 'Juliyanto',
@@ -265,7 +290,7 @@ class RolePermissionSeeder extends Seeder
                 'role' => 'sales-director',
                 'position' => $posSalesDirector,
                 'department' => $deptSales,
-                'emp_number' => 'EMP-DIR-001',
+                'emp_number' => 'EMP-SLS-001',
                 'join_date' => '2020-01-15',
                 'phone' => '081122334455',
             ],
@@ -302,6 +327,72 @@ class RolePermissionSeeder extends Seeder
                 'join_date' => '2023-06-15',
                 'phone' => '081234567803',
             ],
+            [
+                'name' => 'Ir. Hendro Subagio',
+                'email' => 'hendro.pmo@elbema.co.id',
+                'initials' => 'HS',
+                'role' => 'pmo-manager',
+                'position' => $posProjectManager,
+                'department' => $deptPmo,
+                'emp_number' => 'EMP-PMO-001',
+                'join_date' => '2021-05-10',
+                'phone' => '081399887766',
+            ],
+            [
+                'name' => 'Bambang Wijaya, S.E.',
+                'email' => 'bambang.finance@elbema.co.id',
+                'initials' => 'BW',
+                'role' => 'finance-officer',
+                'position' => $posFinanceOfficer,
+                'department' => $deptFin,
+                'emp_number' => 'EMP-FIN-001',
+                'join_date' => '2021-08-01',
+                'phone' => '081255443322',
+            ],
+            [
+                'name' => 'Siti Rahmawati, S.Psi',
+                'email' => 'siti.rahma@elbema.co.id',
+                'initials' => 'SR',
+                'role' => 'hcd-manager',
+                'position' => $posHcdManager,
+                'department' => $deptHcd,
+                'emp_number' => 'EMP-HCD-001',
+                'join_date' => '2022-02-14',
+                'phone' => '081344556677',
+            ],
+            [
+                'name' => 'Rahmat Pratama, S.T.',
+                'email' => 'rahmat.hse@elbema.co.id',
+                'initials' => 'RP',
+                'role' => 'hsse-officer',
+                'position' => $posHsseOfficer,
+                'department' => $deptHsse,
+                'emp_number' => 'EMP-HSE-001',
+                'join_date' => '2021-11-20',
+                'phone' => '081277889900',
+            ],
+            [
+                'name' => 'Farhan Kurniawan',
+                'email' => 'farhan.proc@elbema.co.id',
+                'initials' => 'FK',
+                'role' => 'procurement-officer',
+                'position' => $posProcurementOfficer,
+                'department' => $deptProc,
+                'emp_number' => 'EMP-PRC-001',
+                'join_date' => '2022-09-05',
+                'phone' => '081366778899',
+            ],
+            [
+                'name' => 'Agus Hermanto',
+                'email' => 'agus.asset@elbema.co.id',
+                'initials' => 'AH',
+                'role' => 'asset-manager',
+                'position' => $posAssetManager,
+                'department' => $deptAsset,
+                'emp_number' => 'EMP-AST-001',
+                'join_date' => '2022-04-12',
+                'phone' => '081288990011',
+            ],
         ];
 
         foreach ($simulatedStaff as $staff) {
@@ -316,47 +407,29 @@ class RolePermissionSeeder extends Seeder
             );
 
             $user->update([
+                'name' => $staff['name'],
                 'initials' => $staff['initials'],
                 'is_active' => true,
             ]);
 
             $user->syncRoles([$staff['role']]);
 
+            $existingEmp = Employee::where('user_id', $user->id)->first();
+            $empNumber = $existingEmp?->employee_number ?? $staff['emp_number'];
+
             Employee::updateOrCreate(
                 ['user_id' => $user->id],
                 [
                     'department_id' => $staff['department']->id,
                     'position_id' => $staff['position']->id,
-                    'employee_number' => $staff['emp_number'],
+                    'employee_number' => $empNumber,
                     'join_date' => $staff['join_date'],
                     'phone' => $staff['phone'],
                 ]
             );
         }
 
-        // Also create a dedicated PMO Manager employee for project assignment
-        $pmoUser = User::firstOrCreate(
-            ['email' => 'hendro.pmo@elbema.co.id'],
-            [
-                'name' => 'Ir. Hendro Subagio',
-                'initials' => 'HS',
-                'password' => Hash::make('password123'),
-                'is_active' => true,
-            ]
-        );
-        $pmoUser->syncRoles(['pmo-manager']);
-        Employee::updateOrCreate(
-            ['user_id' => $pmoUser->id],
-            [
-                'department_id' => $deptPmo->id,
-                'position_id' => $posProjectManager->id,
-                'employee_number' => 'EMP-PMO-001',
-                'join_date' => '2021-05-10',
-                'phone' => '081399887766',
-            ]
-        );
-
-        // Ensure super-admin account exists
+        // Ensure super-admin account exists and has role
         $superAdminUser = User::firstOrCreate(
             ['email' => 'superadmin@elbema.co.id'],
             [
@@ -366,6 +439,28 @@ class RolePermissionSeeder extends Seeder
                 'is_active' => true,
             ]
         );
-        $superAdminUser->assignRole($superAdminRole);
+        $superAdminUser->syncRoles([$superAdminRole]);
+
+        // Auto-assign roles to any other existing users in the database
+        $extraRoleMappings = [
+            'dimas.hsse@elbema.co.id' => 'hsse-officer',
+            'rina.m@elbema.co.id' => 'hsse-officer',
+            'dimas.pratama@elbema.co.id' => 'pmo-manager',
+            'andi.rahman@elbema.co.id' => 'pmo-manager',
+            'nisa.ananda@elbema.co.id' => 'pmo-manager',
+            'rizky.saputra@elbema.co.id' => 'pmo-manager',
+            'budi.santoso@elbema.co.id' => 'pmo-manager',
+            'andi.pe@elbema.co.id' => 'pmo-manager',
+            'fajar.qc@elbema.co.id' => 'pmo-manager',
+            'joko.hydro@elbema.co.id' => 'asset-manager',
+            'agus.torque@elbema.co.id' => 'asset-manager',
+        ];
+
+        foreach ($extraRoleMappings as $email => $roleName) {
+            $user = User::where('email', $email)->first();
+            if ($user && $user->roles()->count() === 0) {
+                $user->syncRoles([$roleName]);
+            }
+        }
     }
 }

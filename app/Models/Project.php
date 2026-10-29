@@ -130,6 +130,21 @@ class Project extends Model
         return $this->hasMany(Invoice::class);
     }
 
+    public function purchaseRequests(): HasMany
+    {
+        return $this->hasMany(PurchaseRequest::class);
+    }
+
+    public function purchaseOrders(): HasMany
+    {
+        return $this->hasMany(PurchaseOrder::class);
+    }
+
+    public function logisticsDeliveries(): HasMany
+    {
+        return $this->hasMany(LogisticsDelivery::class);
+    }
+
     public function getNameAttribute(): string
     {
         return (string) ($this->title ?? '');
